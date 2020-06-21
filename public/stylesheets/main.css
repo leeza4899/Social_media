@@ -5,4 +5,13 @@
 
 body{
 	background-color: #f1f1f1;
+	justify-items: center;
+	align-items: center;
+}
+
+
+form.form_signup{
+	justify-items: center;
+	align-items: center;
+	text-align: center;
 }

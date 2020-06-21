@@ -1,7 +1,16 @@
 <%- include("./partials/header")%>
-<div class = "container">
-	<form>
-		//form goes here
+
+<div class = "form">
+	<form class="form_signup">
+		<input type="text" placeholder="Enter Full Name" name="name" id="name" >
+		<br>
+		<input type="email" name="email"placeholder="Enter your Email" id="email">
+		<br>
+		<input type="text" name="Username" id="username" placeholder="Enter Username">
+		<br>
+		<input type="text" name="dob" id="dob"placeholder="Enter date of birth DD/MM/YY">
+		<br>
+		<button type="submit">Signup</button>
 	</form>
 </div>
 <%- include("./partials/footer")%>
