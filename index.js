@@ -13,10 +13,7 @@ const db =require('./models/config').MongoURI;
 //db config
 
 //connect to db
-mongoose.connect(db,{
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true})
+mongoose.connect(db,{useNewUrlParser:true})
 .then(()=> console.log('connected to db'))
 .catch(err => console.log(err));
 
