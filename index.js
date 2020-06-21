@@ -8,15 +8,20 @@ var bodyParser = require("body-parser");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
+/////////////////////////////////////////////////////////// DB
 
-const db =require('./models/config').MongoURI;
+const db = require('./models/config').MongoURI;
 //db config
 
 //connect to db
-mongoose.connect(db,{useNewUrlParser:true})
+mongoose.connect( db, 
+	{useNewUrlParser:true,
+	useUnifiedTopology: true,
+	useCreateIndex: true
+})
 .then(()=> console.log('connected to db'))
 .catch(err => console.log(err));
-
+///////////////////////////////////////////////////////////////SERVERS
 
 app.get("/", function(req,res){
 	res.render("landing");
