@@ -1,5 +1,3 @@
-const { Mongoose } = require("mongoose");
-
 const Mongoose =require('mongoose');
 
 const  UserSchema= new Mongoose.Sechema({
