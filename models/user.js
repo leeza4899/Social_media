@@ -1,4 +1,5 @@
 const Mongoose =require('mongoose');
+var passportLocalMongoose = require("passport-local-mongoose");
 const { isDate } = require('moment');
 
 const  UserSchema= new Mongoose.Schema({
@@ -24,5 +25,6 @@ const  UserSchema= new Mongoose.Schema({
    }
 
 });
+UserSchema.plugin(passportLocalMongoose);
 const User = Mongoose.model('User',UserSchema);
 module.exports = User;
