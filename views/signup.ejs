@@ -1,38 +1,39 @@
 <%- include("./partials/header")%>
 <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/sign.css">
- <div class="cont">
+<div class="cont">
     <div class="form sign-in">
-      <h2>Sign In</h2>
-      <form action="/login" method="POST">
-      <label>
-        <span>Email Address</span>
-        <input type="email" name="email">
-      </label>
-      <label>
-        <span>Password</span>
-        <input type="password" name="password">
-      </label>
-      <button class="submit">Sign In</button>
-      <p class="forgot-pass">Forgot Password ?</p>
-  </form>
-</div>
+     	<h2>Sign In</h2>
+    	<form action="/login" method="POST">
+	      <label>
+	        <span>Email Address</span>
+	        <input type="email" name="email">
+	      </label>
+	      <label>
+	        <span>Password</span>
+	        <input type="password" name="password">
+	      </label>
+	      <button class="submit">Sign In</button>
+	      <p class="forgot-pass">Forgot Password ?</p>
+	  	</form>
+    </div>
+
     <div class="sub-cont">
       <div class="img">
         <div class="img-text m-up">
           <h2>New here?</h2>
-          <p>Sign up and discover what's going around the world!</p>
+          <p>Sign up and discover what's going on in the world!</p>
         </div>
         <div class="img-text m-in">
-          <h2>Already One of us?</h2>
-          <p>Sign In <br> We've missed you.</p>
+          <h2>Already one of us?</h2>
+          <p>Sign In. 
+            <br> We've missed you!</p>
         </div>
         <div class="img-btn">
           <span class="m-up">Sign Up</span>
           <span class="m-in">Sign In</span>
         </div>
       </div>
-      <div class="form sign-up">
         <h2>Sign Up</h2>
         <form action="/signup" method="POST">
         <label>
@@ -55,10 +56,9 @@
           <span>DOB</span>
           <input type="date" name="dob">
         </label>
-        <button class="submit">Sign Up Now</button>
+        <button class="submit" >Sign Up Now</button>
     </form>
-      </div>
-    </div>
+  </div>
   </div>
 <script type="text/javascript" src="script.js"></script>
 <%- include("./partials/footer")%>
