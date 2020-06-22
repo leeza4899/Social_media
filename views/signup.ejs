@@ -8,11 +8,11 @@
     	<form action="/login" method="POST">
 	      <label>
 	        <span>Email Address</span>
-	        <input type="email" name="email" id = "email" value="<%= typeof email!='undefined' ? email:'' %>" >
+	        <input type="email" name="email"  placeholder="eg. abcd@abcd.com"id = "email" value="<%= typeof email!='undefined' ? email:'' %>" >
 	      </label>
 	      <label>
 	        <span>Password</span>
-	        <input type="password" name="password2" id = "password2" value="<%= typeof password2!='undefined' ? password2:'' %>">
+	        <input type="password" name="password2" placeholder="password" id = "password2" value="<%= typeof password2!='undefined' ? password2:'' %>">
 	      </label>
 	      <button class="submit">Sign In</button>
 	      <p class="forgot-pass">Forgot Password ?</p>
@@ -40,19 +40,19 @@
         <form action="/signup" method="POST">
         <label>
           <span>Name</span>
-          <input type="name" name="signname" id = "signname" value="<%= typeof signname!='undefined' ? signname:'' %>">
+          <input type="name" name="signname" placeholder="Name" id = "signname" value="<%= typeof signname!='undefined' ? signname:'' %>">
         </label>
         <label>
           <span>Nickname</span>
-          <input type="text" name="username" id = "username" value="<%= typeof username!='undefined' ? username:'' %>">
+          <input type="text" name="username" id = "username" placeholder="username" value="<%= typeof username!='undefined' ? username:'' %>">
         </label>
         <label>
           <span>Email</span>
-          <input type="email" name="emailid" id = "emailid" value="<%= typeof emailid!='undefined' ? emailid:'' %>">
+          <input type="email" name="emailid" id = "emailid" placeholder="eg. abcd@abcd.com" value="<%= typeof emailid!='undefined' ? emailid:'' %>">
         </label>
         <label>
           <span>Password</span>
-          <input type="password" name="pass" id = "pass" value="<%= typeof pass!='undefined' ? pass:'' %>">
+          <input type="password" name="pass" id = "pass" placeholder="Password" value="<%= typeof pass!='undefined' ? pass:'' %>">
         </label>
         <label>
           <span>DOB</span>
