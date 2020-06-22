@@ -74,24 +74,39 @@ app.post("/signup", function (req, res) {
 				emailid,
 				dob			
 			});
-		} else { 	//registering new user
-		var newUser = new User({ 
+		} else { 	//registering new user\
+			User.findOne({email : emailid})
+			.then(user =>{
+				if(user){
+					errors.push({msg:"Email Already Exist"})
+					res.render('./signup',{
+				errors,
+				signname,
+				username,
+				emailid,
+				dob			
+			});
+				} else{
+					const newUser = new User({ 
 			name: req.body.signname,
 			email: req.body.emailid,
-			username: req.body.nickname,
+			password:req.body.pass,
+			username: req.body.username,
 			date: req.body.dob
 			});
-		User.register(newUser, req.body.password, function(err, user){
-			if(err){
-				res.redirect("signup");
-			} else {
-				console.log(newUser);
-				return res.render("landing");
-			}
-			passport.authenticate("local")(req, res, function(){
-				res.render("landing"); 
-			 });
-		});
+
+			newUser.save()
+			.then(user=>{
+				res.redirect("/landing");
+			})
+			.catch(err => console.log(err));
+
+			
+		}
+			});
+		
+
+		
 	}
 });
 /////////////////////////////////////////////////////////// DB
