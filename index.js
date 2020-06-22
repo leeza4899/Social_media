@@ -17,11 +17,15 @@ app.get("/signup", function (req, res) {
 	res.render("signup");
 });
 
-app.post("/signup", function (req, res) {
+app.post("/login", function (req, res) {
 	console.log(req.body);
-	res.render('hello');
+	res.send('hello from login bleh');
 });
 
+app.post("/signup", function (req, res) {
+	console.log(req.body);
+	res.send('hello from singup bleh');
+});
 /////////////////////////////////////////////////////////// DB
 
 const db = 'mongodb://localhost:27017/Users'
