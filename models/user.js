@@ -1,6 +1,7 @@
 const Mongoose =require('mongoose');
+const { isDate } = require('moment');
 
-const  UserSchema= new Mongoose.Sechema({
+const  UserSchema= new Mongoose.Schema({
    name:{
        type:String,
        required :true
@@ -18,10 +19,10 @@ const  UserSchema= new Mongoose.Sechema({
        type:String
    },
    date:{
-       type:date,
+       type : Date,
        default:Date.now
    }
 
 });
-const User =Mongoose.model('User',UserSchema);
+const User = Mongoose.model('User',UserSchema);
 module.exports = User;

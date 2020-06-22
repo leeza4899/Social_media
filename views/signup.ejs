@@ -2,8 +2,10 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/sign.css">
 <div class="cont">
+  
     <div class="form sign-in">
-     	<h2>Sign In</h2>
+       <h2>Sign In  </h2>
+       <%include("./partials/message")%>
     	<form action="/login" method="POST">
 	      <label>
 	        <span>Email Address</span>
@@ -35,10 +37,11 @@
         </div>
       </div>
         <h2>Sign Up</h2>
+        
         <form action="/signup" method="POST">
         <label>
           <span>Name</span>
-          <input type="text" name="signname">
+          <input type="name" name="signname" value="<%= typeof name!='undefined' ? name:'' %>">
         </label>
         <label>
           <span>Nickname</span>

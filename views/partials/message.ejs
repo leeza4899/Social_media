@@ -1,0 +1,8 @@
+<% if((typeof errors) != "undefined"){ %>
+    console.log("abs");
+    <% errors.forEach(function(error){ %>
+        <% error.msg %>  
+    <% });  %>
+<% } %>
+
+console.log("abc");

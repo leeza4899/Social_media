@@ -4,7 +4,7 @@ var path = require("path");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 
-
+const er =require("./models/user");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
@@ -18,13 +18,46 @@ app.get("/signup", function (req, res) {
 });
 
 app.post("/login", function (req, res) {
-	console.log(req.body);
-	res.send('hello from login bleh');
+
+	const {email,password} =req.body;
+	let errors =[];
+		if( !email || !password){
+			errors.push({msg : "fill all fields"})
+		}
+
+		if(errors.length>0){
+			
+			res.render('signup',{
+				email,password
+			});
+		}
+		else {
+			res.send("done");
+		}
 });
 
 app.post("/signup", function (req, res) {
-	console.log(req.body);
-	res.send('hello from singup bleh');
+	//check required
+	const {signname, username, emailid, pass, dob} =req.body;
+	let errors =[];
+		if( !signname || !username || !emailid || !pass || !dob){
+			errors.push({msg : "fill all fields"})
+			
+		}
+
+		if(errors.length>0){
+			console.log(errors)
+			res.render('signup',{
+				errors,
+				signname,
+				username,
+				emailid,
+				dob			
+			});
+		}
+		else {
+			res.send("done");
+		}
 });
 /////////////////////////////////////////////////////////// DB
 
