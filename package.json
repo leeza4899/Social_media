@@ -18,6 +18,7 @@
     "locus": "^2.0.4",
     "method-override": "^3.0.0",
     "moment": "^2.26.0",
+    "mongo": "^0.1.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.19",
     "passport": "^0.4.1",
