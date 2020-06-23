@@ -314,3 +314,12 @@ button{
   -webkit-transform:translate3d(0, 0, 0);
           transform:translate3d(0, 0, 0);
 }
+
+div.verify{
+  display: block;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+}

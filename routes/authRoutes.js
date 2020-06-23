@@ -3,6 +3,15 @@ var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcryptjs");
 var User = require("../models/user");
+const randomstring =require('randomstring');
+const path = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const LocalStrategy = require("passport-local");
+const flash = require("connect-flash");
+// const mailer = require('../models/mail');
+
+
 
 
 //landing route
@@ -14,6 +23,12 @@ router.get("/", function (req, res) {
 router.get("/signup", function (req, res) {
 	res.render("signup");
 });
+//verify routes
+router.get("/verify", function (req, res) {
+	res.render("verify");
+});
+
+
 
 router.post("/signup", function (req, res) {
 	//check required
@@ -57,9 +72,17 @@ router.post("/signup", function (req, res) {
 						bcrypt.hash(newUser.password, salt, (err, hash) => {
 						  if (err) throw err;
 						  newUser.password = hash;
+///////////////////////////////adding string to send to verify Email id
+ 						  const secretToken =randomstring.generate(10);
+						  newUser.secretToken=secretToken;
+/////////////////////////////// bool function to check if email is verified or not
+						  newUser.active=false;
+						  const html = secretToken;
+						  mailer.sendEmail('friendsBlog.in',emailid,'please verify your email',html);
 						  newUser.save()
+						  
 							.then(user => {
-                                req.flash('success_msg',"Successfully signed up. Please login to continue.");
+                                req.flash('success_msg',"Successfully signed up. Please Check your email.");
                                 res.redirect('/signup');
 							})
 							.catch(err => console.log(err));
@@ -80,6 +103,37 @@ router.post('/login', (req, res, next) => {
 	})(req,res,next);
 	
 });
+
+
+//verify post function
+router.post('/verify',(async (req,res,next) =>{
+
+	try{
+		var {SecretToken}=req.body;
+		if(SecretToken==''){
+			req.flash('error','Try again no user found');
+			res.redirect('/verify');
+		}
+		const user = await User.findOne({'secretToken': SecretToken});
+		///find which user does the token belongs to
+		if(!user){
+			
+			req.flash('error','Try again no user found');
+			res.redirect('/verify');
+			return;
+		}
+		console.log(user);
+		user.active =true;
+		user.secretToken='';
+		await user.save();
+		req.flash('success','Good Now you may login');
+		res.redirect('/signup');
+	}
+	catch(err){
+		next(err);
+	}
+	
+}));
 
 //logout route
 router.get("/logout", function(req,res){

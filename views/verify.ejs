@@ -1,0 +1,19 @@
+<%- include("./partials/header")%>
+<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/stylesheets/sign.css">
+<div class="cont">
+    <div class="form sign-in verify">
+        <%- include("./partials/message") %>
+        <h2>Verify </h2>
+        <form action="/verify" method="POST">
+            <label>
+                <span>Password</span>
+                <input type="text" name="SecretToken" placeholder="Enter Verification id">
+            </label>
+            <button class="submit">Sign In</button>
+        </form>
+    </div>
+
+    
+<script type="text/javascript" src="script.js"></script>
+<%- include("./partials/footer")%>

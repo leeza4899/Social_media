@@ -2,7 +2,7 @@ const Mongoose =require('mongoose');
 var passportLocalMongoose = require("passport-local-mongoose");
 const { isDate } = require('moment');
 
-const  UserSchema= new Mongoose.Schema({
+var  UserSchema= new Mongoose.Schema({
    name:{
        type:String,
        required :true
@@ -22,6 +22,12 @@ const  UserSchema= new Mongoose.Schema({
    date:{
        type : Date,
        default:Date.now
+   },
+   secretToken :{
+       type : String
+   },
+   active:{
+       type:Boolean
    }
 
 });

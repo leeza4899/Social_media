@@ -7,6 +7,7 @@ const passport      = require("passport");
 const bcrypt 		= require("bcryptjs");
 const LocalStrategy = require("passport-local");
 const flash		    = require("connect-flash");
+const randomstring = require('randomstring');
 
 
 //////ROUTE FILES
@@ -16,7 +17,7 @@ var indexRoutes       = require("./routes/authRoutes");
 const User 			  = require("./models/user");
 
 //////moongoose
-const db = 'mongodb://localhost:27017/Users'
+const db = 'mongodb://localhost:27017/new'
 //db config
 
 //connect to db
@@ -52,8 +53,14 @@ passport.use(
 					return done(null, false, {
 						message: 'User not found.'
 					});
-
 				}
+				//////check email verification
+
+				if(!user.active){
+					return done(null,false,{message:'You need to Verify your email'});
+				}
+
+
 				bcrypt.compare(password, user.password, (err, isMatch) => {
 					if (err) throw err;
 
