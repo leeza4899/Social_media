@@ -1,9 +1,10 @@
-var express = require("express");
-var app = express();
-var path = require("path");
-var mongoose = require("mongoose");
-var bodyParser = require("body-parser");
+var express       = require("express");
+var app           = express();
+var path          = require("path");
+var mongoose      = require("mongoose");
+var bodyParser 	  = require("body-parser");
 var passport      = require("passport");
+var bcrypt 		  = require("bcryptjs");
 var LocalStrategy = require("passport-local");
 
 
@@ -30,32 +31,15 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-
+///////#######AUTH ROUTES#######////////
+//landing route
 app.get("/", function (req, res) {
 	res.render("landing");
 });
 
+//signup routes
 app.get("/signup", function (req, res) {
 	res.render("signup");
-});
-
-app.post("/login", function (req, res) {
-
-	const {email,password} =req.body;
-	let errors =[];
-		if( !email || !password){
-			errors.push({msg : "Fill all fields"})
-		}
-
-		if(errors.length>0){
-			res.render('signup',{
-				errors,
-				email
-			});
-		}
-		else {
-			res.send("done");
-		}
 });
 
 app.post("/signup", function (req, res) {
@@ -74,7 +58,8 @@ app.post("/signup", function (req, res) {
 				emailid,
 				dob			
 			});
-		} else { 	//registering new user\
+		} else { 	
+			//registering new user\
 			User.findOne({email : emailid})
 			.then(user =>{
 				if(user){
@@ -88,26 +73,42 @@ app.post("/signup", function (req, res) {
 			});
 				} else{
 					const newUser = new User({ 
-			name: req.body.signname,
-			email: req.body.emailid,
-			password:req.body.pass,
-			username: req.body.username,
-			date: req.body.dob
-			});
+					name: req.body.signname,
+					email: req.body.emailid,
+					password:req.body.pass,
+					username: req.body.username,
+					date: req.body.dob
+					});
 
-			newUser.save()
-			.then(user=>{
-				res.redirect("/landing");
-			})
-			.catch(err => console.log(err));
+					bcrypt.genSalt(10, (err, salt) => {
+						bcrypt.hash(newUser.password, salt, (err, hash) => {
+						  if (err) throw err;
+						  newUser.password = hash;
+						  newUser
+							.save()
+							.then(user => {
+							  res.redirect('/');
+							})
+							.catch(err => console.log(err));
+						});	
+					});	
+				}
+	});
+}
+});
 
-			
-		}
-			});
-		
+//login route
+app.post('/login', (req, res, next) => {
+	passport.authenticate('local', {
+	  successRedirect: '/',
+	  failureRedirect: '/signup',
+	})(req, res, next);
+  });
 
-		
-	}
+//logout route
+app.get("/logout", function(req,res){
+	req.logout();
+	res.send("logout done");
 });
 /////////////////////////////////////////////////////////// DB
 
