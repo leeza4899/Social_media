@@ -50,7 +50,7 @@ passport.use(
 			.then(user => {
 				if (!user) {
 					return done(null, false, {
-						message: 'not Registered'
+						message: 'User not found.'
 					});
 
 				}

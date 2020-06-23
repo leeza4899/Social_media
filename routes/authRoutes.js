@@ -20,7 +20,7 @@ router.post("/signup", function (req, res) {
 	const {signname, username, emailid, pass, dob} =req.body;
 	let errors =[];
 		if( !signname || !username || !emailid || !pass || !dob){
-			errors.push({msg : "Fill all fields"})
+			errors.push({msg : "All fields are Required."})
 		}
 		if(errors.length > 0){
 			console.log(errors)
@@ -36,7 +36,7 @@ router.post("/signup", function (req, res) {
 			User.findOne({email : emailid})
 			.then(user =>{
 				if(user){
-					errors.push({msg:"Email Already Exist"})
+					errors.push({msg:"Email Already Exists"})
 					res.render('signup',{
 				errors,
 				signname,
@@ -59,8 +59,8 @@ router.post("/signup", function (req, res) {
 						  newUser.password = hash;
 						  newUser.save()
 							.then(user => {
-								req.flash('success_msg',"you are now a member please login");
-							  res.redirect('/signup');
+                                req.flash('success_msg',"Successfully signed up. Please login to continue.");
+                                res.redirect('/signup');
 							})
 							.catch(err => console.log(err));
 						});	
