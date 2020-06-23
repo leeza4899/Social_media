@@ -13,7 +13,7 @@ const flash		    = require("connect-flash");
 var indexRoutes       = require("./routes/authRoutes");
 
 /////MODELS
-const User 			= require("./models/user");
+const User 			  = require("./models/user");
 
 //////moongoose
 const db = 'mongodb://localhost:27017/Users'
