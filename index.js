@@ -1,12 +1,14 @@
-var express       = require("express");
-var app           = express();
-var path          = require("path");
-var mongoose      = require("mongoose");
-var bodyParser 	  = require("body-parser");
-var passport      = require("passport");
-var bcrypt 		  = require("bcryptjs");
-var LocalStrategy = require("passport-local");
-
+const express       = require("express");
+const app           = express();
+const path          = require("path");
+const mongoose      = require("mongoose");
+const bodyParser 	= require("body-parser");
+const passport      = require("passport");
+const bcrypt 		= require("bcryptjs");
+const LocalStrategy = require("passport-local");
+const flash		    = require("connect-flash");
+const User 			= require("./models/user");
+const { Router } = require("express");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -15,20 +17,67 @@ app.use(express.static(__dirname + "/public"));
 
 //PASSPORT CONFIG
 app.use(require("express-session")({
-	secret: "leeza4899",
-	resave: false,
-	saveUninitialized: false
+	secret: "secret",
+	resave: true,
+	saveUninitialized: true
 }));
-
-//acquiring the db models
-const User = require("./models/user");
-
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+app.use(flash()); 
+app.use((req,res,next)=>{
+	res.locals.success_msg=req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error = req.flash('error');
+	next();
+});
+///////////////////Authentication stragegy
+passport.use(
+	new LocalStrategy({
+		usernameField: 'email'
+	}, (email, password, done) => {
+		User.findOne({
+				email: email
+			})
+			.then(user => {
+				if (!user) {
+					return done(null, false, {
+						message: 'not Registered'
+					});
+
+				}
+				bcrypt.compare(password, user.password, (err, isMatch) => {
+					if (err) throw err;
+
+					if (isMatch) {
+						return done(null, user);
+					} else {
+						return done(null, false, {
+							message: 'Password incorrerct'
+						});
+					}
+				});
+
+			})
+			.catch(err => console.log(err));
+	})
+);
+passport.serializeUser(function (user, done) {
+	done(null, user.id);
+});
+passport.deserializeUser(function (id, done) {
+	user.findById(id, function (err, user) {
+		done(err, user);
+	});
+});
+//////////////////////////////
+
+//acquiring the db models
+
+
+
 //middleware for login
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 
 ///////#######AUTH ROUTES#######////////
@@ -64,7 +113,7 @@ app.post("/signup", function (req, res) {
 			.then(user =>{
 				if(user){
 					errors.push({msg:"Email Already Exist"})
-					res.render('./signup',{
+					res.render('signup',{
 				errors,
 				signname,
 				username,
@@ -84,10 +133,10 @@ app.post("/signup", function (req, res) {
 						bcrypt.hash(newUser.password, salt, (err, hash) => {
 						  if (err) throw err;
 						  newUser.password = hash;
-						  newUser
-							.save()
+						  newUser.save()
 							.then(user => {
-							  res.redirect('/');
+								req.flash('success_msg',"you are now a member please login");
+							  res.redirect('/signup');
 							})
 							.catch(err => console.log(err));
 						});	
@@ -99,11 +148,14 @@ app.post("/signup", function (req, res) {
 
 //login route
 app.post('/login', (req, res, next) => {
-	passport.authenticate('local', {
-	  successRedirect: '/',
-	  failureRedirect: '/signup',
-	})(req, res, next);
-  });
+	const{email,password} =req.body;
+	passport.authenticate("local",{
+		successRedirect:'/signup',
+		failureRedirect:'/landing',
+		failureFlash:true
+	})(req,res,next);
+	
+});
 
 //logout route
 app.get("/logout", function(req,res){
