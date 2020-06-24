@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
+const nodemailer = require("nodemailer");
 // const mailer = require('../models/mail');
 
 
@@ -77,8 +78,31 @@ router.post("/signup", function (req, res) {
 						  newUser.secretToken=secretToken;
 /////////////////////////////// bool function to check if email is verified or not
 						  newUser.active=false;
-						  const html = secretToken;
-						  mailer.sendEmail('friendsBlog.in',emailid,'please verify your email',html);
+						  const output = '${secretToken}';
+						  // node mailer 
+						  let transporter = nodemailer.createTransport({
+							  					
+							  host: "smtp.gmail.com",
+							  port: 465,
+							  secure: true, // true for 465, false for other ports
+							  auth: {
+								user: 'newfriendsblog@gmail.com', // generated ethereal user
+								pass: 'friends123blog', // generated ethereal password
+							  },
+							  tls:{
+								  rejectUnauthorized:false
+							  }
+							});
+						  
+							// send mail with defined transport object
+							let info = transporter.sendMail({
+							  from: '"Frineds Blog👻" newfriendsblog@gmail.com', // sender address
+							  to: "jainnaman335@gmail.com", // list of receivers
+							  subject: "Verification Request", // Subject line
+							  text: "Hello world?", // plain text body
+							  html: output, // html body
+							});
+
 						  newUser.save()
 						  
 							.then(user => {
