@@ -67,6 +67,7 @@ router.post("/signup", function (req, res) {
 ///////////////////////////////adding string to send to verify Email id
  						  const secretToken =randomstring.generate(6);
 						  newUser.secretToken=secretToken;
+						  otp =secretToken;
 /////////////////////////////// bool function to check if email is verified or not
 						  newUser.active=false;
 						  newUser.save() 
@@ -80,28 +81,35 @@ router.post("/signup", function (req, res) {
 				}
 	});
 
-	var {SecretToken}=req.body;
+	
+	
 /////////////GMAIL AUTHENTICATION???????????????
 let transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
       user: 'newfriendsblog@gmail.com', 
       pass: 'friends123blog', 
-	}
+	},
+	tls: {
+		// do not fail on invalid certs
+		rejectUnauthorized: false
+	},
   });
     // send mail with defined transport object
   const info ={
     from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
-    to: req.body.emailid, // list of receivers
+    to: 'jainnaman335@gmail.com', //req.body.emailid, // list of receivers
     subject: "Email ID validation token", // Subject line
     text: "Welcome to friendsBlog! Use this token below to verify your email with us.", // plain text body
-    html: SecretToken // html body
+	html:'<p>This is HTML <br>content  This is your verification id : {newUser.secretToken} </p>  ', // html body
+	
   };
   transporter.sendMail(info, function(err, data){
 	if(err)
 	{
 		console.log(err);
 	} else {
+		
 		console.log("Message sent");
 	}
   })
