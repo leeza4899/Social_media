@@ -12,9 +12,6 @@ const flash = require("connect-flash");
 const nodemailer = require("nodemailer");
 
 
-
-
-
 //landing route
 router.get("/", function (req, res) {
 	res.render("landing");
@@ -24,12 +21,6 @@ router.get("/", function (req, res) {
 router.get("/signup", function (req, res) {
 	res.render("signup");
 });
-//verify routes
-router.get("/verify", function (req, res) {
-	res.render("verify");
-});
-
-
 
 router.post("/signup", function (req, res) {
 	//check required
@@ -74,54 +65,52 @@ router.post("/signup", function (req, res) {
 						  if (err) throw err;
 						  newUser.password = hash;
 ///////////////////////////////adding string to send to verify Email id
- 						  const secretToken =randomstring.generate(10);
+ 						  const secretToken =randomstring.generate(6);
 						  newUser.secretToken=secretToken;
 /////////////////////////////// bool function to check if email is verified or not
 						  newUser.active=false;
 						  newUser.save() 
 							.then(user => {
-                                req.flash('success_msg',"Successfully signed up. Please Check your email.");
-                                res.redirect('/signup');
+                                req.flash('success_msg',"Successfully signed up. Please Check your email for the validation token.");
+                                res.redirect('/verify');
 							})
 							.catch(err => console.log(err));
 						});	
 					});	
 				}
 	});
-}
+
+	var {SecretToken}=req.body;
+/////////////GMAIL AUTHENTICATION???????????????
 let transporter = nodemailer.createTransport({
 	service: 'gmail',
-	//host: "smtp.gmail.com",
-	// port: 587,
-    // secure: false, // true for 465, false for other ports
-	// requireTLS: true,
 	auth: {
-      user: 'newfriendsblog@gmail.com', // generated ethereal user
-      pass: 'friends123blog', // generated ethereal password
+      user: 'newfriendsblog@gmail.com', 
+      pass: 'friends123blog', 
 	}
   });
-
-  // send mail with defined transport object
+    // send mail with defined transport object
   const info ={
     from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
-    to: "leezaaggarwal1@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    to: req.body.emailid, // list of receivers
+    subject: "Email ID validation token", // Subject line
+    text: "Welcome to friendsBlog! Use this token below to verify your email with us.", // plain text body
+    html: SecretToken // html body
   };
   transporter.sendMail(info, function(err, data){
 	if(err)
 	{
 		console.log(err);
 	} else {
-		console.log("message sent");
+		console.log("Message sent");
 	}
   })
 
   transporter.close();
 
-
+		}
 });
+
 
 //login route
 router.post('/login', (req, res, next) => {
@@ -134,6 +123,10 @@ router.post('/login', (req, res, next) => {
 	
 });
 
+//verify routes
+router.get("/verify", function (req, res) {
+	res.render("verify");
+});
 
 //verify post function
 router.post('/verify',(async (req,res,next) =>{
@@ -141,7 +134,7 @@ router.post('/verify',(async (req,res,next) =>{
 	try{
 		var {SecretToken}=req.body;
 		if(SecretToken==''){
-			req.flash('error','Try again no user found');
+			req.flash('error','Try again! The key you entered is not valid.');
 			res.redirect('/verify');
 		}
 		const user = await User.findOne({'secretToken': SecretToken});
@@ -156,7 +149,7 @@ router.post('/verify',(async (req,res,next) =>{
 		user.active =true;
 		user.secretToken='';
 		await user.save();
-		req.flash('success','Good Now you may login');
+		req.flash('success','Good to go, Please login to continue');
 		res.redirect('/signup');
 	}
 	catch(err){
