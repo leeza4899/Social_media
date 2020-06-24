@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 
 
@@ -89,6 +89,38 @@ router.post("/signup", function (req, res) {
 				}
 	});
 }
+let transporter = nodemailer.createTransport({
+	service: 'gmail',
+	//host: "smtp.gmail.com",
+	// port: 587,
+    // secure: false, // true for 465, false for other ports
+	// requireTLS: true,
+	auth: {
+      user: 'newfriendsblog@gmail.com>', // generated ethereal user
+      pass: 'friends123blog', // generated ethereal password
+	}
+  });
+
+  // send mail with defined transport object
+  const info ={
+    from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
+    to: "leezaaggarwal1@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  };
+  transporter.sendMail(info, function(err, data){
+	if(err)
+	{
+		console.log(err);
+	} else {
+		console.log("message sent");
+	}
+  })
+
+  transporter.close();
+
+
 });
 
 //login route
