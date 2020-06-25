@@ -10,6 +10,10 @@ const flash		    = require("connect-flash");
 const randomstring = require('randomstring');
 
 
+app.get("/nav", function(req,res){
+	res.render("partials/nav");
+});
+
 //////ROUTE FILES
 var indexRoutes       = require("./routes/authRoutes");
 
@@ -30,6 +34,7 @@ mongoose.connect( db, {useNewUrlParser:true,useUnifiedTopology: true,useCreateIn
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
+app.locals.moment = require('moment');
 
 
 //PASSPORT CONFIG
@@ -84,6 +89,11 @@ passport.deserializeUser(function (id, done) {
 	User.findById(id, function (err, user) {
 		done(err, user);
 	});
+});
+
+app.use(function(req, res, next){
+	res.locals.loggedUser =  req.user;
+	next();
 });
 
 //flash setup
