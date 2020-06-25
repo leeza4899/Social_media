@@ -80,7 +80,7 @@ router.post("/signup", function (req, res) {
 			rejectUnauthorized: false
 		},
 		});
-		var str =  "Welcome to friendsBlog! To verify your email, use the token below. Token:  " + newUser.secretToken + " Thank you for joining us!"
+		var str =  "<h4>Welcome to friendsBlog! To verify your email, use the token below.<h4>Token:  " + newUser.secretToken + "<p>Thank you for joining us!<p>"
 		//console.log(str); --- for debugging purposes!
 ///////////////////////////////////// send mail with defined transport object
 		const info ={
