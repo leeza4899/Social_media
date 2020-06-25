@@ -8,9 +8,23 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 		<link rel="stylesheet" href="/stylesheets/main.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 	</head>
 	<body>
-		<!-- <%- include("nav")%> -->
+		<link rel="stylesheet" href="/stylesheets/nav.css">
+		<div class="ui secondary pointing menu">
+		<a class="item" href="/">Home</a>
+		<a class="item">News Feed</a>
+		<a class="item">Chat room</a>
+		<div class="right menu">
+			<% if(!loggedUser){ %>
+			<a class="ui item" href="/signup">Join us</a>
+			<% } else { %>
+			<a class="ui item">Signed In as <%= loggedUser.username %></a>
+			<a class="ui item" href="/logout">Logout</a>
+			<% } %>
+		</div>
+		</div>
 
 
 

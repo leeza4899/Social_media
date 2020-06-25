@@ -10,9 +10,6 @@ const flash		    = require("connect-flash");
 const randomstring = require('randomstring');
 
 
-app.get("/nav", function(req,res){
-	res.render("partials/nav");
-});
 
 //////ROUTE FILES
 var indexRoutes       = require("./routes/authRoutes");
@@ -90,6 +87,7 @@ passport.deserializeUser(function (id, done) {
 		done(err, user);
 	});
 });
+
 
 app.use(function(req, res, next){
 	res.locals.loggedUser =  req.user;
