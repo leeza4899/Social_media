@@ -1,0 +1,8 @@
+.ui.secondary.pointing.menu {
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 2px solid rgba(34, 36, 38, .15);
+    position: absolute;
+    top: 10px;
+    justify-content: space-around;
+}
