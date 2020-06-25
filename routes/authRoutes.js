@@ -52,11 +52,13 @@ router.post("/signup", function (req, res) {
 				dob			
 			});
 				} else{
+					//const secretToken =randomstring.generate(6);
 					const newUser = new User({ 
 					name: req.body.signname,
 					email: req.body.emailid,
 					password:req.body.pass,
 					username: req.body.username,
+					secretToken : randomstring.generate(6),
 					date: req.body.dob
 					});
 
@@ -65,9 +67,8 @@ router.post("/signup", function (req, res) {
 						  if (err) throw err;
 						  newUser.password = hash;
 ///////////////////////////////adding string to send to verify Email id
- 						  const secretToken =randomstring.generate(6);
-						  newUser.secretToken=secretToken;
-						  otp =secretToken;
+ 						const secretToken =randomstring.generate(6);
+						newUser.secretToken=secretToken;
 /////////////////////////////// bool function to check if email is verified or not
 						  newUser.active=false;
 						  newUser.save() 
@@ -95,26 +96,25 @@ let transporter = nodemailer.createTransport({
 		rejectUnauthorized: false
 	},
   });
+	var {SecretToken}=req.body
     // send mail with defined transport object
-  const info ={
-    from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
-    to: 'jainnaman335@gmail.com', //req.body.emailid, // list of receivers
-    subject: "Email ID validation token", // Subject line
-    text: "Welcome to friendsBlog! Use this token below to verify your email with us.", // plain text body
-	html:'<p>This is HTML <br>content  This is your verification id : {newUser.secretToken} </p>  ', // html body
-	
-  };
-  transporter.sendMail(info, function(err, data){
-	if(err)
-	{
-		console.log(err);
-	} else {
-		
-		console.log("Message sent");
-	}
-  })
+	const info ={
+		from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
+		to: /*'jainnaman335@gmail.com' req.body.emailid,*/ 'leezaaggarwal1@gmail.com', // list of receivers
+		subject: "Email ID validation token", // Subject line
+		html: "<h3> Welcome to friendsBlog! <br> Use this token below to verify your email with us.</h3><br>Token: <b> SecretToken </b><br><p>Thank you for joining us!</p>",  // html bod
+	};
+	transporter.sendMail(info, function(err, data){
+		if(err)
+		{
+			console.log(err);
+		} else {
+			
+			console.log("Message sent");
+		}
+	})
 
-  transporter.close();
+  	//transporter.close();
 
 		}
 });
