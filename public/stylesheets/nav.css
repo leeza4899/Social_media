@@ -1,8 +1,57 @@
-.ui.secondary.pointing.menu {
-    margin-left: 0;
-    margin-right: 0;
-    border-bottom: 2px solid rgba(34, 36, 38, .15);
-    position: absolute;
-    top: 10px;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: black;
+    color: grey;
+    top: -5px;
+    width: 100%;
     justify-content: space-around;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 25px 10px 2px 15px;
+    position: fixed;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav-area {
+    list-style: none;
+}
+
+.nav-area li {
+    display: inline-block;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+
+.nav-area li a {
+    transition: all .3s ease 0s;
+    color: #fff;
+}
+
+.nav-area li a:hover {
+    color: whitesmoke;
+}
+
+.btn-area {
+    cursor: pointer;
+    color: black;
+    font-size: 12px;
+    height: 35px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: #ced6d6;
 }

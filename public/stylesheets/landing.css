@@ -4,9 +4,9 @@
 }
 body{
   background-image: url(../images/main_background.jpg);
-  background-size: cover;
-  font-family: 'Cantora One',
-  sans-serif;
+  background-size: flex;
+  background-repeat: no-repeat;
+  font-family: 'Cantora One', sans-serif;
 }
 
 .book-header {
@@ -15,7 +15,21 @@ body{
   text-align: center;
   padding-top: 40vh;
 }
-
+.banner-text{
+  min-width: 400px;
+  display: inline;
+  float: none;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.banner-text h1{
+  font-size: 46px;
+  color: black;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 5px;
+}
 
 div {
   font-family: 'Cantora One',sans-serif;

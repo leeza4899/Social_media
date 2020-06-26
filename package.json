@@ -31,7 +31,8 @@
     "path": "^0.12.7",
     "randomstring": "^1.1.5",
     "request": "^2.88.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "typed.js": "^2.0.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
