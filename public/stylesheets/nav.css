@@ -17,47 +17,11 @@ a {
     z-index: 10;
 
 }
-.navbar-light .navbar-brand {
-    color: blanchedalmond;
-}
-    
 
-.logo {
-    cursor: pointer;
-    max-width: 150px;
-    max-height: 65px;
-    margin: -30px;
-    padding-bottom: 15px;
-}
-
-.nav-area {
-    list-style: none;
-}
-
-.nav-area li {
-    display: inline-block;
-    padding: 0 15px;
-    text-transform: uppercase;
-}
-
-.nav-area li a {
-    transition: all .3s ease 0s;
-    color: #fff;
-}
-
-.nav-area li a:hover {
-    color: whitesmoke;
-}
-
-.btn-area {
-    cursor: pointer;
-    color: black;
-    font-size: 12px;
-    height: 35px;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background: #ced6d6;
+.footer{
+    width: 100%;
+    background-color: black;
+    color: white;
+    position: fixed;
+    bottom: 0;
 }

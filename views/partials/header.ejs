@@ -1,48 +1,49 @@
 <!DOCTYPE html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>friendsBlog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/stylesheets/nav.css">
-</head>
-
-<body>
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light nav1">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Chat Room</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#">Team</a>
-                </li>
-
-                <% if(!loggedUser){ %>
-                <li> <a href="/signup" class="nav-link">Join us</a></li>
-                <%} else { %>
-                <li><a href="#">Signed as <%- loggedUser.username%></a></li>
-                <a href="/logout" class="btn btn-secondary">Logout</a>
-                <% } %>
-            </ul>
-        </div>
-    </nav>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+                integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+                <link rel="stylesheet" href="/stylesheets/nav.css">
+            </head>
+            <body>
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark nav1">
+                    <a href="/"><span class="navbar-brand mb-0 h1 text-dark">friendsBlog</span></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Chat Room</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">Team</a>
+                            </li>   
+                            <% if(!loggedUser){ %>
+                            <li class="nav-item">
+                                <a href="/logout" class="btn btn-secondary">Join us</a>
+                            </li>
+                            <%} else { %>
+                            <li class="nav-item">
+                                <a class="nav-link">Signed as <%= loggedUser.username%></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/logout" class="btn btn-secondary">Logout</a>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    </nav>
