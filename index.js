@@ -18,7 +18,7 @@ var indexRoutes = require("./routes/authRoutes");
 const User = require("./models/user");
 
 //////moongoose
-const db = 'mongodb://localhost:27017/news'
+const db = 'mongodb://localhost:27017/friendsBlog'
     //db config
 
 //connect to db

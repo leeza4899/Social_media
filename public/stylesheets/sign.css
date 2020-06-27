@@ -108,7 +108,7 @@ button {
 .forgot-pass {
     margin-top: 15px;
     text-align: center;
-    font-size: 14px;
+    font-size: 14px; 
     font-weight: 600;
     color: #0c0101;
     cursor: pointer;
