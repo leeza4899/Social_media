@@ -7,18 +7,20 @@ a {
     text-decoration: none;
 }
 
-header {
-    background-color: black;
-    color: grey;
-    top: -5px;
+.nav1 {
+    background-color:ghostwhite !important;
     width: 100%;
-    justify-content: space-around;
-    text-decoration: none;
+    position:absolute ;
+    top: 0;
     display: flex;
-    align-items: center;
-    padding: 25px 10px 2px 15px;
-    position: fixed;
+    justify-content: space-around;
+    z-index: 10;
+
 }
+.navbar-light .navbar-brand {
+    color: blanchedalmond;
+}
+    
 
 .logo {
     cursor: pointer;
