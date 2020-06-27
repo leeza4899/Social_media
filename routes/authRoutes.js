@@ -151,7 +151,7 @@ router.post('/verify',(async (req,res,next) =>{
 		user.active =true;
 		user.secretToken='';
 		await user.save();
-		req.flash('success','Good to go, Please login to continue');
+		req.flash('success_msg','Good to go, Please login to continue');
 		res.redirect('/signup');
 	}
 	catch(err){
@@ -163,8 +163,9 @@ router.post('/verify',(async (req,res,next) =>{
 //logout route
 router.get("/logout", function(req,res){
 	req.logout();
-	req.flash("success", "Logged you out!");
-	res.send("logout done");
+	req.flash('success_msg', 'Logged out Succesfully!');	
+	return res.redirect("/signup");
+	
 });
 
 

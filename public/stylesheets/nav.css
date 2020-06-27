@@ -24,6 +24,10 @@ a {
 
 .logo {
     cursor: pointer;
+    max-width: 150px;
+    max-height: 65px;
+    margin: -30px;
+    padding-bottom: 15px;
 }
 
 .nav-area {
