@@ -9,6 +9,7 @@ var  UserSchema= new Mongoose.Schema({
    },
    email:{
        type : String,
+       unique: true,
        required: true
    },
    password:{
@@ -26,6 +27,12 @@ var  UserSchema= new Mongoose.Schema({
    secretToken :{
        type : String
    },
+    resetPasswordToken: {
+        type: String,
+    },
+    resetPasswordExpires:{
+        type: Date,
+    },
    active:{
        type:Boolean
    }

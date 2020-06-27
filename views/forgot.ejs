@@ -1,0 +1,20 @@
+<%- include("./partials/header")%>
+<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/stylesheets/sign.css">
+<div class="cont">
+    <div class="form sign-in verify">
+        <%- include("./partials/message") %>
+        <h2>Forgot Password</h2>
+        <form action="/forgot" method="POST">
+            <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="Email" id = "email" >
+              </label>
+              <button class="submit">Reset</button>
+        </form>
+    </div>
+    </div>
+
+    
+<script type="text/javascript" src="script.js"></script>
+<%- include("./partials/footer")%>
