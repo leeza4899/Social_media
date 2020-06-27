@@ -1,27 +1,123 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 
-a {
-    text-decoration: none;
-}
 
-.nav1 {
-    background-color:ghostwhite !important;
-    width: 100%;
-    position:absolute ;
-    top: 0;
-    display: flex;
-    justify-content: space-around;
-    z-index: 10;
 
-}
 
-.footer{
-    width: 100%;
-    background-color: black;
-    color: white;
+.navbar{
+   
     position: fixed;
-    bottom: 0;
+    background-color: rgb(0, 12, 7);
+    transition: width 200ms ease;
 }
+.navbar-nav{
+   list-style: none;
+   padding: 0;
+   margin: 0em;
+   display: flex;
+   flex-direction: column;
+   align-items: center; 
+   position: absolute;
+}
+.nav-item{
+    width: 100%;
+
+}
+.nav-item:last-child{
+margin-top: 100%;
+}
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: rgb(199, 179, 153);
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.5) blur(0.2);
+    transition: 400ms;
+}
+
+.link-text{
+    display: none;
+    margin: 1rem;
+}
+.nav-link svg{
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+
+
+
+
+.fa-primary{
+    color: rgb(186, 191, 201);
+}
+.fa-secondary {
+    color: rgb(106, 111, 119);
+
+}
+
+.logo{
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.3ch;
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width:600px){
+    .navbar{
+        top: 0em;
+        width: 100vw;
+        height: 5rem;
+    }
+    .logo{
+        display: none;
+    }
+    .link-text{
+        display: none;
+    }
+
+    .navbar-nav{
+        flex-direction: row;
+        justify-items: end;
+        height: 5rem;
+    }
+    .nav-link{
+        justify-content: end;
+        align-items: stretch;
+    }
+    div{
+        margin: 0em;
+    }
+    .navbar:hover {
+        width: 100vh;
+    }
+
+
+    
+
+
+}
+.nav-link:hover {
+    filter: blur(0) opacity(1) grayscale(0);
+    background: rgb(99, 97, 93);
+    color: rgb(119, 165, 221);
+}
+@media only screen and (min-width:600px){
+.navbar {
+    width: 5rem;
+    height: 100%;
+    top: 0;
+}
+.navbar:hover{
+    width: 16rem;
+}
+
+
+.navbar:hover .link-text {
+    display: inline;
+}
+
+}
+
+
+
