@@ -40,7 +40,7 @@ body::-webkit-scrollbar-track{
     background: #1e1e24;
 }
 body::-webkit-scrollbar-thumb {
-    background: #20e631;
+    background: #abb2b4;
 
 }
 
@@ -57,13 +57,14 @@ input,button {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 0 8rem 0;
     top: 5rem;
     padding: 1rem;
     overflow: hidden;
     position: relative;
-    left: 38vw;
-    width: 400px;
-    height: 400px;
+    left: 22%;
+    width: 900px;
+    height: 600px;
     background: #fff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
     0 15px 12px rgba(0, 0, 0, 0.22);

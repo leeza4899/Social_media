@@ -244,7 +244,11 @@ router.post('/reset/:token', function(req, res) {
 			req.flash('error_msg', 'Password reset token is invalid or has expired.');
 			return res.redirect('back');
 		  }
-		  if(req.body.password === req.body.confirm) {
+		  if( !req.body.password || !req.body.confirm){
+			req.flash('error_msg', 'Please fill in all the fields.');
+			return res.redirect('back');
+		}
+		  else if(req.body.password === req.body.confirm) {
 			user.setPassword(req.body.password, function(err) {
 			  user.resetPasswordToken = undefined;
 			  user.resetPasswordExpires = undefined;

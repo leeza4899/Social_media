@@ -126,7 +126,7 @@ margin-top: 100%;
     background: rgb(20, 20, 20) ;
     color: lavender;
     height: 400px;
-position: relative;
+    position: relative;
 }
 
 
@@ -144,9 +144,22 @@ padding-top: 20px;
 
 }
  .footer .footer-content{
-     border: 1px solid rgb(217, 180, 255);
-     height: 350px;
+     height: auto; 
+     padding-top: 15px ;
  }
+
+ .footer-content a{
+     color: rgb(221, 221, 221);
+     text-decoration: none;
+ }
+ .footer-content a:hover{
+    color: #adbaf5;
+    text-decoration: none;
+}
+.footer-content h4{
+    color: wheat;
+}
+
 .page-wrapper{
     min-height: 100%;
 }
