@@ -12,6 +12,13 @@
     --text-secondary:ececec;
 
 }
+html,body{
+    height: 100%;
+
+}
+.cont .cont-verify{
+    min-height: 100%;
+}
 
 body {
     background: #005AA7;
@@ -21,6 +28,10 @@ body {
     background: linear-gradient(to bottom, #FFFDE4, #005AA7);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: 'Nunito', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 body::-webkit-scrollbar{
     width: 0.5rem;
@@ -50,9 +61,9 @@ input,button {
     padding: 1rem;
     overflow: hidden;
     position: relative;
-    left: 22%;
-    width: 900px;
-    height: 600px;
+    left: 38vw;
+    width: 400px;
+    height: 400px;
     background: #fff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
     0 15px 12px rgba(0, 0, 0, 0.22);
@@ -60,7 +71,7 @@ input,button {
 .cont {
     display: flex;
     align-items: center;
-    
+    margin: 0 0 8rem 0;
     top: 5rem;
     padding: 1rem;
     overflow: hidden;
