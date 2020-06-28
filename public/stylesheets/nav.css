@@ -17,9 +17,7 @@
     width: 100%;
 
 }
-.nav-item:last-child{
-margin-top: 100%;
-}
+
 .nav-link{
     display: flex;
     align-items: center;
@@ -85,9 +83,8 @@ margin-top: 100%;
     div{
         margin: 0em;
     }
-    .navbar:hover {
-        width: 100vh;
-    }
+
+    
 
 
     
@@ -100,6 +97,9 @@ margin-top: 100%;
     color: rgb(119, 165, 221);
 }
 @media only screen and (min-width:600px){
+    footer{
+         padding-left: 5rem;
+    }
 .navbar {
     width: 5rem;
     height: 100%;
@@ -112,6 +112,9 @@ margin-top: 100%;
 .navbar:hover{
     width: 16rem;
 }
+.nav-item:last-child {
+    margin-top: 100%;
+}
 
 
 .navbar:hover .link-text {
@@ -120,46 +123,229 @@ margin-top: 100%;
 
 }
 
-/* footer css */
-.footer{
-    width: 100vw;
-    background: rgb(20, 20, 20) ;
-    color: lavender;
-    height: 400px;
-    position: relative;
-}
-
-
- .footer .footer-bottom {
-background: rgb(85, 85, 85);
-color: rgb(221, 221, 221);
-width: 100vw;
-height: 50px;
-text-align: center;
-position: absolute;
-bottom: 0;
-left: 0;
-padding-top: 20px;
-
-
-}
- .footer .footer-content{
-     height: auto; 
-     padding-top: 15px ;
- }
-
- .footer-content a{
-     color: rgb(221, 221, 221);
-     text-decoration: none;
- }
- .footer-content a:hover{
-    color: #adbaf5;
-    text-decoration: none;
-}
-.footer-content h4{
-    color: wheat;
-}
 
 .page-wrapper{
     min-height: 100%;
+}
+
+/* footer css starts */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    color: #d9d9d9;
+    box-sizing: border-box;
+    font-family: 'Nunito',
+    sans-serif;
+}
+
+.content1 {
+    position: relative;
+    margin: 130px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.content1 .text {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #202020;
+}
+
+.content1 .p {
+    font-size: 2.1875rem;
+    font-weight: 600;
+    color: #202020;
+}
+
+
+
+footer {
+   
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    background: rgb(34, 31, 31);
+}
+
+.main-content {
+    display: flex;
+}
+
+.main-content .box {
+    flex-basis: 50%;
+    padding: 10px 20px;
+}
+
+.box h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.box .content {
+    margin: 20px 0 0 0;
+    position: relative;
+}
+
+.box .content:before {
+    position: absolute;
+    content: '';
+    top: -10px;
+    height: 2px;
+    width: 100%;
+    background: #5c5c5c;
+}
+
+.box .content:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 15%;
+    background: #ddd4d4;
+    top: -10px;
+}
+
+.left .content p {
+    text-align: justify;
+}
+
+.left .content .social {
+    margin: 20px 0 0 0;
+}
+
+.left .content .social a {
+    padding: 0 2px;
+}
+
+.left .content .social a span {
+    height: 40px;
+    width: 40px;
+    background: #1a1a1a;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.left .content .social a span:hover {
+    background: #f12020;
+}
+
+.center .content .fas {
+    font-size: 1.4375rem;
+    background: #1a1a1a;
+    height: 45px;
+    width: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.center .content .fas:hover {
+    background: #f12020;
+}
+
+.center .content .text {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.center .content .phone {
+    margin: 15px 0;
+}
+
+.right form .text {
+    font-size: 1.0625rem;
+    margin-bottom: 2px;
+    color: #656565;
+}
+
+.right form .msg {
+    margin-top: 10px;
+}
+
+.right form input,
+.right form textarea {
+    width: 100%;
+    font-size: 1.0625rem;
+    background: #151515;
+    padding-left: 10px;
+    border: 1px solid #222222;
+}
+
+.right form input:focus,
+.right form textarea:focus {
+    outline-color: #3498db;
+}
+
+.right form input {
+    height: 35px;
+}
+
+.right form .btn {
+    margin-top: 10px;
+}
+
+.right form .btn button {
+    height: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #575757;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.right form .btn button:hover {
+    background: rgb(10, 12, 6);
+}
+
+.bottom center {
+    padding: 5px;
+    font-size: 0.9375rem;
+    background: #151515;
+}
+
+.bottom center span {
+    color: #ad9898;
+}
+
+.bottom center a {
+    color: #ccb8b8;
+    text-decoration: none;
+}
+
+.bottom center a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+    footer {
+        position: relative;
+        bottom: 0px;
+    }
+
+    .main-content {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .main-content .box {
+        margin: 5px 0;
+    }
+}
+
+footer svg{
+   
+        max-width: 2rem;
+        
+    
 }
