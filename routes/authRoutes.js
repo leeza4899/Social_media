@@ -178,7 +178,6 @@ router.post('/forgot', function(req, res, next) {
 	  },
 	  function(token, done) {
 		User.findOne({ email: req.body.email }, function(err, user) {
-			console.log(req.body.email );
 		  if (!user) {
 			req.flash('error_msg', 'No account with that email address exists.');
 			return res.redirect('/forgot');
@@ -198,7 +197,10 @@ router.post('/forgot', function(req, res, next) {
 		  auth: {
 			user: 'newfriendsblog@gmail.com',
 			pass: 'friends123blog'
-		  }
+		  },
+		  tls:{
+			  rejectUnauthorized: false
+		  },
 		});
 		var mailOptions = {
 		  to: req.body.email ,

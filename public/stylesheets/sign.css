@@ -50,9 +50,9 @@ input,button {
     padding: 1rem;
     overflow: hidden;
     position: relative;
-    left: 35%;
-    width: 400px;
-    height: 500px;
+    left: 22%;
+    width: 900px;
+    height: 600px;
     background: #fff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
     0 15px 12px rgba(0, 0, 0, 0.22);
@@ -353,13 +353,4 @@ button {
 .cont.s-signup .sign-up {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-}
-
-div.verify {
-    display: block;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    height: auto;
-    width: auto;
 }
