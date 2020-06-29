@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcryptjs");
-var User = require("../models/user");
 const randomstring =require('randomstring');
 const path = require("path");
 const mongoose = require("mongoose");
@@ -12,6 +11,10 @@ const flash = require("connect-flash");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const async = require("async");
+
+//requiring models
+const Query = require("../models/query");
+const User = require("../models/user");
 
 
 //landing route
@@ -290,7 +293,37 @@ router.post('/reset/:token', function(req, res) {
 	});
   });
 
-
+router.post("/query", function(req,res){
+	const {email, message} =req.body;
+		let transporter = nodemailer.createTransport({
+			service: 'gmail',
+			auth: {
+				user: 'newfriendsblog@gmail.com', 
+				pass: 'friends123blog', 
+				},
+			tls: {
+			// do not fail on invalid certs
+				rejectUnauthorized: false
+			},
+			});
+			const info ={
+				from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
+				to: 'newfriendsblog@gmail.com', /*'jainnaman335@gmail.com', 'leezaaggarwal1@gmail.com'*/ // list of receivers
+				subject: "Query Message through website", // Subject line
+				text: 'This is a query message sent over through the website query form\n\n' +
+			'The message has been sent from email: ' + req.body.email + '\n The query message is:\n' + req.body.message + '\n\n' ,
+			};
+			transporter.sendMail(info, function(err, data){
+			if(err){
+					console.log(err);
+			} else {
+					console.log("Message sent");
+					req.flash('success_msg', 'Query sent to the owner. Will get back to you soon.');
+					return res.redirect("back");
+				}
+			})
+			transporter.close();
+});
 
 //logout route
 router.get("/logout", function(req,res){
