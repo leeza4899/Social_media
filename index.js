@@ -16,6 +16,7 @@ var indexRoutes = require("./routes/authRoutes");
 var profileRouters=require("./routes/profile");
 /////MODELS
 const User = require("./models/user");
+const Query = require("./models/query");
 
 //////moongoose
 const db = 'mongodb://localhost:27017/friendsBlog'
