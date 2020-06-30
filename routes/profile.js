@@ -13,6 +13,19 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const async = require("async");
 
+//User routes
+router.get("/user/:id", function(req,res){
+    User.findById(req.params.id, function(err, foundUser) {
+        if(err) {
+          req.flash("error_msg", "Something went wrong.");
+          return res.redirect("/");
+        } else {
+            res.render("profile",{user: foundUser});
+        }
+})
+});
+
+
 
 
 

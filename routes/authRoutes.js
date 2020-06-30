@@ -123,8 +123,8 @@ router.post("/signup", function (req, res) {
 router.post('/login', (req, res, next) => {
 	const{email,password} =req.body;
 	passport.authenticate("local",{
-		successRedirect:'/',
-		failureRedirect:'/signup',
+		successRedirect:'/signup',
+		failureRedirect:'/',
 		failureFlash:true
 	})(req,res,next);
 	
