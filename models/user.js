@@ -1,7 +1,7 @@
 const Mongoose =require('mongoose');
 var passportLocalMongoose = require("passport-local-mongoose");
 const { isDate } = require('moment');
-
+const {ObjectId} = Mongoose.Schema.Types;
 var  UserSchema= new Mongoose.Schema({
    name:{
        type:String,
@@ -35,8 +35,15 @@ var  UserSchema= new Mongoose.Schema({
     },
    active:{
        type:Boolean
-   }
-
+   },
+   followers:[{
+       type: ObjectId,
+       ref: "User"
+   }],
+   following:[{
+    type: ObjectId,
+    ref: "User"
+}]
 });
 UserSchema.plugin(passportLocalMongoose);
 const User = Mongoose.model('User',UserSchema);

@@ -28,8 +28,25 @@
     </div>
     <div class="bio-container">
         <div class="name-username"></div>
-        <h1>Naman Jain</h1>
-        <p>Username</p>
+        <h1><%= user.name %></h1>
+        <p><%=user.username%></p>\
+            <% if(user && user.id != loggedUser._id) { %>
+            <% const following = user.following; %>
+              <% const action = following.includes(loggedUser._id) ? 'unfollow' : 'follow'; %>
+             <button class="btn btn-primary ml-4" data-action="<%= action %>" data-follower="<%= user.id %>" data-following="<%= loggedUser._id %>" id="follow-btn">Follow</button>
+            <% } %> 
+
+         <div class="d-flex">
+            <div class="pr-5"><strong id="followers"><%= loggedUser.followers.length %></strong> followers</div>
+            <div class="pr-5"><strong id="following"><%= loggedUser.following.length %></strong> following</div>
+        </div>
+        <!-- <form action="/follow" method="put">
+            <button class="btn btn-sm btn-success">Follow</button>
+        </form>
+        <br>
+        <form action="/unfollow" method="put">
+            <button class="btn btn-sm btn-danger">Unfollow</button>
+        </form> -->
     </div>
 </div>
 
