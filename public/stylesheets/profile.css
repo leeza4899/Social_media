@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto:wght@300&display=swap');div.profle {
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Merienda:wght@700&family=Satisfy&display=swap');
+
+
+div.profle {
 
     min-width: 100vw;
     min-height: 100vh;
@@ -223,23 +227,28 @@ height: 50px;
     border: none;
     display: block;
     text-align: center;
-    cursor: pointer;
+font-family: 'Merienda',
+cursive;
+cursor: pointer;
     text-transform: uppercase;
     outline: none;
     overflow: hidden;
     position: relative;
     color: #fff;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 1rem;
     background-color: #222;
     padding: 17px 60px;
     margin: 0 auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
 }
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Satisfy&display=swap');
 
 .btn span {
     position: relative;
     z-index: 1;
+    font-family: 'Merienda',
+    cursive;
 }
 
 .btn:after {
