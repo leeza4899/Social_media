@@ -73,6 +73,7 @@ height: 50px;
     font-family: 'Lobster';
     text-align: start;
     display: flex;
+    max-width: 50rem;
     
     flex-direction: row;
     flex-wrap: wrap;
