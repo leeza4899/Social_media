@@ -3,7 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cookie&family=Merienda:wght@700&family=Satisfy&display=swap');
-
+*{
+    text-decoration: none;
+}
 
 div.profle {
 
@@ -137,7 +139,7 @@ height: 50px;
         min-height: 50px;
         list-style-type: none;
         position: absolute;
-        bottom: -.9rem;
+        bottom: 0;
         z-index: 10;
         background-color: oldlace;
         opacity: .8;
