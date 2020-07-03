@@ -11,7 +11,8 @@ div.profle {
 
     min-width: 100vw;
     min-height: 100vh;
-background-image: linear-gradient(to bottom, #282828, #634e5b, #af7577, #e9ab7e, #f9f392);
+background-image: linear-gradient(to bottom, #b9b0b6, #baa9ba, #b7a3c1, #ad9fcb, #9d9dd5, #92a6de, #87afe4, #7cb7e9, #8dc9ea, #a7d8ea, #c6e7ed, #e6f4f4);
+background-size: cover;
 }
 
 body {
@@ -57,7 +58,7 @@ div.profle{
 .pic-discription p{
     font-family: 'Bree Serif',
     serif;
-    color: rgb(41, 41, 41);
+    color: rgb(0, 0, 0);
 
 }
 .pic-discription svg {
@@ -66,7 +67,7 @@ height: 50px;
 .bio-container{
     
 
-    color: rgb(18, 16, 29);
+    color: rgb(0, 0, 0);
     width: 100%;
 }
 
@@ -84,10 +85,11 @@ height: 50px;
     margin-right: 5rem;
     font-family: 'Bree Serif',
     serif;
-        color: rgb(193, 246, 255);
+        color: rgb(236, 236, 236);
     font-size: 3rem;
 }
 .name-username h2 {
+    padding-left: 4rem;
     font-family: 'Bree Serif',
         serif;
     color: rgb(255, 255, 255);
@@ -99,13 +101,15 @@ height: 50px;
     font-family: 'Roboto',
     sans-serif;
 
-    color: rgb(184, 184, 184);
+    color: rgb(255, 255, 255);
 
+    padding-bottom: 4rem;
     font-size: 1.2rem;
    
 }
 .name-username svg{
     width: 2.5rem; margin-right: 1rem;
+    
     
 }
 
@@ -162,9 +166,23 @@ height: 50px;
         margin-top: 5rem;
         
     }
+    .btns-cnt {
+width: 50vw;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 }
 
 @media only screen and (max-width:600px){
+    .btns-cnt {
+        width: 100vw;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
     div.pic-container {
         
         
@@ -228,20 +246,19 @@ height: 50px;
 
 .btn {
     border: none;
-    display: block;
+    display: flex;
     text-align: center;
-font-family: 'Merienda',
-cursive;
+font-family: 'Cookie';
 cursor: pointer;
     text-transform: uppercase;
     outline: none;
     overflow: hidden;
     position: relative;
     color: #fff;
-    font-weight: 700;
+    
     font-size: 1rem;
     background-color: #222;
-    padding: 17px 60px;
+    padding: 10px 40px;
     margin: 0 auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
 }
@@ -250,8 +267,7 @@ cursor: pointer;
 .btn span {
     position: relative;
     z-index: 1;
-    font-family: 'Merienda',
-    cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn:after {
@@ -282,3 +298,37 @@ cursor: pointer;
     color: #000;
     font-size: 25px;
 }
+
+.bttns-container {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btns-cnt{
+    
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.btns-cnt  svg{
+height: 1.5rem;
+margin: 0;
+padding-right: 0.5rem;
+
+}
+
+
+.show-btns{
+    display: flex;
+    flex-direction: row;
+}
+
+.bttns-container p{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
