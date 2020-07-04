@@ -43,7 +43,7 @@ var  UserSchema= new Mongoose.Schema({
    following:[{
     type: ObjectId,
     ref: "User"
-}]
+}],
 });
 UserSchema.plugin(passportLocalMongoose);
 const User = Mongoose.model('User',UserSchema);

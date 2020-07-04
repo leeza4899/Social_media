@@ -325,6 +325,10 @@ router.post("/query", function(req,res){
 			transporter.close();
 });
 
+// follower//following system
+
+
+
 //logout route
 router.get("/logout", function(req,res){
 	req.logout();
