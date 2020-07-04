@@ -71,7 +71,7 @@ router.post("/signup", function (req, res) {
 						  if (err) throw err;
 						  newUser.password = hash;
 ///////////////////////////////adding string to send to verify Email id
- 		const secretToken =randomstring.generate(6);
+ 		const secretToken =randomstring.generate(10);
 		newUser.secretToken=secretToken;
 /////////////////////////////GMAIL AUTHENTICATION/////////////////////
 		let transporter = nodemailer.createTransport({
