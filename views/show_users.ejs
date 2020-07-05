@@ -1,0 +1,12 @@
+<%- include ("./partials/header") %>
+<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <% users.forEach(function(user){ %>
+<div class="col-md-3 col-sm-6">	
+    <div class="caption">
+        <h3><%= user.username %></h3>
+    </div>
+    </div>	
+    <%});%>
+</div>
+
+<%- include ("./partials/footer") %>

@@ -20,10 +20,39 @@ var User = require("../models/user");
 //requiring the middlwares
 var middleware = require("../middleware");
 
+router.get("/users", function(req,res)
+{
+  if(req.query.search)
+  {
+    console.log(req.query.search);
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    User.find({username: regex} ,function(err, foundUser) {
+
+      if(err) {
+        console.log(err);
+        req.flash("error_msg", "Something went wrong.");
+        return res.redirect("back");
+      } else {
+          res.render("show_users", {users: foundUser});
+      }
+  })
+  }  else {
+    User.find({} ,function(err, foundUser) {
+
+      if(err) {
+        console.log(err);
+        req.flash("error_msg", "Something went wrong.");
+        return res.redirect("back");
+      } else {
+        res.render("show_users", {users: foundUser});
+      }
+  }) 
+  }
+});
+
 //User routes
 router.get("/user/:id", function(req,res){
-
-    User.findById(req.params.id, function(err, foundUser) {
+  User.findById(req.params.id, function(err, foundUser) {
 
         if(err) {
           req.flash("error_msg", "Something went wrong.");
@@ -31,7 +60,7 @@ router.get("/user/:id", function(req,res){
         } else {
             res.render("profile",{user: foundUser});
         }
-})
+    })
 });
 
 router.post("/follow", function (req, res) {
@@ -74,26 +103,15 @@ User.findByIdAndUpdate(whoFollow, {$pull :{following : toFollow }},{new:true},(e
     }
   })
     // console.log(foundUser);
-
+  
 res.redirect("back");
 });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
 
