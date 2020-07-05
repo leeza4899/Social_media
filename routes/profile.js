@@ -53,7 +53,7 @@ User.findByIdAndUpdate(whoFollow, {$push :{following : toFollow }},{new:true},(e
     }
   })
   // console.log(foundUser);
-res.redirect("/user/:id");
+res.redirect("back");
 });
 
 router.post("/unfollow", function (req, res) {
@@ -75,7 +75,7 @@ User.findByIdAndUpdate(whoFollow, {$pull :{following : toFollow }},{new:true},(e
   })
     // console.log(foundUser);
 
-res.redirect("/user/:id");
+res.redirect("back");
 });
 
 
