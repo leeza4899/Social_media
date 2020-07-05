@@ -22,7 +22,9 @@ var middleware = require("../middleware");
 
 //User routes
 router.get("/user/:id", function(req,res){
+
     User.findById(req.params.id, function(err, foundUser) {
+
         if(err) {
           req.flash("error_msg", "Something went wrong.");
           return res.redirect("/");
@@ -30,6 +32,10 @@ router.get("/user/:id", function(req,res){
             res.render("profile",{user: foundUser});
         }
 })
+});
+
+router.post("/follow/", function (req, res) {
+  console.log(req.body.name, req.user);
 });
 
 
