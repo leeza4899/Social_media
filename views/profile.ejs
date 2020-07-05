@@ -38,17 +38,18 @@
             <%= user.name %></h1>
             <%if(loggedUser){%>
                 <%if(loggedUser.username != user.username){%>
-                <%if(true){%>
+                <%if(!user.followers.includes(loggedUser._id,0)){%>
                 <form action="/follow" method="POST"><div class="button_container">                    
                     <button type="submit" class="btn"
-                         name="<%=user._id%>" ><span>Follow</span></button>
+                         name='followId' value='<%=user._id%>' ><span>Follow</span></button>
                 </div>
                 </form>
             
             <%}else{%>
                 <form action="/unfollow" method="POST">
                     <div class="button_container">
-                        <button type="submit" name="<%=user._id%>" class="btn"><span>Unfollow</span></button>
+                        
+                        <button type="submit" name='followId' value='<%=user._id%>' class="btn"><span>Unfollow</span></button>
                     </div>
                 </form>
             

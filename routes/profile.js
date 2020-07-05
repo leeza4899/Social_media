@@ -34,8 +34,48 @@ router.get("/user/:id", function(req,res){
 })
 });
 
-router.post("/follow/", function (req, res) {
-  console.log(req.body.name, req.user);
+router.post("/follow", function (req, res) {
+  const toFollow = req.body.followId;
+  const whoFollow = req.user._id;
+
+
+  User.findByIdAndUpdate(toFollow, {$push :{followers : whoFollow }
+  },
+  {new:true
+  },(err,result)=>{
+    if(err){
+      return res.status(422),json({error:err})
+    }
+  }),
+User.findByIdAndUpdate(whoFollow, {$push :{following : toFollow }},{new:true},(err,result)=>{
+    if(err){
+      return res.status(422),json({error:err})
+    }
+  })
+  // console.log(foundUser);
+res.redirect("/user/:id");
+});
+
+router.post("/unfollow", function (req, res) {
+  const toFollow = req.body.followId;
+  const whoFollow = req.user._id;
+
+  User.findByIdAndUpdate(toFollow, {$pull :{followers : whoFollow }
+  },
+  {new:true
+  },(err,result)=>{
+    if(err){
+      return res.status(422),json({error:err})
+    }
+  }),
+User.findByIdAndUpdate(whoFollow, {$pull :{following : toFollow }},{new:true},(err,result)=>{
+    if(err){
+      return res.status(422),json({error:err})
+    }
+  })
+    // console.log(foundUser);
+
+res.redirect("/user/:id");
 });
 
 
