@@ -10,12 +10,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 
 .card{
     position: relative;
-    width: 400px;
+    width: 300px;
+    height: 400px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
@@ -30,7 +31,7 @@ body{
     top: 0;
     left: 0;
     background-image: linear-gradient(to top, #00f2fe, #4facfe);
-    clip-path: circle(400px at 50% -48.5%);
+    clip-path: circle(350px at 50% -48.5%);
 }
 
 .header{
@@ -74,23 +75,19 @@ body{
 .sub-name{
     font-family: 'Cutive Mono', monospace;
     font-size: 1.2rem;
-    opacity: .8;
+    opacity: .7;
     color: #fff;
-}
-
-.content-about{
-    display: flex;
-    padding: 1.7rem 2.5rem 2.6rem 2.5rem;
+    text-decoration: none;
 }
 
 .right-users{
     padding-top: 1.5rem;
     display: flex;
-    flex-direction: column;
-    text-align: right;
+    flex-direction: row;
+    text-align: center;
     align-items: flex-end;
     justify-content: space-between;
-    margin-left: 2.1rem;
+    margin-left: 0.8rem;
 }
 
 .number{
@@ -101,7 +98,7 @@ body{
 }
 
 .number-title{
-    font-size: .55rem;
+    font-size: .7rem;
     color: #666;
     font-weight: 400;
     line-height: 1;
@@ -129,33 +126,6 @@ body{
     left: 0;
 }
 
-.text{
-    color: #666;
-    font-weight: 300;
-    line-height: 1.7;
-}
-
-.icons-container{
-    padding: 1rem 0;
-}
-
-.icon{
-    color: #c4c4c4;
-    font-size: 1.3rem;
-    text-decoration: none;
-    margin-right: 8px;
-    transition: .3s;
-}
-
-.icon:hover{
-    color: #4facfe;
-}
-
-.buttons-wrap{
-    display: flex;
-    margin-top: 5px;
-}
-
 .follow-wrap{
     flex: 4;
     display: flex;
@@ -164,16 +134,13 @@ body{
     transition: .5s;
 }
 
-.follow-wrap:hover{
-    flex: 5;
-}
-
 .follow{
     margin-top: 20px;
-    padding: 9.6px 0;
+    margin-bottom: 10px;
+    padding: 9.6px 10px;
     width: 100%;
     background: linear-gradient(to right, #4facfe 0%, #00f2fe 140%);
-    color: #fff;
+    color: rgb(5, 4, 4);
     text-align: center;
     text-decoration: none;
     font-size: .7rem;
@@ -240,15 +207,7 @@ body{
     .text{
         font-size: .8rem;
     }
-
-    .icons-container{
-        padding: .5rem 0;
-    }
-
-    .icon{
-        font-size: 1.1rem;
-    }
-
+    
     .follow{
         padding: 7.6px 0;
         border-radius: 14.6px;
