@@ -168,6 +168,30 @@ body{
     flex: 5;
 }
 
+
+@media screen and (min-width: 900px) {
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 5rem;
+}
+}
+@media screen and (max-width: 900px){
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        padding-top: 6rem;
+    }
+}
+
 .follow{
     margin-top: 20px;
     padding: 9.6px 0;
