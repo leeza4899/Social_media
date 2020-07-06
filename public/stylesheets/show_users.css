@@ -10,11 +10,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    min-height: 60vh;
 }
 
 .card{
-    position: relative;
+    position: absolute;
     width: 300px;
     height: 400px;
     background-color: #fff;
@@ -31,7 +31,7 @@ body{
     top: 0;
     left: 0;
     background-image: linear-gradient(to top, #00f2fe, #4facfe);
-    clip-path: circle(350px at 50% -48.5%);
+    clip-path: circle(350px at 50% -47.5%);
 }
 
 .header{
