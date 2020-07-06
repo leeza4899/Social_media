@@ -9,7 +9,9 @@
                 <div class="main-users">
                     <div class="image">
                     </div>
-                    <h3 class="name"><%= user.name %></h3>
+                    <a href="/user/<%=user._id%>" >
+                    <%console.log(user._id)%>
+                    <h3 class="name"><%= user.name %></h3></a>
                     <h3 class="sub-name">@<%= user.username %></h3>
                 </div>
             </div>

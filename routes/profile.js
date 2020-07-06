@@ -26,7 +26,7 @@ router.get("/users", function(req,res)
   {
     console.log(req.query.search);
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    User.find({username: regex} ,function(err, foundUser) {
+    User.find({name: regex} ,function(err, foundUser) {
 
       if(err) {
         console.log(err);

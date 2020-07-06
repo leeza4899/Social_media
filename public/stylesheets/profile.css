@@ -127,7 +127,7 @@ height: 50px;
     }
     div.pic-container {
         margin-left: 5rem;
-        max-width: 563px;
+        max-width: 506px;
 
     }
     div.profle {
@@ -142,12 +142,12 @@ height: 50px;
           background-size: cover;
           max-height:100vh;
           min-height: 100vh;
-          max-width: 563px;
+          max-width: 506px;
           
     }
     
     .pic-discription {
-        width: 563px;
+        width: 506px;
         min-height: 50px;
         list-style-type: none;
         position: absolute;

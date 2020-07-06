@@ -12,6 +12,7 @@
    padding: 0;
    margin: 0em;
    display: flex;
+   
    flex-direction: column;
    align-items: center; 
    position: absolute;
@@ -68,6 +69,12 @@
         width: 100vw;
         height: 5rem;
         
+    }
+    .navbar:hover {
+        top: 0em;
+        width: 100vw;
+        height: 10rem;
+
     }
     .logo{
         display: none;
@@ -344,7 +351,7 @@ footer {
 .bottom center a:hover {
     text-decoration: underline;
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 600px) {
 #demo-2 input[type=search] {
     width: 15px;
     padding-left: 10px;
