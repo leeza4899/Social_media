@@ -1,6 +1,8 @@
 <%- include ("./partials/header") %>
 <link rel="stylesheet" href="/stylesheets/show_users.css">
+<div class="row">
     <% users.forEach(function(user){ %>
+    <div class="col-lg-4 col-md-6">
     <div class="container">
         <div class="card">
             <div class="header">
@@ -64,7 +66,9 @@
             </div>
         </div>
     </div>
+    </div>
 <%});%>
+</div>
 
 
 <%- include ("./partials/footer") %>
