@@ -1,12 +1,70 @@
 <%- include ("./partials/header") %>
-<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+<link rel="stylesheet" href="/stylesheets/show_users.css">
     <% users.forEach(function(user){ %>
-<div class="col-md-3 col-sm-6">	
-    <div class="caption">
-        <h3><%= user.username %></h3>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="main">
+                    <div class="image">
+                    </div>
+                    <h3 class="name"><%= user.name %></h3>
+                    <h3 class="sub-name">@<%= user.username %></h3>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="left">
+                    <div class="about-container">
+                        <h3 class="title">About</h3>
+                        <p class="text">Lorem Ipsum is simply text of the printing and types industry.Lorem Ipsum is simply text of the printing and types industry.</p>
+                    </div>
+                    <div class="buttons-wrap">
+                        <div class="follow-wrap">
+                            <%if(loggedUser){%>
+                                <%if(loggedUser.username != user.username){%>
+                                <%if(!user.followers.includes(loggedUser._id,0)){%>
+                                <form action="/follow" method="POST"><div class="button_container">                   
+                                    <button type="submit" class="follow"
+                                         name='followId' value='<%=user._id%>' ><span>Follow</span></button>
+                                </div>
+                                </form>
+                            
+                            <%}else{%>
+                                <form action="/unfollow" method="POST">
+                                    <div class="button_container">
+                                        
+                                        <button type="submit" name='followId' value='<%=user._id%>' class="follow"><span>Unfollow</span></button>
+                                    </div>
+                                </form>
+                            
+                            <% }}}else{%> 
+                                <div class="button_container">
+                                    <a href="/signup"><button class="follow"><span>Join</span></button></a>
+                                </div>
+                            <% }%>
+                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div>
+                        <h3 class="number">91</h3>
+                        <h3 class="number-title">Posts</h3>
+                    </div>
+                    <div>
+                        <h3 class="number"><%=user.following.length%></h3>
+                        <h3 class="number-title">Following</h3>
+                    </div>
+                    <div>
+                        <h3 class="number"><%=user.followers.length%></h3>
+                        <h3 class="number-title">Followers</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>	
-    <%});%>
-</div>
+<%});%>
+
 
 <%- include ("./partials/footer") %>
