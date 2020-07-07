@@ -8,16 +8,20 @@ const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
 const randomstring = require('randomstring');
+const multer = require('multer');
 
 
 
 //////ROUTE FILES
 var indexRoutes = require("./routes/authRoutes");
 var profileRouters=require("./routes/profile");
+var blogRoutes = require("./routes/blogs");
 
 /////MODELS
 const User = require("./models/user");
 const Query = require("./models/query");
+const blog = require("./models/blog");
+const comment = require("./models/Comment");
 
 //////moongoose
 const db = 'mongodb://localhost:27017/friendsBlog'
@@ -108,6 +112,7 @@ app.use((req, res, next) => {
 ////using routes
 app.use(indexRoutes);
 app.use(profileRouters);
+app.use(blogRoutes);
 
 
 /////listening ports

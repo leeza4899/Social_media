@@ -33,7 +33,6 @@ router.get("/users", function(req,res)
         console.log(err);
         req.flash("error_msg", "Something went wrong.");
         return res.redirect("back");
-          res.render("user/show_users", {users: foundUser});
       }
   })
   }  else {

@@ -1,0 +1,44 @@
+<%- include("../partials/header")%>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/stylesheets/blogentry.css">
+
+
+<div class="container-fluid">
+    <div class="blog-heading">
+        <h1><span class="element"></span></h1>
+    </div>
+    <div class ="flex-container">
+        <div class="blog-tiles">Life</div>
+        <div class="blog-tiles">Adventure</div>
+        <div class="blog-tiles">Food</div>
+        <div class="blog-tiles">Lifestyle</div>
+        <div class="blog-tiles">Fashion</div>
+        <div class="blog-tiles">Technology<br>&Science</div>
+        <div class="blog-tiles">Political</div>
+        <div class="blog-tiles">Cooking</div>
+        <div class="blog-tiles">Gaming</div>
+        <div class="blog-tiles">Career</div>
+        <div class="blog-tiles">Nature</div>
+        <div class="blog-tiles">DIY</div>
+        <div class="blog-tiles">Medical</div>
+        <div class="blog-tiles">Photography</div>
+        <div class="blog-tiles">Music</div>
+        <div class="blog-tiles">Movies & Web Series</div>
+    </div>
+</div>
+
+<script src= "/scripts/typed.js"></script>
+    <script>
+        var typed = new Typed(".element", {
+            strings: [
+                "Welcome to friendsblog",
+                "Explore the world around you."
+                ],
+            typeSpeed: 40,
+            backSpeed: 20,
+            loop: 2,
+
+        });
+    </script>
+<%- include("../partials/footer")%>
