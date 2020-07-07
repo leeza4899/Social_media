@@ -1,6 +1,6 @@
 const Mongoose =require('mongoose');
 var passportLocalMongoose = require("passport-local-mongoose");
-
+const {ObjectId} = Mongoose.Schema.Types;
 
 var  blogSchema= new Mongoose.Schema({
     title:{
@@ -19,19 +19,20 @@ var  blogSchema= new Mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    likes: {
-        type: Number
-    },
+    likes:[{
+        type: ObjectId,
+        ref: "User"
+    }],
     author: {
         id: {
-            type: Mongoose.Schema.Types.ObjectId,
-            ref: "user"
+            type: ObjectId,
+            ref: "User"
         },
         username: String
     },
     comments: [{
-        type: Mongoose.Schema.Types.ObjectId,
-        ref: "Comment"
+        type: ObjectId,
+        ref: "comment"
     }],
     category: {
         type: String,

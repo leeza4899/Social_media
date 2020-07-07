@@ -1,33 +1,28 @@
-const Mongoose =require('mongoose');
-var passportLocalMongoose = require("passport-local-mongoose");
-const { isDate } = require('moment');
+var Mongoose = require("mongoose");
 const {ObjectId} = Mongoose.Schema.Types;
 
-const User = require("./models/user");
-const Query = require("./models/query");
-const Blogs = require("./models/Blogs");
-const Replies = require("./models/Replies");
-
-
-
-var  CommentSchema= new Mongoose.Schema({
-   blog:{
-    type: ObjectId,
-    ref: "Blogs"
-   },
-   user:{
-       type:ObjectId,
-       ref:"User"
-   },
-   comment:{
-       type:String,
-       required:true
-   },
-   replies:[{
-           type:ObjectId,
-           ref:"Replies"
-       }]   
+var commentSchema = Mongoose.Schema({
+	text: String,
+	createdAt: {
+        type: Date,
+         default: Date.now
+    },
+	author: {
+		id: {
+			type: ObjectId,
+			ref: "User"
+		},
+		username: String
+	},
+	replies:[{
+		type: ObjectId,
+		ref:"Replies"
+	}],
+    likes:[{
+        type: ObjectId,
+        ref: "User"
+    }],
 });
-UserSchema.plugin(passportLocalMongoose);
-const Comment = Mongoose.model('Comment',CommentSchema);
-module.exports = Comment;
+
+const comment = Mongoose.model('comment',commentSchema);
+module.exports = comment;

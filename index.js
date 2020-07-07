@@ -21,7 +21,8 @@ var blogRoutes = require("./routes/blogs");
 const User = require("./models/user");
 const Query = require("./models/query");
 const blog = require("./models/blog");
-const comment = require("./models/Comment");
+const comment = require("./models/comments");
+const reply = require("./models/Replies");
 
 //////moongoose
 const db = 'mongodb://localhost:27017/friendsBlog'

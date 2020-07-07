@@ -2,6 +2,7 @@ const Mongoose =require('mongoose');
 var passportLocalMongoose = require("passport-local-mongoose");
 const { isDate } = require('moment');
 const {ObjectId} = Mongoose.Schema.Types;
+
 var  UserSchema= new Mongoose.Schema({
    name:{
        type:String,
