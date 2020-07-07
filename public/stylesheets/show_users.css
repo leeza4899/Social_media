@@ -1,6 +1,5 @@
 body{
-background-image: linear-gradient(to bottom, #e44545, #f47293, #f0a4ce, #ebd2f0, #fafafa);
-background-repeat: no-repeat;
+background-image: linear-gradient(to bottom, #e44545, #f47293, #f0a4ce, #ebd2f0, #fafafa);    background-repeat: no-repeat;
     background-size: cover;
 }
 .container{
@@ -8,11 +7,11 @@ background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 60vh;
+    min-height: 80vh;
 }
 
 .card{
-    position: absolute;
+    position: relative;
     width: 300px;
     height: 400px;
     background-color: #fff;
@@ -29,7 +28,7 @@ background-repeat: no-repeat;
     top: 0;
     left: 0;
     background-image: linear-gradient(to top, #00f2fe, #4facfe);
-    clip-path: circle(350px at 50% -47.5%);
+    clip-path: circle(350px at 50% -48.5%);
 }
 
 .header{
