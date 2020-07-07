@@ -19,6 +19,7 @@ var User = require("../models/user");
 
 //requiring the middlwares
 var middleware = require("../middleware");
+const { runInNewContext } = require("vm");
 
 router.get("/users", function(req,res)
 {
@@ -32,8 +33,7 @@ router.get("/users", function(req,res)
         console.log(err);
         req.flash("error_msg", "Something went wrong.");
         return res.redirect("back");
-      } else {
-          res.render("show_users", {users: foundUser});
+          res.render("user/show_users", {users: foundUser});
       }
   })
   }  else {
@@ -44,7 +44,7 @@ router.get("/users", function(req,res)
         req.flash("error_msg", "Something went wrong.");
         return res.redirect("back");
       } else {
-        res.render("show_users", {users: foundUser});
+        res.render("user/show_users", {users: foundUser});
       }
   }) 
   }
@@ -58,7 +58,7 @@ router.get("/user/:id", function(req,res){
           req.flash("error_msg", "Something went wrong.");
           return res.redirect("/");
         } else {
-            res.render("profile",{user: foundUser});
+            res.render("user/profile",{user: foundUser});
         }
     })
 });

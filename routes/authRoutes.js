@@ -24,7 +24,7 @@ router.get("/", function (req, res) {
 
 //signup routes
 router.get("/signup", function (req, res) {
-	res.render("signup");
+	res.render("Auth/signup");
 });
 
 router.post("/signup", function (req, res) {
@@ -36,7 +36,7 @@ router.post("/signup", function (req, res) {
 		}
 		if(errors.length > 0){
 			console.log(errors)
-			res.render('signup',{
+			res.render('Auth/signup',{
 				errors,
 				signname,
 				username,
@@ -49,7 +49,7 @@ router.post("/signup", function (req, res) {
 			.then(user =>{
 				if(user){
 					errors.push({msg:"Email Already Exists"})
-					res.render('signup',{
+					res.render('Auth/signup',{
 				errors,
 				signname,
 				username,
@@ -132,7 +132,7 @@ router.post('/login', (req, res, next) => {
 
 //verify routes
 router.get("/verify", function (req, res) {
-	res.render("verify");
+	res.render("auth/verify");
 });
 
 //verify post function
@@ -167,7 +167,7 @@ router.post('/verify',(async (req,res,next) =>{
 
 ///////////Forgot Password
 router.get("/forgot", function(req,res){
-	res.render("forgot");
+	res.render("Auth/forgot");
 });
 
 
@@ -234,7 +234,7 @@ router.post('/forgot', function(req, res, next) {
 		req.flash('error_msg', 'Password reset token is invalid or has expired.');
 		return res.redirect('/forgot');
 	  }
-	  res.render('reset', {token: req.params.token});
+	  res.render('Auth/reset', {token: req.params.token});
 	});
   });
 

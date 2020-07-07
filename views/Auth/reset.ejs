@@ -1,9 +1,9 @@
-<%- include("./partials/header")%>
+<%- include("../partials/header")%>
 <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/sign.css">
 <div class="cont-verify">
 	<div class="form sign-in verify">
-        <%- include("./partials/message") %>
+        <%- include("../partials/message") %>
         <h2>Reset Password</h2>
         <form action="/reset/<%= token %>" method="POST">
             <label>
@@ -21,4 +21,4 @@
 
     
 <script type="text/javascript" src="script.js"></script>
-<%- include("./partials/footer")%>
+<%- include("../partials/footer")%>
