@@ -27,12 +27,14 @@ router.get("/users", function(req,res)
   {
     console.log(req.query.search);
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    User.find({name: regex} ,function(err, foundUser) {
+    User.find({username: regex} ,function(err, foundUser) {
 
       if(err) {
         console.log(err);
         req.flash("error_msg", "Something went wrong.");
         return res.redirect("back");
+      } else {
+        res.render("user/show_users", {users: foundUser});
       }
   })
   }  else {
