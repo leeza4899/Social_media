@@ -1,73 +1,231 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body{
-    /* background-image: linear-gradient(to left bottom, #cbeee0, #bce5d5, #aedcc9, #9fd4be, #91cbb3); */
-    background-image: url("/images/bleh.jpg");
-    background-repeat: no-repeat;
+background-image: linear-gradient(to bottom, #ff0000, #e91a00, #d32300, #be2900, #a92b01);
+background-repeat: no-repeat;
     background-size: cover;
 }
-
-.blog-heading h1{
-    font-family: 'Indie Flower', cursive;
-    text-align: center;
-    margin-top: 50px;
-    font-weight: bolder;
-    white-space: nowrap;
-    font-size: 50px;
-    letter-spacing: 3px;
-    color:rgb(53, 211, 145);
+.title{
+    display: inline;
 }
-
-.flex-container{
-    justify-content: center;
-    padding: 20px;
-    margin: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+.intro{
     display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
-    flex-direction: row;
-    flex-basis: 15rem;
-}
-
-.blog-tiles{
-    padding-top: 100px;
-    margin: 25px;
-    width: 15rem;
-    height: 15rem;
-    font-size: 2.0rem;
-    font-weight: bolder;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
     text-align: center;
+}
+.intro p{
+    font-family: 'Roboto',
+    sans-serif;
+font-size: 1rem;
+text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+padding: 0;
+margin: 0;
+}
+.intro h1,h2 {
+    font-family: 'Roboto',
+        sans-serif;
+    font-size: 3rem;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+    padding: 0;
+    margin: 0;
+}
+.intro h1{
+    color: rgb(0, 59, 61);
+}
+.intro h2 {
+    color: rgb(95, 40, 0);
+}
+.intro p{
     position: relative;
-    background-image: linear-gradient(to left bottom, #84b3e7, #a6a5e3, #c896d0, #e088b0, #e78189);
-    color:  rgb(47, 48, 36);
-    font-family: 'Caveat', cursive;
-    font-family: 'Indie Flower', cursive;
-    border-radius: 10px;
-    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.30), 0 5px 6px rgba(0, 0, 0, 0.22);
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1); 
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1); 
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1);
-    transition: all 200ms ease-in;
-    transform: scale(1);  
-
+    top: 2rem;
 }
 
-.blog-tiles:hover {
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.30), 0 5px 6px rgba(0, 0, 0, 0.22);
+
+.flex-container a {
+    text-decoration: none;
+}
+.blog-category{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@media only screen and (min-width:600px){
+    .blog-category {
+        margin-top: 4rem;
+        margin-left: 8rem;
+
+    }
+    
+}
+@media only screen and (max-width:600px) {
+    .blog-category {
+        margin-top: 4rem;
+        margin-left: 2rem;
+
+    }
+}
+
+.cards{
+    padding: 2rem;
+}
+
+
+
+
+
+figure {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 250px;
+    height: 340px;
+     /* background-image: url(../images/bg-sign.jpg); */
+    padding: 20px 20px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    background-size: cover;
+
+}
+.b1{
+    background-image: url(../images/blog-cards/food.jpg);
+}
+.b2 {background-image: url(../images/blog-cards/travel.jpg);}
+ 
+.b4 {
+     background-image: url(../images/blog-cards/sports.jpg);
+ }
+ .b5 {
+     background-image: url(../images/blog-cards/tech.jpg);
+ }
+ .b3 {
+     background-image: url(../images/blog-cards/lifestyle.jpg);
+ }
+ .b6 {
+     background-image: url(../images/blog-cards/politics.jpg);
+ }
+ .b7 {
+     background-image: url(../images/blog-cards/series.jpg);
+ }
+ .b8 {
+     background-image: url(../images/blog-cards/movies.jpg);
+ }
+ .b9 {
+     background-image: url(../images/blog-cards/cars.jpg);
+ }
+ .b10 {
+     background-image: url(../images/blog-cards/news.jpg);
+ }
+ .b11 {
+     background-image: url(../images/blog-cards/pet.jpg);
+ }
+ .b13 {
+     background-image: url(../images/blog-cards/gaming.jpg);
+ }
+ .b14 {
+     background-image: url(../images/blog-cards/business.jpg);
+ }
+ .b15 {
+     background-image: url(../images/blog-cards/Fashion.jpg);
+ }
+ .b16 {
+     background-image: url(../images/blog-cards/parental.jpg);
+ }
+ .b17 {
+     background-image: url(../images/blog-cards/finance.jpg);
+ }
+
+
+
+
+figure:before,
+figure:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+figure:before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
+
+figure:after {
+    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+}
+
+
+
+figure:hover:after {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.26);
+    color: white;
+    font-size: 72px;
     z-index: 2;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1.2);
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1.2);   
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1.2);
-    transition: all 200ms ease-in;
-    transform: scale(1.2);
+}
+
+figure .date {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+figure .date span {
+    color: white;
+    line-height: 1;
+}
+
+figure .date span:first-child {
+    font-family: 'Source Code Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+figure .date span:last-child {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+figure figcaption {
+    color: white;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+figure figcaption h4 {
+    margin: 0 0 5px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-size: 24px;
+    line-height: 1.35;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+
+
+figure figcaption p {
+    margin: 0;
+    line-height: 1.5;
 }
