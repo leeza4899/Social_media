@@ -1,6 +1,6 @@
 body{
-background-image: linear-gradient(to bottom, #e44545, #f47293, #f0a4ce, #ebd2f0, #fafafa);    background-repeat: no-repeat;
-    background-size: cover;
+background-image: linear-gradient(to bottom, #ff0000, #e91a00, #d32300, #be2900, #a92b01);
+background-size: cover;
 }
 .container{
     padding: 10px;
