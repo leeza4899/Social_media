@@ -37,6 +37,12 @@ var  UserSchema= new Mongoose.Schema({
    active:{
        type:Boolean
    },
+   bio:{
+       type:String,
+   },
+   image:{
+       type:String,
+   },   
    followers:[{
        type: ObjectId,
        ref: "User"
@@ -45,6 +51,31 @@ var  UserSchema= new Mongoose.Schema({
     type: ObjectId,
     ref: "User"
 }],
+
+    food:{
+        type:Number
+    },
+    pets:{
+        type:Number
+    },
+    football: {
+        type: Number
+    },
+    cars: {
+        type: Number
+    },
+    hero: {
+        type: Number
+    },
+    avatar: {
+        type: Number
+    },
+
+    music: {
+        type: Number
+    },
+
+
 });
 UserSchema.plugin(passportLocalMongoose);
 const User = Mongoose.model('User',UserSchema);

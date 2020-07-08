@@ -108,7 +108,9 @@ User.findByIdAndUpdate(whoFollow, {$pull :{following : toFollow }},{new:true},(e
 res.redirect("back");
 });
 
-
+router.get("/editBio",function(req,res){
+  res.render("user/EditBio");
+});
 
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
