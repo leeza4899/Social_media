@@ -13,10 +13,14 @@ const crypto = require("crypto");
 const async = require("async");
 
 
+router.use(bodyParser.urlencoded({ extended: true }));
+
 //Requiring essential models
 const User = require("../models/user");
 const blog = require("../models/blog");
 
+//requiring the middlwares
+var middleware = require("../middleware");
 
 ////////////BLOG ROUTES///////////////////
 //enterance
@@ -24,7 +28,95 @@ router.get("/blog/entry", function(req,res){
     res.render("blog/entry");
 });
 
-//CRUD ROUTES
+//1. Create 2. Read 3. Update 4. Delete ROUTES
+
+/////   1. Add a blog post
+router.get("/blog/addpost", middleware.isloggedIn, function(req,res){
+    res.render("blog/add");
+});
+
+router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
+    var title = req.body.title;
+    var desc = req.body.desc;
+    var image = req.body.image;
+    var author = {
+        id: req.user._id,
+        username : req.user.username
+    }
+    var category = req.body.category;
+    if(!title || !desc || !image || !category){
+        req.flash("error_msg","Please fill in all the fields");
+        res.redirect("back");
+    }
+    
+    var newBlog = {title: title, desc: desc, image: image, category: category, author:author};
+
+    blog.create(newBlog, function(err, createdblog){
+        if(err){
+            console.log(err);
+        }
+        else {
+            req.flash("success_msg", "Blog post created!");
+            return res.redirect("/blog");
+        }
+    })
+});
+
+
+//// 2. All blogs
+router.get("/blog", function(req,res){
+        blog.find({}, function(err, inBlog){
+            if(err){
+                console.log(err);
+            }
+            else {
+                if (!inBlog) {
+                        req.flash("error", "Item not found.");
+                        return res.redirect("back");
+                    }
+                res.render("blog/allBlog", {blogs: inBlog});
+            }
+    
+    });
+});
+
+
+//// 3. Edit blogPost
+router.get("/blog/editpost/:id", middleware.blogowner, function(req,res){
+    blog.findById(req.params.id, function(err, found){
+        if(!found){
+            req.flash("error_msg", "Blog Post you request doesn't exist");
+            return res.redirect("/blog");
+        }
+
+        res.render("blog/editBlog", {blog: found});
+    })
+});
+
+router.put("/blog/:id", middleware.blogowner, function(req,res){
+    blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, update){
+        if(err){
+            req.flash("error_msg", "Error");
+            res.redirect("back");
+        } else {
+            req.flash("success_msg", "Blog edited successfully!");
+            res.redirect("/blog"); //it has to be redirected to the individual post page.
+        }
+    });
+});
+
+
+/// 4. Delete the post
+router.delete("/blog/:id", middleware.blogowner, function(req,res){
+	campground.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			res.redirect("/blog/entry");
+		} else {
+			req.flash("success_msg", "Post Deleted");
+			res.redirect("/blog");
+		}
+	})
+});
 
 
 

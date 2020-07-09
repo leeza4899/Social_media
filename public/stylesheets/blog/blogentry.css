@@ -97,51 +97,52 @@ figure {
 
 }
 .b1{
-    background-image: url(../images/blog-cards/food.jpg);
+    background-image: url(/images/blog-cards/food.jpg);
 }
-.b2 {background-image: url(../images/blog-cards/travel.jpg);}
+.b2 {background-image: url(/images/blog-cards/travel.jpg);}
  
 .b4 {
-     background-image: url(../images/blog-cards/vee.jpg);
+     background-image: url(/images/blog-cards/vee.jpg);
  }
  .b5 {
-     background-image: url(../images/blog-cards/tech.jpg);
+     background-image: url(/images/blog-cards/tech.jpg);
  }
  .b3 {
-     background-image: url(../images/blog-cards/lifestyle.jpg);
+     background-image: url(/images/blog-cards/lifestyle.jpg);
  }
  .b6 {
-     background-image: url(../images/blog-cards/politics.jpg);
+     background-image: url(/images/blog-cards/politics.jpg);
  }
  .b7 {
-     background-image: url(../images/blog-cards/series.jpg);
+     background-image: url(/images/blog-cards/series.jpg);
  }
  .b8 {
-     background-image: url(../images/blog-cards/movies.jpg);
+     background-image: url(/images/blog-cards/movies.jpg);
  }
  .b9 {
-     background-image: url(../images/blog-cards/cars.jpg);
+     background-image: url(/images/blog-cards/cars.jpg);
  }
  .b10 {
-     background-image: url(../images/blog-cards/news.jpg);
+     background-image: url(/images/blog-cards/news.jpg);
  }
  .b11 {
-     background-image: url(../images/blog-cards/pet.jpg);
+     background-image: url(/images/blog-cards/pet.jpg);
  }
  .b13 {
-     background-image: url(../images/blog-cards/gaming.jpg);
+     background-image: url(/images/blog-cards/gaming.jpg);
  }
  .b14 {
-     background-image: url(../images/blog-cards/business.jpg);
+     background-image: url(/images/blog-cards/business.jpg);
  }
  .b15 {
-     background-image: url(../images/blog-cards/Fashion.jpg);
+     background-image: url(/images/blog-cards/Fashion.jpg);
  }
  .b16 {
-     background-image: url(../images/blog-cards/parental.jpg);
+     background-image: url(/images/blog-cards/parental.jpg);
  }
+ 
  .b17 {
-     background-image: url(../images/blog-cards/finance.jpg);
+     background-image: url(/images/blog-cards/finance.jpg);
  }
 
 

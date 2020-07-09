@@ -1,5 +1,4 @@
 const Mongoose =require('mongoose');
-var passportLocalMongoose = require("passport-local-mongoose");
 const {ObjectId} = Mongoose.Schema.Types;
 
 var  blogSchema= new Mongoose.Schema({
@@ -7,7 +6,7 @@ var  blogSchema= new Mongoose.Schema({
         type : String,
         required: true
     },
-    body:{
+    desc:{
         required:true,
         type:String
     },
@@ -40,6 +39,5 @@ var  blogSchema= new Mongoose.Schema({
     }
 });
 
-blogSchema.plugin(passportLocalMongoose);
 const blog = Mongoose.model('blog',blogSchema);
 module.exports = blog;

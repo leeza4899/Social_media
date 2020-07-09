@@ -1,0 +1,39 @@
+<%- include("../partials/header")%>
+
+<div class="container">
+    <%- include("../partials/message")%>
+</div>
+<link rel="stylesheet" href="/stylesheets/blog/add.css">
+
+<h1>Add a new blogpost</h1>
+<div class="container jumbotron">
+<form action="/blog/addpost" method="POST">
+    <div class="form-group">
+        <label>Blog title:</label>
+            <input type="text" name="title" placeholder="Title" id="title">
+    </div>
+    <div class="form-group">
+        <label>Description:</label>
+            <input type="text" name="desc" placeholder="Description" id="desc">
+    </div>
+    <div class="form-group">
+        <label>Image:</label>
+            <input type="file" name="image" placeholder="Title" id="image">
+    </div>
+
+    <div class="form-group">
+        <label>Blog category:</label>
+        <input type="text" name="category" placeholder="Category" id="category">
+    </div>
+
+    <button type="submit" class="btn btn-success">Add post</button>
+
+</form>
+</div>
+
+
+
+
+<%- include("../partials/footer")%>
+
+
