@@ -1,5 +1,6 @@
 body{
-background-image: linear-gradient(to bottom, #ff0000, #e91a00, #d32300, #be2900, #a92b01);
+/* background-image: linear-gradient(to bottom, #ff0000, #e91a00, #d32300, #be2900, #a92b01); */
+background-image: linear-gradient(to left, #cb9cb7, #c69cc1, #be9dcb, #b2a0d5, #a2a3de, #95abe5, #88b3e9, #7cbbeb, #80c8ea, #8cd3e8, #9edee5, #b4e7e4);
 background-repeat: no-repeat;
     background-size: cover;
 }
