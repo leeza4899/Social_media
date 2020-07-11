@@ -222,6 +222,7 @@ input:focus~.highlight {
     display: flex;
     align-items:center;
     flex-direction: column;
+    margin-bottom: 5rem;
 }
 .Pets ul{
 list-style: none;

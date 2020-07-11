@@ -58,13 +58,13 @@ var  UserSchema= new Mongoose.Schema({
     pets:{
         type:Number
     },
-    sports: {
+    drinks: {
         type: Number
     },
-    cars: {
+    plants: {
         type: Number
     },
-    hero: {
+    professional: {
         type: Number
     },
     avatar: {
