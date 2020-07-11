@@ -58,7 +58,7 @@ var  UserSchema= new Mongoose.Schema({
     pets:{
         type:Number
     },
-    football: {
+    sports: {
         type: Number
     },
     cars: {
@@ -73,6 +73,22 @@ var  UserSchema= new Mongoose.Schema({
 
     music: {
         type: Number
+    },
+
+    instagram:{
+        type:String,
+    },
+    twitter:{
+        type:String
+    },
+    linkdin:{
+        type:String,
+    },
+    facebook:{
+        type:String
+    },
+    gmail:{
+        type:String
     },
 
 
