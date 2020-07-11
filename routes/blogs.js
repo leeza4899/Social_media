@@ -82,7 +82,7 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                 file: `images/blog_image/${req.file.filename}`;
                 var title = req.body.title;
                 var desc = req.body.desc;
-                var image = req.file.path;
+                var image = req.file.filename;
                 var author = {
                     id: req.user._id,
                     authorName : req.user.username
