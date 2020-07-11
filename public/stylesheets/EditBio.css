@@ -10,6 +10,10 @@
 }
 
 
+
+}
+.page-wrapper {
+    margin-left: 5rem;
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 body h1{
@@ -231,10 +235,10 @@ justify-content: space-evenly;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 4rem;
+    width: 6rem;
 }
 .choices svg{
-    height: 2rem;
+    height: 4rem;
 }
 input[type=radio] {
     box-sizing: border-box;
