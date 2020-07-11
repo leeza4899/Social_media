@@ -11,16 +11,51 @@ const flash = require("connect-flash");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const async = require("async");
+const multer = require("multer");
 
-
-router.use(bodyParser.urlencoded({ extended: true }));
 
 //Requiring essential models
 const User = require("../models/user");
 const blog = require("../models/blog");
 
+router.use(bodyParser.urlencoded({ extended: true }));
+
 //requiring the middlwares
 var middleware = require("../middleware");
+
+//multer configuration
+const storage = multer.diskStorage({
+        destination: './public/images/blog_image',
+        filename: function(req,file,next){
+            next(null, file.fieldname + '-' + req.user.username + path.extname(file.originalname));
+        }
+    });
+
+const upload = multer({
+    storage: storage,
+    limits:{fileSize: 10000000}, //set to 10MB
+    //to enable only image files to be uploaded
+    fileFilter: function(req,file,next){
+        checkFileType(file,next);
+    }
+}).single('blog-image');
+
+//checking file type
+function checkFileType(file, next){
+    //allowed extensions
+    const fileTypes = /jpeg|jpg/;
+    //chec ext
+    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+    //check mime
+    const mimetype  = fileTypes.test(file.mimetype);
+
+    if(mimetype && extname){
+    return next(null,true);
+    } else {
+        next(req.flash("error_msg", "You can upload images only!"));    
+    }
+}
+/////////////////////////////////
 
 ////////////BLOG ROUTES///////////////////
 //enterance
@@ -36,30 +71,42 @@ router.get("/blog/addpost", middleware.isloggedIn, function(req,res){
 });
 
 router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
-    var title = req.body.title;
-    var desc = req.body.desc;
-    var image = req.body.image;
-    var author = {
-        id: req.user._id,
-        username : req.user.username
-    }
-    var category = req.body.category;
-    if(!title || !desc || !image || !category){
-        req.flash("error_msg","Please fill in all the fields");
-        res.redirect("back");
-    }
-    
-    var newBlog = {title: title, desc: desc, image: image, category: category, author:author};
-
-    blog.create(newBlog, function(err, createdblog){
+    upload(req,res,(err) => {
         if(err){
-            console.log(err);
+            req.flash("error_msg", err.message);
+        } else {
+            if(req.file == undefined){
+                req.flash("error_msg","Oops! No file selected.");
+                res.redirect("back");
+            } else {
+                file: `images/blog_image/${req.file.filename}`;
+                var title = req.body.title;
+                var desc = req.body.desc;
+                var image = req.file.path;
+                var author = {
+                    id: req.user._id,
+                    username : req.user.username
+                }
+                var category = req.body.category;
+                if(!title || !desc || !image || !category){
+                    req.flash("error_msg","Please fill in all the fields");
+                    res.redirect("back");
+                }
+                
+                var newBlog = {title: title, desc: desc, image: image, category: category, author:author};
+
+                blog.create(newBlog, function(err, createdblog){
+                    if(err){
+                        console.log(err);
+                    }
+                    else {
+                        req.flash("success_msg", "Blog post created!");
+                        return res.redirect("/blog");
+                    }
+                })
+                        }
         }
-        else {
-            req.flash("success_msg", "Blog post created!");
-            return res.redirect("/blog");
-        }
-    })
+    });
 });
 
 

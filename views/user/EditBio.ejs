@@ -5,11 +5,18 @@
 <form action="/biodone" method="post">
 <div class="editform">
         <div class="title">
-            <h1>Complete your profile for best experience</h1>
+            <h1>Complete your profile.</h1>
         </div>
 
 <div class="inputs">
-    <p>Social Media Links</p>
+    <h4>Profile Picture:</h4>
+
+    <div class="group">
+        <input type="file" name="profpic" required>
+        <span class="highlight"></span>
+        <span class="bar"></span>
+    </div>
+    <h4>Your social media handles:</h4>
     <div class="group">
         <input type="text" required>
         <span class="highlight"></span>
@@ -22,18 +29,11 @@
         <span class="bar"></span>
         <label>Instagram</label>
     </div>
-            <p>Profile Pic</p>
-
-    <div class="group">
-        <input type="file" required>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-    </div>
      <div class="group">
          <input type="text" required>
          <span class="highlight"></span>
          <span class="bar"></span>
-         <label>Linkdin</label>
+         <label>Linkedin</label>
      </div>
       <div class="group">
           <input type="text" required>
@@ -47,14 +47,15 @@
            <span class="bar"></span>
            <label>Twitter</label>
        </div>
+    <h4>Describe yourself:</h4>
     <div class="textbox">
-        <textarea name="Bio" id="" cols="35" rows="10" placeholder="Bio Tell our users about yourself" ></textarea>
+        <textarea name="Bio" id="" cols="35" rows="10" placeholder="  Bio" ></textarea>
     </div>
      
 
 </div>
 <div class="choices">
-    <h1>Part II</h1>
+    <h1>Your favourites?</h1>
       <div class="Pets">
           <p>Your Pet Would be ?</p>
           <ul>

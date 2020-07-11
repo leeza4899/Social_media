@@ -5,17 +5,21 @@
     <%- include("../partials/message")%>
 <link rel="stylesheet" href="/stylesheets/blog/add.css">
         
-    
-        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-                    <%blogs.forEach(function(blog){ %>
-                <div class="col-md-3 col-sm-6">	
-                    <div class="caption">
-                        <h3><%= blog.title %></h3>
-                    </div>
-                    </div>
-                </div>	
-                    <%});%>
-        </div>
+<h1 class="text-center">All Blogs</h1>
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <%blogs.forEach(function(blog){ %>
+        <div class="col-md-3 col-sm-6">	
+            <div class ="thumbnail">
+                <img src = "<%= blog.image%>" >
+            <div class="caption">
+                <h3><%= blog.title %></h3>
+            </div>
+            <div class="caption">
+                <h3><%= blog.desc %></h3>
+            </div>
+            </div>
+        </div>	
+    <%});%>
     </div>
 </div>
 

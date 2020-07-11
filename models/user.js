@@ -19,7 +19,8 @@ var  UserSchema= new Mongoose.Schema({
    },
    username:{
        required:true,
-       type:String
+       type:String,
+       unique: true
    },
    date:{
        type : Date,
@@ -81,7 +82,7 @@ var  UserSchema= new Mongoose.Schema({
     twitter:{
         type:String
     },
-    linkdin:{
+    linkedin:{
         type:String,
     },
     facebook:{
