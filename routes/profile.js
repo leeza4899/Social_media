@@ -11,6 +11,42 @@ const flash = require("connect-flash");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const async = require("async");
+const multer = require("multer");
+
+
+//multer configuration
+const storage = multer.diskStorage({
+        destination: './public/images/user_dp',
+        filename: function(req,file,next){
+            next(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        }
+    });
+
+const upload = multer({
+    storage: storage,
+    limits:{fileSize: 10000000}, //set to 10MB
+    //to enable only image files to be uploaded
+    fileFilter: function(req,file,next){
+        checkFileType(file,next);
+    }
+}).single('profpic');
+
+//checking file type
+function checkFileType(file, next){
+    //allowed extensions
+    const fileTypes = /jpeg|jpg|png/;
+    //chec ext
+    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+    //check mime
+    const mimetype  = fileTypes.test(file.mimetype);
+
+    if(mimetype && extname){
+    return next(null,true);
+    } else {
+        next(req.flash("error_msg", "You can upload images only!"));    
+    }
+}
+/////////////////////////////////
 
 
 //requiring the models
@@ -104,13 +140,33 @@ User.findByIdAndUpdate(whoFollow, {$pull :{following : toFollow }},{new:true},(e
     }
   })
     // console.log(foundUser);
-  
 res.redirect("back");
 });
 
+///////Edit bio routes
 router.get("/editBio",function(req,res){
   res.render("user/EditBio");
 });
+
+router.post("/editBio", function(req,res){
+  upload(req,res,(err) => {
+    if(err){
+        req.flash("error_msg", err.message);
+    } else {
+        if(req.file == undefined){
+            req.flash("error_msg","Oops! no file selected.");
+            res.redirect("back");
+        } else {
+          file: `/images/user_dp/${req.file.filename}`;
+          
+        }
+      }
+    });
+});
+
+
+
+
 
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

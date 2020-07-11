@@ -10,8 +10,6 @@ const flash = require("connect-flash");
 const randomstring = require('randomstring');
 const multer = require('multer');
 
-
-
 //////ROUTE FILES
 var indexRoutes = require("./routes/authRoutes");
 var profileRouters=require("./routes/profile");
@@ -23,6 +21,8 @@ const Query = require("./models/query");
 const blog = require("./models/blog");
 const comment = require("./models/comments");
 const reply = require("./models/Replies");
+const { memory } = require("console");
+const { concatSeries } = require("async");
 
 //////moongoose
 const db = 'mongodb://localhost:27017/friendsBlog'

@@ -7,7 +7,7 @@
 
 <h1>Add a new blogpost</h1>
 <div class="container jumbotron">
-<form action="/blog/addpost" method="POST">
+<form action="/blog/addpost" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label>Blog title:</label>
             <input type="text" name="title" placeholder="Title" id="title">
@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         <label>Image:</label>
-            <input type="file" name="image" placeholder="Title" id="image">
+            <input type="file" name="blog-image" placeholder="Title" id="blog-image">
     </div>
 
     <div class="form-group">

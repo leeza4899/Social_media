@@ -20,7 +20,7 @@ body h1{
     font-family: 'Roboto',
     sans-serif;
     color: rgb(0, 0, 0);
-    text-shadow: 3px 3px 4px #1C1D13;
+    text-shadow: 1px 1px 2px #1C1D13;
 
 }
 
@@ -46,7 +46,9 @@ background-image: linear-gradient(to bottom, #ffffff, #e6e6e6, #cecece, #b6b6b6,
 }
 .textbox textarea{
     border: 0;
+    padding: 10px;
     border-radius: .5rem;
+    color: rgb(53, 51, 58);
 }
 
 
@@ -72,6 +74,12 @@ h2 {
     margin-bottom: 50px;
 }
 
+h4{
+    color: rgb(196, 116, 116);
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
 h2 small {
     font-weight: normal;
     color: #888;
@@ -90,13 +98,13 @@ h2 small {
 .group {
     position: relative;
     margin-bottom: 45px;
-}
-
+}   
 .inputs input {
     font-size: 18px;
     padding: 10px 10px 10px 5px;
-    display: block;
+    display: inline-flex;
     width: 300px;
+    color: rgb(53, 51, 58);
     border: none;
     border-bottom: 1px solid #757575;
 }
@@ -213,6 +221,7 @@ input:focus~.highlight {
     }
 }
 .choices{
+    padding-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
