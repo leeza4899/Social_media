@@ -1,6 +1,6 @@
 <%- include ("../partials/header") %>
 <link rel="stylesheet" href="/stylesheets/EditBio.css">
-<%if(loggedUser!="undefined"){%>
+<%if(loggedUser!= undefined){%>
     
 <form action="/biodone" method="post">
 <div class="editform">
@@ -1802,6 +1802,7 @@
 
 
 </form>
-<%} else{%>
+<%} else{ %>
+    <p>hi..................................................</p>
 <%}%>
 <%- include ("../partials/footer") %>

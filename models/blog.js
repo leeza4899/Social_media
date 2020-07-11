@@ -27,7 +27,7 @@ var  blogSchema= new Mongoose.Schema({
             type: ObjectId,
             ref: "User"
         },
-        username: String
+        authorName: String
     },
     comments: [{
         type: ObjectId,

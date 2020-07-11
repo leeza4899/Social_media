@@ -27,7 +27,7 @@ var middleware = require("../middleware");
 const storage = multer.diskStorage({
         destination: './public/images/blog_image',
         filename: function(req,file,next){
-            next(null, file.fieldname + '-' + req.user.username + path.extname(file.originalname));
+            next(null, file.fieldname + '-' + req.body.title + path.extname(file.originalname));
         }
     });
 
@@ -85,7 +85,7 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                 var image = req.file.path;
                 var author = {
                     id: req.user._id,
-                    username : req.user.username
+                    authorName : req.user.username
                 }
                 var category = req.body.category;
                 if(!title || !desc || !image || !category){
@@ -98,6 +98,7 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                 blog.create(newBlog, function(err, createdblog){
                     if(err){
                         console.log(err);
+
                     }
                     else {
                         req.flash("success_msg", "Blog post created!");

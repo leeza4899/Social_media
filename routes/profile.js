@@ -18,7 +18,7 @@ const multer = require("multer");
 const storage = multer.diskStorage({
         destination: './public/images/user_dp',
         filename: function(req,file,next){
-            next(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+            next(null, file.fieldname + '-' + user.username + path.extname(file.originalname));
         }
     });
 
@@ -157,7 +157,7 @@ router.post("/editBio", function(req,res){
             req.flash("error_msg","Oops! no file selected.");
             res.redirect("back");
         } else {
-          file: `/images/user_dp/${req.file.filename}`;
+          file: "/images/user_dp/${req.file.filename}";
           
         }
       }
