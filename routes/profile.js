@@ -159,7 +159,7 @@ router.get("/editbio", middleware.isloggedIn, function(req,res){
 })
 });
 
-router.put("/biodone",  middleware.isloggedIn, function(req,res){
+router.post("/biodone",  middleware.isloggedIn, function(req,res){
   upload(req,res,(err) => {
     if(err){
         req.flash("error_msg", err.message);
@@ -205,12 +205,12 @@ router.put("/biodone",  middleware.isloggedIn, function(req,res){
           };
           console.log(updated_prof);
 
-          User.findByIdAndUpdate(updated_prof, function(err, updatedprof){
+          User.findByIdAndUpdate(req.user._id,updated_prof, function(err, updatedprof){
               if(err){
                 console.log(err);
                 }else {
                   req.flash("success_msg", "Profile Updated!");
-                  return res.render("/user/profile", {prof: updated_prof});
+                  res.render("blog/entry", {prof: updated_prof});
               }
           })
         }
