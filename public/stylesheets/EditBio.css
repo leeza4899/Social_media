@@ -63,9 +63,8 @@ background-image: linear-gradient(to bottom, #ffffff, #e6e6e6, #cecece, #b6b6b6,
 .container {
     font-family: 'Roboto';
     width: 600px;
-    margin: 30px auto 0;
+    margin: 300px auto 0;
     display: block;
-    background: #FFF;
     padding: 10px 50px 50px;
 }
 

@@ -20,7 +20,6 @@ var  UserSchema= new Mongoose.Schema({
    username:{
        required:true,
        type:String,
-       
    },
    date:{
        type : Date,

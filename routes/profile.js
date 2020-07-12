@@ -14,11 +14,23 @@ const async = require("async");
 const multer = require("multer");
 
 
+
+//requiring the models
+var User = require("../models/user");
+
+router.use(bodyParser.urlencoded({ extended: true }));
+
+//requiring the middlwares
+var middleware = require("../middleware");
+const { runInNewContext } = require("vm");
+const { link } = require("fs");
+
+
 //multer configuration
 const storage = multer.diskStorage({
         destination: './public/images/user_dp',
         filename: function(req,file,next){
-            next(null, file.fieldname + '-' + user.username + path.extname(file.originalname));
+            next(null, file.fieldname + '-' + req.user.username + path.extname(file.originalname));
         }
     });
 
@@ -48,14 +60,6 @@ function checkFileType(file, next){
 }
 /////////////////////////////////
 
-
-//requiring the models
-var User = require("../models/user");
-
-
-//requiring the middlwares
-var middleware = require("../middleware");
-const { runInNewContext } = require("vm");
 
 router.get("/users", function(req,res)
 {
@@ -134,21 +138,28 @@ router.post("/unfollow", function (req, res) {
       return res.status(422),json({error:err})
     }
   }),
-User.findByIdAndUpdate(whoFollow, {$pull :{following : toFollow }},{new:true},(err,result)=>{
-    if(err){
-      return res.status(422),json({error:err})
-    }
-  })
-    // console.log(foundUser);
-res.redirect("back");
+  User.findByIdAndUpdate(whoFollow, {$pull :{following : toFollow }},{new:true},(err,result)=>{
+      if(err){
+        return res.status(422),json({error:err})
+      }
+    })
+      // console.log(foundUser);
+  res.redirect("back");
 });
 
 ///////Edit bio routes
-router.get("/editBio",function(req,res){
-  res.render("user/EditBio");
+router.get("/editbio", middleware.isloggedIn, function(req,res){
+  User.findById(req.user.id, function(err, found){
+    if(!found){
+        req.flash("error_msg", "User doesn't exist");
+        return res.redirect("/user/<%= user._id%>");
+    }
+
+    res.render("user/EditBio", {user: found});
+})
 });
 
-router.post("/editBio", function(req,res){
+router.put("/biodone",  middleware.isloggedIn, function(req,res){
   upload(req,res,(err) => {
     if(err){
         req.flash("error_msg", err.message);
@@ -157,8 +168,51 @@ router.post("/editBio", function(req,res){
             req.flash("error_msg","Oops! no file selected.");
             res.redirect("back");
         } else {
-          file: "/images/user_dp/${req.file.filename}";
-          
+          console.log(req.file);
+          file: `/images/user_dp/${req.file.filename}`;
+          var bio = req.body.bio;
+          var image = req.file.filename;
+          var twitter = req.body.twitter;
+          var instagram = req.body.insta;
+          var facebook = req.body.fb;
+          var gmail = req.body.gmail;
+          var linkedin = req.body.linkedin;
+          //choices
+          var pets = req.body.pet;
+          var avatar = req.body.avatar;          
+          var professional = req.body.profession;
+          var food = req.body.food;
+          var drinks = req.body.drinks;
+          var plants = req.body.plants;
+          var music = req.body.music;
+
+          var updated_prof = {
+            bio:bio,
+            image:image,
+            twitter: twitter,
+            instagram: instagram,
+            facebook: facebook,
+            gmail: gmail,
+            linkedin: linkedin,
+            //choices
+            pets: pets,
+            avatar: avatar,
+            professional: professional,
+            food: food,
+            drinks: drinks,
+            plants: plants,
+            music: music
+          };
+          console.log(updated_prof);
+
+          User.findByIdAndUpdate(updated_prof, function(err, updatedprof){
+              if(err){
+                console.log(err);
+                }else {
+                  req.flash("success_msg", "Profile Updated!");
+                  return res.render("/user/profile", {prof: updated_prof});
+              }
+          })
         }
       }
     });
