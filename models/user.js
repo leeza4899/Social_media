@@ -52,6 +52,11 @@ var  UserSchema= new Mongoose.Schema({
     ref: "User"
 }],
 
+blogs:[{
+    type:ObjectId,
+    ref:"blog"
+}],
+
     food:{
         type:Number
     },
