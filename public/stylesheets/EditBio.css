@@ -60,14 +60,6 @@ background-image: linear-gradient(to bottom, #ffffff, #e6e6e6, #cecece, #b6b6b6,
     justify-content: center;
 }
 
-.container {
-    font-family: 'Roboto';
-    width: 600px;
-    margin: 300px auto 0;
-    display: block;
-    padding: 10px 50px 50px;
-}
-
 h2 {
     text-align: center;
     margin-bottom: 50px;

@@ -1,7 +1,9 @@
 <%- include ("../partials/header") %>
 <link rel="stylesheet" href="/stylesheets/EditBio.css">
 <%if(loggedUser!= undefined){%>
-    
+	<div class ="container">
+		<%- include("../partials/message")%>
+	</div>
 <form action="/biodone" method="POST" enctype="multipart/form-data">
 <div class="editform">
         <div class="title">

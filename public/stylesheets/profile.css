@@ -9,12 +9,15 @@
 .name-username h1{
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
 }
+body{
+    background-image: linear-gradient(to bottom, #b9b0b6, #baa9ba, #b7a3c1, #ad9fcb, #9d9dd5, #92a6de, #87afe4, #7cb7e9, #8dc9ea, #a7d8ea, #c6e7ed, #e6f4f4);
+}
 
 div.profle {
 
     min-width: 100vw;
     min-height: 100vh;
-background-image: linear-gradient(to bottom, #b9b0b6, #baa9ba, #b7a3c1, #ad9fcb, #9d9dd5, #92a6de, #87afe4, #7cb7e9, #8dc9ea, #a7d8ea, #c6e7ed, #e6f4f4);
+
 background-size: cover;
 background-repeat: no-repeat;
 }

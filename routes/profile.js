@@ -210,7 +210,7 @@ router.post("/biodone",  middleware.isloggedIn, function(req,res){
                 console.log(err);
                 }else {
                   req.flash("success_msg", "Profile Updated!");
-                  res.render("blog/entry", {prof: updated_prof});
+                  return res.redirect("/user/" + req.user._id);
               }
           })
         }

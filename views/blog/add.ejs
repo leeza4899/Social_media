@@ -1,32 +1,42 @@
 <%- include("../partials/header")%>
+<link rel="stylesheet" href="/stylesheets/blog/add.css">
+
 
 <div class="container">
     <%- include("../partials/message")%>
 </div>
-<link rel="stylesheet" href="/stylesheets/blog/add.css">
-
-<h1>Add a new blogpost</h1>
-<div class="container jumbotron">
+<h1>Add new blogpost</h1>
+<div class="blog-form">
 <form action="/blog/addpost" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
         <label>Blog title:</label>
             <input type="text" name="title" placeholder="Title" id="title">
-    </div>
-    <div class="form-group">
         <label>Description:</label>
-            <input type="text" name="desc" placeholder="Description" id="desc">
-    </div>
-    <div class="form-group">
+            <textarea type="text" rows = "8" name="desc" placeholder="Description" id="desc"></textarea>
         <label>Image:</label>
             <input type="file" name="blog-image" placeholder="Title" id="blog-image">
-    </div>
-
-    <div class="form-group">
         <label>Blog category:</label>
-        <input type="text" name="category" placeholder="Category" id="category">
-    </div>
+        <select id="category" name="category" onfocus='this.size=5;' onblur='this.size=1;'onchange='this.size=1;'>
+            <option value="Life" >Life</option>
+            <option value= "Food">Food</option>
+            <option value= "Adventure">Adventure</option>
+            <option value= "Travel">Travel</option>
+            <option value= "Lifestyle">Lifestyle</option>
+            <option value= "Sports">Sports</option>
+            <option value= "Tech">Tech</option>
+            <option value= "Political">Political</option>
+            <option value= "Series">Series</option>
+            <option value= "Movie">Movie</option>
+            <option value= "Car">Car</option>
+            <option value= "News">News</option>
+            <option value= "Gaming">Gaming</option>
+            <option value= "Pet">Pet</option>
+            <option value= "fashion">Fashion</option>
+            <option value= "Business">Business</option>
+            <option value= "Parenting">Parenting</option>
+            <option value= "Finance">Finance</option>
 
-    <button type="submit" class="btn btn-success">Add post</button>
+        </select>
+    <button type="submit">Add post</button>
 
 </form>
 </div>

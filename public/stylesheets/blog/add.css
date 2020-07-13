@@ -1,33 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
-    background-image: linear-gradient(to left, #80acb3, #78b8bb, #72c4be, #70cfbe, #75dab9, #73dbb6, #71dbb3, #70dcb0, #60d3b1, #51cbb2, #42c2b2, #35b9b1);
+    background-image: linear-gradient(to right top, #a6a09f, #b1a9aa, #bbb2b6, #c3bcc3, #c9c6d0, #caccd6, #cbd1db, #cdd7df, #ced8dd, #d0d9db, #d3dad9, #d6dad9);    
 }
 
 h1{
+    font-family: 'Baloo Da 2', cursive;
+    text-transform: capitalize;
     color: maroon;
     text-align: center;
-    margin-top: 10px;
-    padding: 15px;
     letter-spacing: 1px;
-}
-.container{
-    margin-top: 50px;
+    font-size: 2.8rem;
 }
 
 
-form input{
-    color: rgb(141, 72, 190);
-    margin: 10px;
-    padding: 2px;
-}
-form select{
-    color: rgb(141, 72, 190);
-    margin: 10px;
-    padding: 2px;
+.blog-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: auto;
+    position: relative;
 }
 
-form option{
-    color: rgb(141, 72, 190);
+.blog-form label{
+    font-family: 'Baloo Da 2', cursive;
+    font-size: 18px;
+    color: black;
+    margin-left: 10px;
 }
-form label{
-    color: mediumblue;
+.blog-form input, textarea, select, button{
+    font-family: 'Baloo Da 2', cursive;
+    border: 1px solid rgba(252, 252, 252, 0.4);
+    background-color: rgba(252, 252, 252, 0.2);
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    font-weight: 300;
+  }
+  .blog-form input:hover{
+    color: black;
+    background-color:#eee;
+  }
+  .blog-form textarea:hover{
+    color: black;
+    background-color:#eee;
+  }
+  .blog-form select:hover{
+    color: black;
+    background-color: #eee;
+  }
+  .blog-form option{
+    font-family: 'Baloo Da 2', cursive;
+    color: black;
+    background-color: #eee;
+  }
+  
+
+
+  .blog-form button {
+    outline: 0;
+    background-color: white;
+    width: 250px;
+    font-size: 18px;
+  }
+
+  .blog-form button:hover{
+    background-color: black;
+    color: blanchedalmond;
+  }
+
+
+  @media screen and (max-width: 768px){
+      .blog-form label{
+          margin-left: 50px;
+      }
+  }
+@media (min-width: 768px)
+{
+    .blog-form label{
+    margin-left: 100px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    h1{
+        margin-top: 100px;
+    }
+    .container{
+        margin-top: 100px;
+    }
+}
+
+@media (min-width: 576px){
+    .container{
+        margin-top: 100px;
+        max-width: 500px;
+    }
 }
