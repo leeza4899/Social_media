@@ -7,7 +7,7 @@
 <div class ='profle'>
     <div class="pic-container">
         <div class="pic">
-            <img src="/images/user_dp/profpic-<%=user.username%>"alt="Profile_image" >
+            <img src="/images/user_dp/<%=user.image%>"alt="Profile_image" >
             <div class="pic-discription">
                 <p> <%=user.name %>'s choices</p>
                 <ul>
@@ -2088,7 +2088,7 @@
     <button class="button">Blogs</button></div>
     <div class="media-links">
         <ul>
-            <li><a href="#"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <li><a href="<%=user.instagram%>"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 89.758 89.758" style="enable-background:new 0 0 89.758 89.758;" xml:space="preserve">
 <g>
 	<path style="fill:#6A453B;" d="M58.255,23.88H31.503c-4.27,0-7.744,3.474-7.744,7.744v26.752c0,4.27,3.474,7.745,7.744,7.745
@@ -2135,7 +2135,7 @@
 </svg>
 
 </a></li>
-<li><a href="#"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<li><a href="<%=user.twitter%>"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 112.197 112.197" style="enable-background:new 0 0 112.197 112.197;" xml:space="preserve">
 <g>
 	<circle style="fill:#55ACEE;" cx="56.099" cy="56.098" r="56.098"/>
@@ -2182,7 +2182,7 @@
 </g>
 </svg>
     </a></li>
-    <li><a href="#"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <li><a href="<%=user.linkedin%>"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 112.196 112.196" style="enable-background:new 0 0 112.196 112.196;" xml:space="preserve">
 <g>
 	<circle style="fill:#007AB9;" cx="56.098" cy="56.097" r="56.098"/>
@@ -2228,7 +2228,7 @@
 </svg>
 
         </a></li>
-        <li><a href="#"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <li><a href="mailto:<%=user.gmail%>"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 112.196 112.196" style="enable-background:new 0 0 112.196 112.196;" xml:space="preserve">
 <g>
 	<g>
@@ -2291,7 +2291,7 @@
 </svg>
 
             </a></li>
-            <li><a href="#"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+            <li><a href="<%=user.facebook%>"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 112.196 112.196"
                         style="enable-background:new 0 0 112.196 112.196;" xml:space="preserve">
                         <g>
