@@ -17,6 +17,7 @@ const multer = require("multer");
 //Requiring essential models
 const User = require("../models/user");
 const blog = require("../models/blog");
+const Category = require("../models/category");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -92,6 +93,36 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                     req.flash("error_msg","Please fill in all the fields");
                     res.redirect("back");
                 }
+
+                Category.find({title: category}, function(err,found){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        if(!found){
+                            const name = req.body.category;
+                            const Categ_id = req.body._id;
+                            var newCat = {name: name, Categ_id: Categ_id};
+                            Category.create(newCat, function(err, catCreated){
+                                if(err){
+                                    console.log(err);
+                                } else {
+                                    console.log(newCat);
+                                }
+                            })
+                        } else {
+                            console.log("not found");
+                        }
+                        // } else {                       
+                        //     Category.findOne({name:req.body.category},{$push :{Categ_id : newId }},{new:true},(err,result)=>{
+                        //         if(err){
+                        //           console.log(err);
+                        //         } else {
+                        //             console.log("hi");
+                        //         }
+                        //       })
+                        // }
+                    }
+                })
                 
                 var newBlog = {title: title, desc: desc, image: image, category: category, author:author};
 

@@ -32,11 +32,7 @@ var  blogSchema= new Mongoose.Schema({
     comments: [{
         type: ObjectId,
         ref: "comment"
-    }],
-    category: {
-        type: String,
-        required: true
-    }
+    }]
 });
 
 const blog = Mongoose.model('blog',blogSchema);
