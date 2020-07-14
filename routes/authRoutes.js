@@ -22,6 +22,11 @@ router.get("/", function (req, res) {
 	res.render("landing");
 });
 
+//team page route
+router.get("/team", function(req,res){
+	res.render("team");
+});
+
 //signup routes
 router.get("/signup", function (req, res) {
 	res.render("Auth/signup");
