@@ -1,4 +1,5 @@
 const Mongoose =require('mongoose');
+const category = require('./category');
 const {ObjectId} = Mongoose.Schema.Types;
 
 var  blogSchema= new Mongoose.Schema({
@@ -32,7 +33,10 @@ var  blogSchema= new Mongoose.Schema({
     comments: [{
         type: ObjectId,
         ref: "comment"
-    }]
+    }],
+    category:{
+        type:String
+    }
 });
 
 const blog = Mongoose.model('blog',blogSchema);

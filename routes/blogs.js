@@ -93,6 +93,7 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                     req.flash("error_msg","Please fill in all the fields");
                     res.redirect("back");
                 }
+                
                 var newBlog = {
                     title: title,
                     desc: desc,
@@ -112,30 +113,31 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                         
                     
                 
-                Category.find({title: category}, function(err,found){
+                Category.findOne({name: category}, function(err,found){
                     if(err){
                         console.log(err);
                     } else {
                         if(!found){
+                            console.log(found);
                             const name = req.body.category;
                             const Categ_id = req.body._id;
-                            var newCat = {name: name};
+                            var newCat = {name: name,Categ_id : foundBlog._id };
                             Category.create(newCat, function(err, catCreated){});
                        
                         }
 
-                            Category.updateOne({name:req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
+                            Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
                                 if(err){
                                   console.log(err);
                                 } else {
-                                    
+                                    req.flash("success_msg", "Blog post created!");
+                                    return res.redirect("/blog");
 
                                 }
                               })
 
                         
-                        req.flash("success_msg", "Blog post created!");
-                        return res.redirect("/blog");
+                        
                     }
                 })
                 });
