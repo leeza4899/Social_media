@@ -11,7 +11,8 @@
     <div class="all_blogs" >
          <% for(let i = 0;i < blogs.length;i++){%>
                 
-                
+                <div class="brounds-rev"></div>
+                <div class="brounds-or-rev"></div>
         <div class="each_blog">
             <div class="this-blog">
             <div class="data">
@@ -33,9 +34,7 @@
 
             </div>
             <div class="blogpic">
-                <div class="brounds"></div>
-                <div class="brounds-or"></div>
-
+                
                 <div class="img"> 
                     <img src="/images/blog_image/<%=blogs[i].image%>" alt="">
                 </div>
@@ -102,11 +101,13 @@
             </div>
             <%if(i+1 < blogs.length){%>
             <% i++%>
+            <div class="brounds"></div>
+            <div class="brounds-or"></div>
+
             <div class="each_blog">
                 <div class="this-blog">
                     <div class="blogpic">
-                        <div class="brounds-rev"></div>
-                        <div class="brounds-or-rev"></div>
+                        
 
                 <div class="img"> 
                     <img src="/images/blog_image/<%=blogs[i].image%>" alt="">

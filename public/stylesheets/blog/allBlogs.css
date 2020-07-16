@@ -7,14 +7,20 @@
 }
 body{
     color: honeydew;
+         overflow-x: hidden;
+
 }
  .message{
      position: absolute;
      top: 50%;
      left: 40%;
  }
+ div.all_blogs{
+     overflow: hidden;
+ }
 
  div.each_blog{
+     overflow: hidden;
      min-height: 100vh;
      min-width: 100%;
      background-repeat: no-repeat;
@@ -26,6 +32,7 @@ body{
 
  }
  .this-blog {
+     
     border-radius: 1rem;
     border: slateblue;
     min-width: 90%;
@@ -73,7 +80,7 @@ div.dot {
     min-height: 20px;
     width: 20px;
     border-radius: 5px;
-    background-color: rgb(0, 38, 255);
+    background-color: rgb(255, 0, 85);
     margin: 1rem 0;
 }
 
@@ -130,7 +137,7 @@ justify-content: space-around;
     position: absolute;
     overflow: hidden;
     z-index: -10;
-    left: 10rem;
+    left: 0;
 
 }
 .brounds-or {
@@ -141,6 +148,8 @@ justify-content: space-around;
     position: absolute;
     overflow: hidden;
     z-index: -10;
+    left: 40rem;
+   
 
 }
 .brounds-rev {
@@ -151,7 +160,8 @@ justify-content: space-around;
     position: absolute;
     overflow: hidden;
     z-index: -10;
-    left: -20rem;
+    left: 44rem;
+    
 
 }
 .brounds-or-rev{
@@ -162,7 +172,7 @@ justify-content: space-around;
      position: absolute;
      overflow: hidden;
      z-index: -10;
-     right: -30rem;
+     
 }
  @media screen and (min-width: 600px) {
  .all_blogs{

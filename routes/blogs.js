@@ -119,6 +119,32 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                                     var newCat = {name: name,Categ_id : foundBlog._id };
                                     Category.create(newCat, function(err, catCreated){});
                             
+<<<<<<< HEAD
+=======
+                        
+                        
+                    
+                
+                Category.findOne({name: category}, function(err,found){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        if(!found){
+                            const name = req.body.category;
+                            const Categ_id = req.body._id;
+                            var newCat = {name: name,Categ_id : foundBlog._id };
+                            Category.create(newCat, function(err, catCreated){});
+                       
+                        }
+
+                            Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
+                                if(err){
+                                  console.log(err);
+                                } else {
+                                    req.flash("success_msg", "Blog post created!");
+                                    return res.redirect("/blog");
+
+>>>>>>> b6a964c55c06ced9cc7e3506f4a1785424de1015
                                 }
 
                                     Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
