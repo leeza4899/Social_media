@@ -118,7 +118,6 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                         console.log(err);
                     } else {
                         if(!found){
-                            console.log(found);
                             const name = req.body.category;
                             const Categ_id = req.body._id;
                             var newCat = {name: name,Categ_id : foundBlog._id };
