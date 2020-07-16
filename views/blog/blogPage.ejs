@@ -1,10 +1,6 @@
 <%- include("../partials/header")%>
 <link rel="stylesheet" type="text/css" href="/stylesheets/blog/blogpage.css">
 
-<div class="container">
-    <%- include("../partials/message")%>
-</div>
-
     <!-- Heading -->
 <div class="blog-title container">
     <h1><%= blog.title %></h1>
@@ -22,6 +18,12 @@
             <p class="desc"><%= blog.desc%></p>
             <em class="desc" >Author: <a href="/user/<%= blog.author.id%>"><span> <%=blog.author.authorName%></span></a></em>
             <p class="desc" >Created At: <%=blog.createdAt.toLocaleString('en-US' ,{day: 'numeric',month: 'long',year: 'numeric' })%></p>
+            <%if(loggedUser && blog.author.id.equals(loggedUser._id)) {%>
+                <a href="/blog/editpost/<%= blog._id %>" class="but btn btn-warning">Edit</a>
+                <form action= "/blog/<%= blog._id %>?_method=DELETE" method="POST">
+                    <button class="but btn btn-danger">Delete</button>
+                </form>
+            <% }%>
     </div>
 </div>
 

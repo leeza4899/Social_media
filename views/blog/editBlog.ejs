@@ -1,34 +1,42 @@
 <%- include("../partials/header")%>
+<link rel="stylesheet" href="/stylesheets/blog/add.css">
 
 <div class="container">
     <%- include("../partials/message")%>
 </div>
-<link rel="stylesheet" href="/stylesheets/blog/add.css">
 
 <h1>Edit <%= blog.title%></h1>
-<div class="container jumbotron">
-<form action="/blog/<%=blog._id%>?_method=PUT" method="POST">
-    <div class="form-group">
-        <label>Blog title:</label>
-            <input type="text" name="title"  value= "<%= blog.title%>" placeholder="Title" id="title">
-    </div>
-    <div class="form-group">
-        <label>Description:</label>
-            <input type="text" name="desc" value= "<%= blog.desc%>" placeholder="Description" id="desc">
-    </div>
-    <div class="form-group">
-        <label>Image:</label>
-            <input type="file" name="image" value= "<%= blog.image%>" placeholder="Title" id="image">
-    </div>
-
-    <div class="form-group">
-        <label>Blog category:</label>
-        <input type="text" name="category" value= "<%= blog.category%>" placeholder="Category" id="category">
-    </div>
-
-    <button type="submit" class="btn btn-success">Edit post</button>
-
-</form>
+<div class="blog-form">
+    <form action="/blog/<%=blog._id%>?method=PUT" method="POST" enctype="multipart/form-data">
+            <label>Blog title:</label>
+                <input type="text" name="title"  value= "<%= blog.title%>" placeholder="Title" id="title">
+            <label>Description:</label>
+                <input type="text" name="desc" value= "<%= blog.desc%>" id="desc">
+            <label>Image:</label>
+                <input type="file" name="image" value= "<%= blog.image%>" placeholder="Image" id="image">
+            <label>Blog category:</label>
+            <select id="category" value="<%= blog.category%>" name="category" onfocus='this.size=5;' onblur='this.size=1;'onchange='this.size=1;'>
+                <option value="Life" >Life</option>
+                <option value= "Food">Food</option>
+                <option value= "Adventure">Adventure</option>
+                <option value= "Travel">Travel</option>
+                <option value= "Lifestyle">Lifestyle</option>
+                <option value= "Sports">Sports</option>
+                <option value= "Tech">Tech</option>
+                <option value= "Political">Political</option>
+                <option value= "Series">Series</option>
+                <option value= "Movie">Movie</option>
+                <option value= "Car">Car</option>
+                <option value= "News">News</option>
+                <option value= "Gaming">Gaming</option>
+                <option value= "Pet">Pet</option>
+                <option value= "fashion">Fashion</option>
+                <option value= "Business">Business</option>
+                <option value= "Parenting">Parenting</option>
+                <option value= "Finance">Finance</option>
+            </select>
+            <button type="submit">Edit post</button>
+    </form>
 </div>
 
 

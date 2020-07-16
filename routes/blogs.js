@@ -119,32 +119,6 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                                     var newCat = {name: name,Categ_id : foundBlog._id };
                                     Category.create(newCat, function(err, catCreated){});
                             
-<<<<<<< HEAD
-=======
-                        
-                        
-                    
-                
-                Category.findOne({name: category}, function(err,found){
-                    if(err){
-                        console.log(err);
-                    } else {
-                        if(!found){
-                            const name = req.body.category;
-                            const Categ_id = req.body._id;
-                            var newCat = {name: name,Categ_id : foundBlog._id };
-                            Category.create(newCat, function(err, catCreated){});
-                       
-                        }
-
-                            Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
-                                if(err){
-                                  console.log(err);
-                                } else {
-                                    req.flash("success_msg", "Blog post created!");
-                                    return res.redirect("/blog");
-
->>>>>>> 60925abefd3ba51febc18d491182a3d0141e98fe
                                 }
 
                                     Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
@@ -218,7 +192,7 @@ router.put("/blog/:id", middleware.blogowner, function(req,res){
             res.redirect("back");
         } else {
             req.flash("success_msg", "Blog edited successfully!");
-            res.redirect("/blog"); //it has to be redirected to the individual post page.
+            res.redirect("/blog" + req.params.id); //it has to be redirected to the individual post page.
         }
     });
 });
@@ -226,7 +200,7 @@ router.put("/blog/:id", middleware.blogowner, function(req,res){
 
 /// 4. Delete the post
 router.delete("/blog/:id", middleware.blogowner, function(req,res){
-	campground.findByIdAndRemove(req.params.id, function(err){
+	blog.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redirect("/blog/entry");
 		} else {
