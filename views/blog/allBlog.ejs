@@ -1,27 +1,200 @@
 
 <%- include("../partials/header")%>
 
-<div class="container">
+
+    <div class="message">
     <%- include("../partials/message")%>
-<link rel="stylesheet" href="/stylesheets/blog/add.css">
-        
-<h1 class="text-center">All Blogs</h1>
-    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-    <%blogs.forEach(function(blog){ %>
-        <div class="col-md-3 col-sm-6">	
-            <div class ="thumbnail">
-                <img src = "/images/blog_image/<%=blog.image%>" >
-            <div class="caption">
-                <h3><%= blog.title %></h3>
-            </div>
-            <div class="caption">
-                <h3><%= blog.desc %></h3>
-            </div>
-            </div>
-        </div>	
-    <%});%>
     </div>
-</div>
+<link rel="stylesheet" href="/stylesheets/blog/allBlogs.css">
+        
+
+    <div class="all_blogs" >
+         <% for(let i = 0;i < blogs.length;i++){%>
+                
+                
+        <div class="each_blog">
+            <div class="this-blog">
+            <div class="data">
+                <div class="title">
+                    <%=blogs[i].title%>
+                </div>
+                <div class="dot"></div>
+
+                <div class="intro">
+                    <p><%=blogs[i].desc%></p>
+                </div>
+
+                <div class="dot"></div>
+                <div class="readmore">
+                    <a class="white" href="#">
+                        <p><span class="bg"></span><span class="base"></span><span class="text">Read More..</span></p>
+                    </a>
+                </div>
+
+            </div>
+            <div class="blogpic">
+                <div class="brounds"></div>
+                <div class="brounds-or"></div>
+
+                <div class="img"> 
+                    <img src="/images/blog_image/<%=blogs[i].image%>" alt="">
+                </div>
+                <div>
+                    <a href="./user/<%=blogs[i].author.id%>">
+                        <p> By: <%=blogs[i].author.authorName%></p>
+                    </a>
+                </div>
+                <div class="likes"><ul><li><svg id="Layer_1"  viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m446.51 84.39a134.8 134.8 0 0 1 0 190.65l-190.37 192.06-190.66-190.65a134.8 134.8 0 0 1 189.79-191.47l.59-.59a134.8 134.8 0 0 1 190.65 0z" fill="#e04a5d"/><path d="m105.48 276.45a134.826 134.826 0 0 1 75.32-228.65 134.817 134.817 0 0 0 -115.32 228.65l190.66 190.65 19.911-20.088z" fill="#ff5a5a"/><path d="m351.185 38.9a139.778 139.778 0 0 0 -95.969 37.773 140.782 140.782 0 0 0 -193.982 4.891c-54.89 54.891-54.89 144.221 0 199.133l190.666 190.647a6 6 0 0 0 4.242 1.757h.014a6 6 0 0 0 4.247-1.777l190.346-192.042a140.816 140.816 0 0 0 -99.564-240.382zm91.061 231.915-186.121 187.785-186.404-186.388c-50.213-50.232-50.214-131.95 0-182.162a128.771 128.771 0 0 1 181.346-.8 6 6 0 0 0 8.451-.034l.587-.588a128.808 128.808 0 1 1 182.141 182.186z" fill="#284268"/></svg>
+                <span><%=blogs[i].likes.length%></span></li>
+                <li><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 368 368" style="enable-background:new 0 0 368 368;" xml:space="preserve">
+<path style="fill:#CCE4FF;" d="M264,40v96h-48V56H56v80h80c-17.68,0-32,14.32-32,32v16H72L8,232V40C8,22.32,22.32,8,40,8h192
+	C249.68,8,264,22.32,264,40z"/>
+<g>
+	<path style="fill:#007AFF;" d="M328,128h-56V40c0-22.056-17.944-40-40-40H40C17.944,0,0,17.944,0,40v192
+		c0,3.032,1.712,5.8,4.424,7.16C5.552,239.72,6.784,240,8,240c1.696,0,3.384-0.536,4.8-1.6L74.664,192H96v88
+		c0,22.056,17.944,40,40,40h157.336l61.864,46.4c1.408,1.064,3.104,1.6,4.8,1.6c1.216,0,2.448-0.28,3.576-0.84
+		c2.712-1.36,4.424-4.128,4.424-7.16V168C368,145.944,350.056,128,328,128z M72,176c-1.728,0-3.416,0.56-4.8,1.6L16,216V40
+		c0-13.232,10.768-24,24-24h192c13.232,0,24,10.768,24,24v88h-32V56c0-4.424-3.576-8-8-8H56c-4.416,0-8,3.576-8,8v80
+		c0,4.424,3.584,8,8,8h48.208C99.128,150.704,96,158.96,96,168v8H72z M64,128V64h144v64H64z M352,344l-51.2-38.4
+		c-1.384-1.04-3.064-1.6-4.8-1.6H136c-13.232,0-24-10.768-24-24V168c0-13.232,10.768-24,24-24h80h112c13.232,0,24,10.768,24,24V344z
+		"/>
+	<path style="fill:#007AFF;" d="M312,192H152c-4.416,0-8,3.576-8,8s3.584,8,8,8h160c4.424,0,8-3.576,8-8S316.424,192,312,192z"/>
+	<path style="fill:#007AFF;" d="M312,240H152c-4.416,0-8,3.576-8,8s3.584,8,8,8h160c4.424,0,8-3.576,8-8S316.424,240,312,240z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg><span><%=blogs[i].comments.length%></span></li>
+            </ul></div>
+            
+            </div>
+            </div>
+      
+
+            </div>
+            <%if(i+1 < blogs.length){%>
+            <% i++%>
+            <div class="each_blog">
+                <div class="this-blog">
+                    <div class="blogpic">
+                        <div class="brounds-rev"></div>
+                        <div class="brounds-or-rev"></div>
+
+                <div class="img"> 
+                    <img src="/images/blog_image/<%=blogs[i].image%>" alt="">
+                </div>
+                <div>
+                    <a href="./user/<%=blogs[i].author.id%>">
+                        <p> By: <%=blogs[i].author.authorName%></p>
+                    </a>
+                </div>
+                <div class="likes"><ul><li><svg id="Layer_1"  viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m446.51 84.39a134.8 134.8 0 0 1 0 190.65l-190.37 192.06-190.66-190.65a134.8 134.8 0 0 1 189.79-191.47l.59-.59a134.8 134.8 0 0 1 190.65 0z" fill="#e04a5d"/><path d="m105.48 276.45a134.826 134.826 0 0 1 75.32-228.65 134.817 134.817 0 0 0 -115.32 228.65l190.66 190.65 19.911-20.088z" fill="#ff5a5a"/><path d="m351.185 38.9a139.778 139.778 0 0 0 -95.969 37.773 140.782 140.782 0 0 0 -193.982 4.891c-54.89 54.891-54.89 144.221 0 199.133l190.666 190.647a6 6 0 0 0 4.242 1.757h.014a6 6 0 0 0 4.247-1.777l190.346-192.042a140.816 140.816 0 0 0 -99.564-240.382zm91.061 231.915-186.121 187.785-186.404-186.388c-50.213-50.232-50.214-131.95 0-182.162a128.771 128.771 0 0 1 181.346-.8 6 6 0 0 0 8.451-.034l.587-.588a128.808 128.808 0 1 1 182.141 182.186z" fill="#284268"/></svg>
+                <span><%=blogs[i].likes.length%></span></li>
+                <li><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 368 368" style="enable-background:new 0 0 368 368;" xml:space="preserve">
+<path style="fill:#CCE4FF;" d="M264,40v96h-48V56H56v80h80c-17.68,0-32,14.32-32,32v16H72L8,232V40C8,22.32,22.32,8,40,8h192
+	C249.68,8,264,22.32,264,40z"/>
+<g>
+	<path style="fill:#007AFF;" d="M328,128h-56V40c0-22.056-17.944-40-40-40H40C17.944,0,0,17.944,0,40v192
+		c0,3.032,1.712,5.8,4.424,7.16C5.552,239.72,6.784,240,8,240c1.696,0,3.384-0.536,4.8-1.6L74.664,192H96v88
+		c0,22.056,17.944,40,40,40h157.336l61.864,46.4c1.408,1.064,3.104,1.6,4.8,1.6c1.216,0,2.448-0.28,3.576-0.84
+		c2.712-1.36,4.424-4.128,4.424-7.16V168C368,145.944,350.056,128,328,128z M72,176c-1.728,0-3.416,0.56-4.8,1.6L16,216V40
+		c0-13.232,10.768-24,24-24h192c13.232,0,24,10.768,24,24v88h-32V56c0-4.424-3.576-8-8-8H56c-4.416,0-8,3.576-8,8v80
+		c0,4.424,3.584,8,8,8h48.208C99.128,150.704,96,158.96,96,168v8H72z M64,128V64h144v64H64z M352,344l-51.2-38.4
+		c-1.384-1.04-3.064-1.6-4.8-1.6H136c-13.232,0-24-10.768-24-24V168c0-13.232,10.768-24,24-24h80h112c13.232,0,24,10.768,24,24V344z
+		"/>
+	<path style="fill:#007AFF;" d="M312,192H152c-4.416,0-8,3.576-8,8s3.584,8,8,8h160c4.424,0,8-3.576,8-8S316.424,192,312,192z"/>
+	<path style="fill:#007AFF;" d="M312,240H152c-4.416,0-8,3.576-8,8s3.584,8,8,8h160c4.424,0,8-3.576,8-8S316.424,240,312,240z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg><span><%=blogs[i].comments.length%></span></li>
+            </ul></div>
+            </div>
+                    <div class="data">
+                        <div class="title">
+                            <%=blogs[i].title%>
+                        </div>
+                        <div class="dot"></div>
+
+                        <div class="intro">
+                            <p><%=blogs[i].desc%></p>
+                        </div>
+
+                        <div class="dot"></div>
+                        <div class="readmore">
+                            <a class="white" href="#">
+                                <p><span class="bg"></span><span class="base"></span><span class="text">Read
+                                        More..</span></p>
+                            </a>
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+
+            </div>
+            <%}%>
+    <%}%>
+    </div>
+
 
 
 
