@@ -12,7 +12,7 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const async = require("async");
 const multer = require("multer");
-
+const methodOverride = require("method-override");
 
 //Requiring essential models
 const User = require("../models/user");
@@ -20,6 +20,7 @@ const blog = require("../models/blog");
 const Category = require("../models/category");
 
 router.use(bodyParser.urlencoded({ extended: true }));
+router.use(methodOverride("_method"));
 
 //requiring the middlwares
 var middleware = require("../middleware");
@@ -189,10 +190,10 @@ router.put("/blog/:id", middleware.blogowner, function(req,res){
     blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, update){
         if(err){
             req.flash("error_msg", "Error");
-            res.redirect("back");
+            res.redirect("/blog");
         } else {
             req.flash("success_msg", "Blog edited successfully!");
-            res.redirect("/blog" + req.params.id); //it has to be redirected to the individual post page.
+            res.redirect("/blog/" + req.params.id); //it has to be redirected to the individual post page.
         }
     });
 });
@@ -200,7 +201,9 @@ router.put("/blog/:id", middleware.blogowner, function(req,res){
 
 /// 4. Delete the post
 router.delete("/blog/:id", middleware.blogowner, function(req,res){
-	blog.findByIdAndRemove(req.params.id, function(err){
+    var foungBlog_id = req.params.id;
+        Category.findOneAndUpdate({name : req.body.category},{$pull :{Categ_id : foungBlog_id}},{new:true},(err,result)=>{
+            blog.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redirect("/blog/entry");
 		} else {
@@ -208,6 +211,7 @@ router.delete("/blog/:id", middleware.blogowner, function(req,res){
 			res.redirect("/blog");
 		}
 	})
+});
 });
 
 
