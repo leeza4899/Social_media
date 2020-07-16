@@ -119,8 +119,6 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                                     var newCat = {name: name,Categ_id : foundBlog._id };
                                     Category.create(newCat, function(err, catCreated){});
                             
-<<<<<<< HEAD
-=======
                         
                         
                     
@@ -144,7 +142,6 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
                                     req.flash("success_msg", "Blog post created!");
                                     return res.redirect("/blog");
 
->>>>>>> 60925abefd3ba51febc18d491182a3d0141e98fe
                                 }
 
                                     Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
