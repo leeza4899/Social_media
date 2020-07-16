@@ -7,6 +7,8 @@
     box-sizing: border-box;
 }
 
+/* BLOG BODY CSS */
+
 body ,.blog-image {
     background-color: #bad6be;
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
@@ -16,11 +18,12 @@ body ,.blog-image {
     margin-top: 25px;
     text-align: center;
     font-family: 'Satisfy', cursive;
-    color: black;
-    font-size: 4rem;
+    color: #6d6e6d;
+    font-size: 4.0rem;
 }
 
 .svg_icon{
+    margin-left: 105px;
     height: 22px;
     margin-top: 25px;
     width: 40px;
@@ -51,9 +54,25 @@ body ,.blog-image {
     max-width: 500px;
     max-height: 600px;
 }
+.util-2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
 
+.util-2 p{
+    font-size: 40px;
+    color: black;
+}
+
+
+.heart{
+    margin-top: 2px;
+    height: 40px;
+    width: 40px;
+}
 .blog-body{
-    top: 2rem;
     margin-left: 25px;
     padding: 10px;
     width: 70%;
@@ -64,10 +83,10 @@ body ,.blog-image {
 }
 
 .blog-body .desc{
-    font-family: 'Roboto', sans-serif;
-    color: black;
+    padding-bottom: 4rem;
 }
 .blog-body p,em{
+    font-family: 'Roboto', sans-serif;
     color: black;
 }
 .blog-body span{
@@ -78,14 +97,19 @@ body ,.blog-image {
 
 .util{
     display: flex;
-    float: right;
     flex-direction: row;
+    justify-content: space-between;
+}
+.util-3, .util-4{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .svg_delete{
     height: 40px;
-    margin-top: 8px;
     width: 40px;
+    margin-top: 10px;
 }
 /* Media queries */
 @media (max-width: 768px){
@@ -120,3 +144,74 @@ body ,.blog-image {
         padding-top: 65px;
     }
 }
+
+
+
+
+/* COMMENT SECTION CSS */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+.comments-section{
+    margin: 50px;
+    background-color: #bad6be;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);   
+}
+
+.comment-banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comments-section h1{
+    color: black;
+    font-size: 1.8rem;
+}
+
+.svg_comments{
+    width: 40px;
+    height: 40px;
+}
+
+.comments-section span{
+    font-family: 'Patrick Hand', cursive;
+    color: black;
+}
+.comments-section p{
+    font-family: 'Patrick Hand', cursive;
+    color: black;
+}
+.comments-section strong{
+    color: black;
+}
+.well{
+    border-radius: 2px;
+    border: 1px solid #333;
+    padding: 4px;
+    margin: 5px;
+}
+
+.comment-body{
+    display: flex;
+    flex-direction: row;
+}   
+
+.comment-util{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    float: right;
+ }
+
+ .comment-delete{
+    width: 20px;
+    height: 15px;
+ }
+
+ .svg_reply{
+    width: 20px;
+    height: 15px;
+ }

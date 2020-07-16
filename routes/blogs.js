@@ -17,6 +17,7 @@ const methodOverride = require("method-override");
 //Requiring essential models
 const User = require("../models/user");
 const blog = require("../models/blog");
+const comments = require("../models/comments");
 const Category = require("../models/category");
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -164,7 +165,7 @@ router.get("/blog", function(req,res){
 
 ///View specific blog page route
 router.get("/blog/:id", function(req,res){
-    blog.findById(req.params.id, function(err,foundBlog){
+    blog.findById(req.params.id).populate("comments").exec(function(err,foundBlog){
 		if(err){
 			console.log(err);
 		}
@@ -213,6 +214,8 @@ router.delete("/blog/:id", middleware.blogowner, function(req,res){
 	})
 });
 });
+
+// LIKE UNLIKE ROUTES
 
 
 
