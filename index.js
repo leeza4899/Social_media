@@ -14,8 +14,8 @@ const multer = require('multer');
 var indexRoutes = require("./routes/authRoutes");
 var profileRouters=require("./routes/profile");
 var blogRoutes = require("./routes/blogs");
-var adminRoutes = require("./routes/adminRoutes");
-app.use('/admin', adminRoutes);
+// var adminRoutes = require("./routes/adminRoutes");
+// app.use('/admin', adminRoutes);
 
 
 /////MODELS

@@ -108,43 +108,35 @@ router.post("/blog/addpost", middleware.isloggedIn, function(req,res){
 
                     } else {
                         blog.findOne({title:title , author:author},function(err,foundBlog){
+                        Category.findOne({name: category}, function(err,found){
+                            if(err){
+                                console.log(err);
+                            } else {
+                                if(!found){
+                                    console.log(found);
+                                    const name = req.body.category;
+                                    const Categ_id = req.body._id;
+                                    var newCat = {name: name,Categ_id : foundBlog._id };
+                                    Category.create(newCat, function(err, catCreated){});
                             
-                        
-                        
-                    
-                
-                Category.findOne({name: category}, function(err,found){
-                    if(err){
-                        console.log(err);
-                    } else {
-                        if(!found){
-                            console.log(found);
-                            const name = req.body.category;
-                            const Categ_id = req.body._id;
-                            var newCat = {name: name,Categ_id : foundBlog._id };
-                            Category.create(newCat, function(err, catCreated){});
-                       
-                        }
-
-                            Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
-                                if(err){
-                                  console.log(err);
-                                } else {
-                                    req.flash("success_msg", "Blog post created!");
-                                    return res.redirect("/blog");
-
                                 }
-                              })
 
-                        
-                        
-                    }
-                })
+                                    Category.findOneAndUpdate({name : req.body.category},{$push :{Categ_id : foundBlog._id }},{new:true},(err,result)=>{
+                                        if(err){
+                                        console.log(err);
+                                        } else {
+                                            req.flash("success_msg", "Blog post created!");
+                                            return res.redirect("/blog");
+
+                                        }
+                                    }) 
+                            }
+                        })
                 });
                 }
                 });
                                 
-                        }
+            }
         }
     });
 });
@@ -167,6 +159,19 @@ router.get("/blog", function(req,res){
     });
 });
 
+
+
+///View specific blog page route
+router.get("/blog/:id", function(req,res){
+    blog.findById(req.params.id, function(err,foundBlog){
+		if(err){
+			console.log(err);
+		}
+		else{
+			res.render("blog/blogPage",{blog: foundBlog});
+		}
+	});
+});
 
 //// 3. Edit blogPost
 router.get("/blog/editpost/:id", middleware.blogowner, function(req,res){

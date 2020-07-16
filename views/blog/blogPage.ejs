@@ -1,0 +1,28 @@
+<%- include("../partials/header")%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/blog/blogpage.css">
+
+<div class="container">
+    <%- include("../partials/message")%>
+</div>
+
+    <!-- Heading -->
+<div class="blog-title container">
+    <h1><%= blog.title %></h1>
+</div>
+
+<div class="blog-page container">
+    <!-- Image container -->
+    <div class="blog-image">
+        <img src="/images/blog_image/<%=blog.image%>" alt="image">
+    </div>
+
+    <!-- likes, author, desc ,time, comments, category -->
+    <!-- body container -->
+    <div class="blog-body">
+            <p class="desc"><%= blog.desc%></p>
+            <em class="desc" >Author: <a href="/user/<%= blog.author.id%>"><span> <%=blog.author.authorName%></span></a></em>
+            <p class="desc" >Created At: <%=blog.createdAt.toLocaleString('en-US' ,{day: 'numeric',month: 'long',year: 'numeric' })%></p>
+    </div>
+</div>
+
+<%- include("../partials/footer")%>

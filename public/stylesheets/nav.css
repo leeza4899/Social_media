@@ -462,3 +462,15 @@ input::-webkit-input-placeholder {
 #demo-2 input::-webkit-input-placeholder {
     color: transparent;
 }
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ace8f8;
+
+}
