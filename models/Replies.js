@@ -2,7 +2,9 @@ const Mongoose = require('mongoose');
 const {ObjectId} = Mongoose.Schema.Types;
 
 var RepliesSchema = new Mongoose.Schema({
-    text: String,
+    text: {
+		type: String
+	},
 	createdAt: {
         type: Date,
          default: Date.now

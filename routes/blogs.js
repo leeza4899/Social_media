@@ -25,6 +25,7 @@ router.use(methodOverride("_method"));
 
 //requiring the middlwares
 var middleware = require("../middleware");
+const { json } = require("body-parser");
 
 //multer configuration
 const storage = multer.diskStorage({
@@ -216,7 +217,30 @@ router.delete("/blog/:id", middleware.blogowner, function(req,res){
 });
 
 // LIKE UNLIKE ROUTES
-
+router.post("/like",middleware.isloggedIn, function (req, res) {  
+    blog.findByIdAndUpdate(req.body.likeId, {$push :{likes :req.user._id }
+    },
+    {new:true
+    },(err,result)=>{
+      if(err){
+        return res.status(422),json({error:err})
+      }
+    //   console.log(req.body.likeId);
+    //   console.log(req.user._id);
+    res.redirect("back");
+  });
+}); 
+router.post("/unlike",middleware.isloggedIn, function (req, res) {  
+    blog.findByIdAndUpdate(req.body.unlikeId, {$pull :{likes :req.user._id }
+    },
+    {new:true
+    },(err,result)=>{
+      if(err){
+        return res.status(422),json({error:err})
+      }
+    res.redirect("back");
+  });
+}); 
 
 
 module.exports = router;

@@ -225,7 +225,7 @@ button{
     position: relative;
     justify-content: space-evenly;
 }
-.comment-form input{
+.comment-form input, .reply-form input{
     font-family: 'Baloo Da 2', cursive;
     border: 1px solid #333;
     border-radius: 5px;
@@ -238,12 +238,12 @@ button{
     color: black;
     font-weight: 300;
   }
-  .comment-form input:hover{
+  .comment-form input:hover, .reply-form input:hover{
     color: black;
     background-color:#eee;
   }
 
-  .comment-form button{
+  .comment-form button, .reply-form button{
     font-family: 'Baloo Da 2', cursive;
     border: 1px solid #333;
     width: 130px;
@@ -257,11 +257,23 @@ button{
     font-weight: 300;
   }
 
-  .comment-form button:hover{
+  .comment-form button:hover, .reply-form button:hover{
       color: white;
       background-color: black;
   }
 
+  .reply-form{
+    display: flex;
+    flex-direction: row;
+}
+  .reply-form input{
+      width: 500px;
+      height: 40px;
+  }
+  .reply-form button{
+    width: 81px;
+    margin: 2px 15px 10px auto;
+  }
 
   /* Media queries */
   @media (max-width: 830px){

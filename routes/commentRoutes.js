@@ -11,6 +11,7 @@ const methodOverride = require("method-override");
 //Requiring Models
 const blog = require("../models/blog");
 const Comment = require("../models/comments");
+const reply = require("../models/Replies");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride("_method"));
@@ -25,7 +26,7 @@ var middleware = require("../middleware");
 
 //1. Create comment routes
 router.post("/blog/:id/comments", middleware.isloggedIn, function(req,res){
-	blog.findById(req.params.id,function(err, blog){
+	blog.findById(req.params.id, function(err, blog){
 		if(err){
 			console.log(err);
 			res.redirect("/blog");
