@@ -43,14 +43,14 @@ router.post("/blog/:id/comment/:comment_id/reply", middleware.isloggedIn, functi
 					console.log(err);
 				}
 				else{
-					console.log(repli);
+					// console.log(repli);
                     // console.log(repli);
 					//add username and id to comment
 					repli.author.id = req.user._id;
 					repli.author.admin = req.user.username;
 					//save comment
                     repli.save();
-                    console.log(repli);
+                    // console.log(repli);
 					comm.replies.push(repli);
                     comm.save();
 					req.flash("success_msg", "Reply Added Succesfully!");
@@ -59,6 +59,19 @@ router.post("/blog/:id/comment/:comment_id/reply", middleware.isloggedIn, functi
 			});
 		}
 	})
+});
+
+
+//Delete repply
+router.delete("/blog/:id/comments/:comments_id/reply/:reply_id", middleware.replyOwner, function(req,res){
+	reply.findByIdAndDelete(req.params.reply_id, function(err){
+		if(err){
+			res.redirect("back");
+		} else {
+			req.flash("success_msg", "Reply Deleted");
+			res.redirect("/blog/" + req.params.id);
+		}
+});	
 });
 
 module.exports = router;

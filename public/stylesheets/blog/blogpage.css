@@ -186,6 +186,9 @@ body ,.blog-image {
 }
 .comments-section strong{
     color: black;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    padding-left: 5px;
 }
 .well{
     border-radius: 12px;
@@ -198,6 +201,7 @@ body ,.blog-image {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 12px;
 }   
 
 .comment-util{
@@ -209,8 +213,8 @@ button{
  }
 
  .comment-delete{
-    width: 20px;
-    height: 15px;
+    width: 50px;
+    height: 25px;
  }
 
  .svg_reply{
@@ -275,6 +279,10 @@ button{
     margin: 2px 15px 10px auto;
   }
 
+    .well a{
+      text-decoration: none;
+      color: black;
+  }
   /* Media queries */
   @media (max-width: 830px){
     .comment-form input{
