@@ -322,6 +322,8 @@ footer {
     width: 100%;
     border: none;
     outline: none;
+    padding: 10px;
+    border-radius: 3px;
     background: #575757;
     font-size: 1.0625rem;
     font-weight: 500;

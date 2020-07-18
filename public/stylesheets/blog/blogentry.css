@@ -231,3 +231,29 @@ figure figcaption p {
     margin: 0;
     line-height: 1.5;
 }
+
+
+.addPost{
+    margin-top: 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding:15px 10px;
+}
+
+
+.addPost .btn{
+    font-family: 'Roboto',
+    sans-serif;
+    color: rgb(0,0,0,0.60);
+    width: 130px;
+    margin-left: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    box-shadow: 0 1px 18px rgba(0, 0, 0, 0.10);  
+}
+
+.addPost .btn:hover{
+    background-color: #ccc;
+    color: black;
+}

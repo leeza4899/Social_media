@@ -7,15 +7,15 @@
 
 <h1>Edit <%= blog.title%></h1>
 <div class="blog-form">
-    <form action="/blog/<%= blog._id%>?_method=PUT" method="PUT" enctype="multipart/form-data">
+    <form action="/blog/<%= blog._id%>?_method=PUT" method="POST">
             <label>Blog title:</label>
-                <input type="text" name="title"  value= "<%= blog.title%>" placeholder="Title" id="title">
+                <input type="text" name="Blog[title]"  value= "<%= blog.title%>">
             <label>Description:</label>
-                <input type="text" name="desc" value= "<%= blog.desc%>" id="desc">
+                <textarea type="text" rows = "8" name="Blog[desc]"><%= blog.desc%></textarea>
             <label>Image:</label>
-                <input type="file" name="image" value= "<%= blog.image%>" placeholder="Image" id="image">
+                <input type="file" name="Blog[blog-image]" value= "<%= blog.image%>">
             <label>Blog category:</label>
-            <select id="category" value="<%= blog.category%>" name="category" onfocus='this.size=5;' onblur='this.size=1;'onchange='this.size=1;'>
+            <select value="<%= blog.category%>" name="Blog[category]" onfocus='this.size=5;' onblur='this.size=1;'onchange='this.size=1;'>
                 <option value="Life" >Life</option>
                 <option value= "Food">Food</option>
                 <option value= "Adventure">Adventure</option>

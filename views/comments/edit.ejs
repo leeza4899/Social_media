@@ -1,0 +1,17 @@
+<%- include("../partials/header")%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/blog/add.css">
+
+<div class="container">
+    <%- include("../partials/message")%>
+</div>
+
+<h1>Edit comment</h1>
+<div class="blog-form">
+    <form action="/blog/<%= blog_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
+        <label>Comment</label>
+        <input type="text" name="cooment[text]" value="<%=comment.text%>">
+        <button>Add Comment</button>
+    </form>
+</div>
+
+<%- include("../partials/footer")%>

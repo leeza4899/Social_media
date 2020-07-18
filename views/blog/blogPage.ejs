@@ -1,7 +1,6 @@
 <%- include("../partials/header")%>
 <link rel="stylesheet" type="text/css" href="/stylesheets/blog/blogpage.css">
-
-<div class="container">
+<div class="container pt-1">
     <%- include("../partials/message")%>
 </div>
     <!-- Heading -->
@@ -173,23 +172,35 @@
 
 
 <div class="container">
-    <div class="comments-section">  
+    <div class="comments-section">
         <div class="comment-banner">
             <h1>Comments:</h1>
-            <a class="btn"><svg class="svg_comments" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.00095 512"><path d="m255 202c11.046875 0 20 8.953125 20 20s-8.953125 20-20 20-20-8.953125-20-20 8.953125-20 20-20zm70 20c0 11.046875 8.953125 20 20 20s20-8.953125 20-20-8.953125-20-20-20-20 8.953125-20 20zm-180 0c0 11.046875 8.953125 20 20 20s20-8.953125 20-20-8.953125-20-20-20-20 8.953125-20 20zm349.414062 187.5625c23.40625 23.40625 23.40625 61.46875.011719 84.863281-11.695312 11.695313-27.0625 17.546875-42.425781 17.546875s-30.730469-5.851562-42.425781-17.546875l-109.789063-109.542969c-2.332031-2.328124-4.050781-5.191406-5.007812-8.347656l-23.914063-78.722656c-2.121093-6.980469-.273437-14.558594 4.820313-19.78125 5.09375-5.21875 12.625-7.25 19.65625-5.304688l80.722656 22.359376c3.324219.921874 6.351562 2.683593 8.792969 5.121093zm-162.824218-49.453125 74.089844 73.925781 28.289062-28.289062-73.652344-73.511719-40.609375-11.25zm134.550781 77.75-3.859375-3.855469-28.285156 28.285156 3.847656 3.835938c7.8125 7.816406 20.5 7.816406 28.296875.015625 7.800781-7.796875 7.800781-20.484375 0-28.28125zm-199.015625-23.40625c-3.695312.160156-7.4375.242187-11.125.242187-32.160156 0-63.121094-5.988281-92.019531-17.796874-4.921875-2.007813-10.445313-1.976563-15.34375.089843l-91.066407 38.441407 30.683594-72.683594c3-7.105469 1.644532-15.308594-3.488281-21.074219-29.285156-32.898437-44.765625-72.261719-44.765625-113.824219 0-103.578125 96.898438-187.847656 216-187.847656s216 84.269531 216 187.847656c0 24.5625-6.03125 49.222656-17.929688 73.289063-4.894531 9.902343-.835937 21.898437 9.066407 26.792969 9.902343 4.894531 21.898437.835937 26.792969-9.066407 14.644531-29.628906 22.070312-60.25 22.070312-91.015625 0-125.636718-114.839844-227.847656-256-227.847656-141.15625 0-256 102.210938-256 227.847656 0 47.421875 16.078125 92.332032 46.636719 130.632813l-45.0625 106.742187c-3.164063 7.496094-1.46875 16.164063 4.285156 21.917969 3.828125 3.828125 8.941406 5.859375 14.144531 5.859375 2.621094 0 5.265625-.515625 7.773438-1.574219l128.929687-54.425781c31.445313 11.746094 64.808594 17.695312 99.292969 17.695312 4.265625 0 8.597656-.097656 12.875-.28125 11.035156-.484374 19.589844-9.820312 19.105469-20.855468-.480469-11.035156-9.835938-19.617188-20.855469-19.105469zm0 0"/></svg></a>
-        </div>
-        <!-- <%blog.comments.forEach(function(comment){%>
-        <%})%> -->
-        <%for(let i = 0;i <2 ; i++){%>
+        </div>  
+        <%if(loggedUser){%>
+        <div class="comment-form">
+            <form action="/blog/<%= blog._id%>/comments" method="POST">
+                <input name="text" placeholder="Comment" id="text">
+                <button>Add Comment</button>
+            </form>
+        </div> 
+        <%}%>
+        
+        <%blog.comments.forEach(function(comment){%>
             <div class="well">
-                <strong>Leeza</strong>
-                        <span class="pull-right"><%=new Date().toLocaleString('en-US' ,{day: 'numeric',month: 'long' })%></span>
+                <strong><%= comment.author.username%></strong>
+                        <span class="pull-right"><%=new Date().toLocaleString('en-US' ,{day: 'numeric',month: 'long',year:'numeric' })%></span>
                         <div class="comment-body">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat iure recusandae minima voluptatem deserunt necessitatibus consectetur. Tenetur neque incidunt ab consequatur. Voluptatum omnis eaque unde hic, labore voluptas. Repellat, nesciunt.</p>
+                            <p><%=comment.text%></p>
+                            <%if(loggedUser && comment.author.id.equals(loggedUser._id)){%>
                             <div class="comment-util">
-                                <button class="btn"><svg class="comment-delete" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg></button>
+                                <!-- edit comment -->
+                                <a class="btn" href = "/blog/<%= blog._id%>/comments/<%= comment._id%>/edit"><svg class="comment-delete" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg></a>
+                                <!-- Delete comment -->
+                                <form action = "/blog/<%=blog._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                 <button class="btn"><svg class="comment-delete" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 24 24" width="24px" height="24px">    <path d="M 10 2 L 9 3 L 5 3 C 4.448 3 4 3.448 4 4 C 4 4.552 4.448 5 5 5 L 7 5 L 17 5 L 19 5 C 19.552 5 20 4.552 20 4 C 20 3.448 19.552 3 19 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 20 C 5 21.105 5.895 22 7 22 L 17 22 C 18.105 22 19 21.105 19 20 L 19 7 L 5 7 z"/></svg></button>
-                            <button class="btn"><svg class="svg_reply" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="511.633px" height="511.633px" viewBox="0 0 511.633 511.633" style="enable-background:new 0 0 511.633 511.633;" xml:space="preserve">
+                                </form>
+                                <!-- reply -->
+                                <button class="btn"><svg class="svg_reply" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="511.633px" height="511.633px" viewBox="0 0 511.633 511.633" style="enable-background:new 0 0 511.633 511.633;" xml:space="preserve">
                                 <g>
                                     <g>
                                         <path d="M463.375,183.726c-35.782-36.735-92.789-57.764-171.02-63.094V45.83c0-7.994-3.713-13.608-11.136-16.846    c-7.803-3.23-14.466-1.902-19.985,3.999L115.06,179.161c-3.618,3.621-5.424,7.902-5.424,12.85c0,4.949,1.807,9.229,5.424,12.847    l146.178,146.177c3.432,3.617,7.71,5.425,12.85,5.425c2.283,0,4.661-0.476,7.136-1.427c7.423-3.238,11.139-8.847,11.139-16.845    v-71.663c30.642,2.475,56.097,7.471,76.376,14.989c20.27,7.519,36.494,18.034,48.677,31.549    c28.362,31.405,38.451,85.171,30.266,161.311c-0.376,4.951,1.807,8.186,6.567,9.708c0.571,0.192,1.427,0.284,2.569,0.284    c3.806,0,6.468-1.618,7.994-4.853l5.709-11.42c2.662-5.331,6.516-13.945,11.56-25.841c5.041-11.901,9.616-23.794,13.709-35.692    c4.093-11.893,7.755-25.026,10.992-39.396c3.234-14.376,4.853-27.079,4.853-38.116    C511.63,265.094,495.546,216.657,463.375,183.726z"/>
@@ -228,10 +239,11 @@
                                 </g>
                                 </svg></button>
                             </div>
+                            <% }%>
                         </div>
-                        <p><%=blog.comments.length%> replies</p> 
+                        <p><%=comment.replies.length%> replies</p> 
             </div>
-        <%}%>
+        <%})%>
 
     </div>
 </div>

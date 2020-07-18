@@ -14,6 +14,7 @@ const multer = require('multer');
 var indexRoutes = require("./routes/authRoutes");
 var profileRouters=require("./routes/profile");
 var blogRoutes = require("./routes/blogs");
+var commentRoutes = require("./routes/commentRoutes");
 // var adminRoutes = require("./routes/adminRoutes");
 // app.use('/admin', adminRoutes);
 
@@ -31,8 +32,9 @@ const { concatSeries } = require("async");
 const db = 'mongodb://localhost:27017/friendsBlog'
     //db config
 
+
 //connect to db
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
     .then(() => console.log('connected to db'))
     .catch(err => console.log(err));
 
@@ -117,7 +119,7 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(profileRouters);
 app.use(blogRoutes);
-
+app.use(commentRoutes);
 
 
 /////listening ports

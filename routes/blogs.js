@@ -188,7 +188,7 @@ router.get("/blog/editpost/:id", middleware.blogowner, function(req,res){
 });
 
 router.put("/blog/:id", middleware.blogowner, function(req,res){
-    blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, update){
+    blog.findByIdAndUpdate(req.params.id, req.body.Blog, function(err, update){
         if(err){
             req.flash("error_msg", "Error");
             res.redirect("/blog");
