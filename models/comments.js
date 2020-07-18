@@ -14,11 +14,12 @@ var commentSchema = Mongoose.Schema({
 			type: ObjectId,
 			ref: "User"
 		},
-		username: String
+		admin: String
 	},
 	replies:[{
 		type: ObjectId,
-		ref:"Replies"
+		ref:"Replies",
+		
 	}],
     likes:[{
         type: ObjectId,

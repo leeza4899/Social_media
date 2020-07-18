@@ -19,6 +19,8 @@ const User = require("../models/user");
 const blog = require("../models/blog");
 const comments = require("../models/comments");
 const Category = require("../models/category");
+const reply = require("../models/Replies");
+
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride("_method"));
@@ -26,6 +28,7 @@ router.use(methodOverride("_method"));
 //requiring the middlwares
 var middleware = require("../middleware");
 const { json } = require("body-parser");
+const comment = require("../models/comments");
 
 //multer configuration
 const storage = multer.diskStorage({
@@ -166,12 +169,28 @@ router.get("/blog", function(req,res){
 
 ///View specific blog page route
 router.get("/blog/:id", function(req,res){
-    blog.findById(req.params.id).populate("comments").exec(function(err,foundBlog){
+    blog.findById(req.params.id)
+    .populate("comments")
+
+    .exec(function (err, foundBlog) 
+    {
+
+
 		if(err){
 			console.log(err);
 		}
-		else{
-			res.render("blog/blogPage",{blog: foundBlog});
+        else{
+            // console.log(foundBlog);
+            
+                // console.log(comment);
+                blog.populate(foundBlog,{
+                    path:"comments.replies",
+                    model: "Replies"
+                },(err,finalBlog)=>{
+                    if(err){console.log(err)}
+                // console.log(finalBlog)
+            res.render("blog/blogPage",{blog: finalBlog});
+        })
 		}
 	});
 });

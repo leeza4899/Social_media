@@ -34,7 +34,8 @@ router.post("/blog/:id/comment/:comment_id/reply", middleware.isloggedIn, functi
 		else{
             var text = req.body.text;
             var repl = {
-                text: text
+				text: text,
+				
             }
 		reply.create(repl, function(err, repli){
 				if(err){
@@ -42,10 +43,11 @@ router.post("/blog/:id/comment/:comment_id/reply", middleware.isloggedIn, functi
 					console.log(err);
 				}
 				else{
+					console.log(repli);
                     // console.log(repli);
 					//add username and id to comment
 					repli.author.id = req.user._id;
-					repli.author.username = req.user.username;
+					repli.author.admin = req.user.username;
 					//save comment
                     repli.save();
                     console.log(repli);
