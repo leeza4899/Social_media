@@ -15,11 +15,7 @@ var RepliesSchema = new Mongoose.Schema({
 			ref: "User"
 		},
 		admin: String
-	},
-    likes:[{
-        type: ObjectId,
-        ref: "User"
-    }],
+	}
 
 });
 

@@ -165,6 +165,45 @@ router.get("/blog", function(req,res){
     });
 });
 
+//get blogs of a specific category
+router.get("/blogs/:category", function(req,res){
+    var cat = req.params.category;
+    Category.find({title:cat}, function(err,catFound){
+        if(err){
+            console.log(err);
+        }else{
+            if(!catFound){
+            console.log("hehe")
+            req.flash("error_msg", "No items in this category.");
+            return res.redirect("back");
+        } else {
+            blog.find().where('category').equals(cat).exec(function(err, inBlogs) {
+                if(err){
+                    console.log(err);
+                } else {
+                    res.render("blog/allBlog", {blogs: inBlogs});
+                }
+            })
+        }
+    }
+    });
+});
+
+
+//display specific users blogs///
+router.post("/user/:id/blogs", function(req,res){
+    User.findById(req.params.id, function(err, foundUser) {
+        blog.find().where('author.id').equals(foundUser._id).exec(function(err, inBlog) {
+            if(err) {
+              req.flash("error", "Something went wrong.");
+              return res.redirect("back");
+            }
+            res.render("blog/allBlog", {blogs: inBlog});
+          });
+});
+});
+
+
 
 
 ///View specific blog page route
@@ -236,29 +275,34 @@ router.delete("/blog/:id", middleware.blogowner, function(req,res){
 });
 
 // LIKE UNLIKE ROUTES
-router.post("/like",middleware.isloggedIn, function (req, res) {  
+router.post("/:id/like",middleware.isloggedIn, function (req, res) {  
+    var userId = req.params.id;
+    console.log(userId);
     blog.findByIdAndUpdate(req.body.likeId, {$push :{likes :req.user._id }
     },
     {new:true
     },(err,result)=>{
-      if(err){
-        return res.status(422),json({error:err})
-      }
-    //   console.log(req.body.likeId);
-    //   console.log(req.user._id);
-    res.redirect("back");
+        User.findByIdAndUpdate(userId, {$push: {likes: req.user._id}},{new:true}, (err,result)=>{
+        if(err){
+            return res.status(422),json({error:err})
+        }
+        res.redirect("back");
+    });
   });
 }); 
-router.post("/unlike",middleware.isloggedIn, function (req, res) {  
+router.post("/:id/unlike",middleware.isloggedIn, function (req, res) {  
+    var userId = req.params.id;
     blog.findByIdAndUpdate(req.body.unlikeId, {$pull :{likes :req.user._id }
     },
     {new:true
     },(err,result)=>{
+    User.findByIdAndUpdate(userId, {$pull: {likes: req.user._id}},{new:true}, (err,result)=>{  
       if(err){
         return res.status(422),json({error:err})
       }
     res.redirect("back");
   });
+});
 }); 
 
 

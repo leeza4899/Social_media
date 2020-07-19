@@ -60,14 +60,17 @@ router.post("/blog/:id/comments", middleware.isloggedIn, function(req,res){
 
 //2.destroy comment
 router.delete("/blog/:id/comments/:comments_id", middleware.commentOwner, function(req,res){
-	Comment.findByIdAndDelete(req.params.comments_id, function(err){
-		if(err){
-			res.redirect("back");
-		} else {
-			req.flash("success_msg", "Comment Deleted");
-			res.redirect("/blog/" + req.params.id);
-		}
-});	
+	var com= req.params.comments_id;
+	blog.findByIdAndUpdate(req.params.id, {$pull: {comments: com}}, {new:true}, (err,result)=>{
+		Comment.findByIdAndDelete(req.params.comments_id, function(err){
+			if(err){
+				res.redirect("back");
+			} else {
+				req.flash("success_msg", "Comment Deleted");
+				res.redirect("/blog/" + req.params.id);
+			}
+		});
+	});	
 });
 
 module.exports = router;
