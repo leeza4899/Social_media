@@ -51,9 +51,8 @@ var  UserSchema= new Mongoose.Schema({
     type: ObjectId,
     ref: "User"
 }],
-
-blogs:[{
-    type:ObjectId,
+likes:[{
+    type: ObjectId,
     ref:"blog"
 }],
 

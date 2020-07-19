@@ -17,6 +17,7 @@ const multer = require("multer");
 
 //requiring the models
 var User = require("../models/user");
+var blog = require("../models/blog");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -98,12 +99,19 @@ router.get("/user/:id", function(req,res){
         if(err) {
           req.flash("error_msg", "Something went wrong.");
           return res.redirect("/");
-        } else {
-            res.render("user/profile",{user: foundUser});
         }
+        blog.find().where('author.id').equals(foundUser._id).exec(function(err, blogs) {
+          if(err) {
+            return res.redirect("/");
+          }
+            res.render("user/profile",{user: foundUser, blogs: blogs});
+        })
     })
 });
 
+
+
+// Follow - Unfollow routes
 router.post("/follow", function (req, res) {
   const toFollow = req.body.followId;
   const whoFollow = req.user._id;

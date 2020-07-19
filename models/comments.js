@@ -20,11 +20,7 @@ var commentSchema = Mongoose.Schema({
 		type: ObjectId,
 		ref:"Replies",
 		
-	}],
-    likes:[{
-        type: ObjectId,
-        ref: "User"
-    }],
+	}]
 });
 
 const comment = Mongoose.model('comment',commentSchema);

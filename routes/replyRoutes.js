@@ -62,16 +62,19 @@ router.post("/blog/:id/comment/:comment_id/reply", middleware.isloggedIn, functi
 });
 
 
-//Delete repply
+//Delete reply
 router.delete("/blog/:id/comments/:comments_id/reply/:reply_id", middleware.replyOwner, function(req,res){
-	reply.findByIdAndDelete(req.params.reply_id, function(err){
-		if(err){
-			res.redirect("back");
-		} else {
-			req.flash("success_msg", "Reply Deleted");
-			res.redirect("/blog/" + req.params.id);
-		}
-});	
+	var re = req.params.reply_id;
+	Comment.findByIdAndUpdate(req.params.id, {$pull: {replies: re}}, {new:true}, (err,result)=>{ 
+		reply.findByIdAndDelete(req.params.reply_id, function(err){
+			if(err){
+				res.redirect("back");
+			} else {
+				req.flash("success_msg", "Reply Deleted");
+				res.redirect("/blog/" + req.params.id);
+			}
+		});
+	});	
 });
 
 module.exports = router;
