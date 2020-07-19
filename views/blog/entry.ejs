@@ -2,23 +2,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/blog/blogentry.css">
-<div class="container addPost">
-    <%if(loggedUser){%>
-    <a class="btn" href="/blog/addpost">Add post</a>
-    <%}%>
-    <a class="btn" href="/blog">View all blogs</a>
-</div>
+
 <div class="container pt-2 text-center">
     <%- include("../partials/message")%>
 </div>
 
-
+<!-- -->
+<!--  -->
     <div class="intro">
         <div class="title">
             <h1>Welcome to</h1>
-            <h2> FriendsBlog</h2>
+            <h2> BlogINK</h2>
         </div>
         <p>View all blogs by categories</p>
+        <div class="blog-btns">
+            <%if(loggedUser){%>
+                <a class="white" href="/blog/addpost">
+                    <p><span class="bg"></span><span class="base"></span><span class="text">Add Blogs</span></p>
+                </a>
+            
+            <%}%>
+            <a class="white" href="/blog">
+                <p><span class="bg"></span><span class="base"></span><span class="text">All Blogs</span></p>
+            </a>    
+</div>
     </div>
 
 <div class="blog-category">

@@ -62,6 +62,10 @@
 }
 
 @media only screen and (max-width:600px){
+    .page_logo {
+        margin-top: 5rem;
+        z-index: 10000;
+    }
     
     
     .navbar{
@@ -70,12 +74,7 @@
         height: 5rem;
         
     }
-    .navbar:hover {
-        top: 0em;
-        width: 100vw;
-        height: 10rem;
-
-    }
+    
     .logo{
         display: none;
     }
@@ -87,6 +86,7 @@
         flex-direction: row;
         justify-items: end;
         height: 5rem;
+        width: 100vw;
     }
     .nav-link{
         justify-content: end;
@@ -354,6 +354,10 @@ footer {
     text-decoration: underline;
 }
 @media screen and (min-width: 600px) {
+    .page_logo{
+        margin-left: 5rem;
+        z-index: 10000;
+    }
 #demo-2 input[type=search] {
     width: 15px;
     padding-left: 10px;
@@ -386,13 +390,13 @@ footer svg{
         
     
 }
+
 input {
     outline: none;
 }
 
 input[type=search] {
     -webkit-appearance: textfield;
-    -webkit-box-sizing: content-box;
     font-family: inherit;
     font-size: 100%;
 }
@@ -475,4 +479,19 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: #ace8f8;
 
+}
+@media only screen and (max-width:600px) {
+    .navbar svg{
+        height: 1.2rem;
+        margin: 0.5rem;
+    }
+    .navbar{
+        padding: 0;
+        margin: 0;
+    }
+    .nav-item a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

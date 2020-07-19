@@ -10,7 +10,7 @@
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
 }
 body{
-    background-image: linear-gradient(to bottom, #b9b0b6, #baa9ba, #b7a3c1, #ad9fcb, #9d9dd5, #92a6de, #87afe4, #7cb7e9, #8dc9ea, #a7d8ea, #c6e7ed, #e6f4f4);
+background-image: linear-gradient(to bottom, #ff6d00, #ff8029, #ff9144, #ffa15e, #ffb177);
 }
 
 div.profle {
@@ -390,8 +390,11 @@ padding-right: 0.5rem;
     cursor: pointer;
     outline: none;
 }
-
+a:hover{
+    text-decoration: none;
+}
 .see-all .button:hover {
+    text-decoration: none;
     background-color: #2EE59D;
     box-shadow: 0px 15px 20px rgba(150, 150, 150, 0.4);
     color: #fff;
