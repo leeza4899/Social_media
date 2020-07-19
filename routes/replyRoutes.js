@@ -65,7 +65,9 @@ router.post("/blog/:id/comment/:comment_id/reply", middleware.isloggedIn, functi
 //Delete reply
 router.delete("/blog/:id/comments/:comments_id/reply/:reply_id", middleware.replyOwner, function(req,res){
 	var re = req.params.reply_id;
-	Comment.findByIdAndUpdate(req.params.id, {$pull: {replies: re}}, {new:true}, (err,result)=>{ 
+	// console.log(req.params.id);
+	Comment.findByIdAndUpdate(req.params.comments_id, {$pull: {replies: re}}, {new:true}, (err,result)=>{ 
+		console.log(result);
 		reply.findByIdAndDelete(req.params.reply_id, function(err){
 			if(err){
 				res.redirect("back");

@@ -62,6 +62,7 @@ router.post("/blog/:id/comments", middleware.isloggedIn, function(req,res){
 router.delete("/blog/:id/comments/:comments_id", middleware.commentOwner, function(req,res){
 	var com= req.params.comments_id;
 	blog.findByIdAndUpdate(req.params.id, {$pull: {comments: com}}, {new:true}, (err,result)=>{
+		console.log(result);
 		Comment.findByIdAndDelete(req.params.comments_id, function(err){
 			if(err){
 				res.redirect("back");

@@ -168,6 +168,7 @@ router.get("/blog", function(req,res){
 //get blogs of a specific category
 router.get("/blogs/:category", function(req,res){
     var cat = req.params.category;
+    console.log(cat);
     Category.find({title:cat}, function(err,catFound){
         if(err){
             console.log(err);
@@ -177,10 +178,11 @@ router.get("/blogs/:category", function(req,res){
             req.flash("error_msg", "No items in this category.");
             return res.redirect("back");
         } else {
-            blog.find().where('category').equals(cat).exec(function(err, inBlogs) {
+            blog.find({category:cat}).exec(function (err, inBlogs) {
                 if(err){
                     console.log(err);
                 } else {
+                    console.log(inBlogs);
                     res.render("blog/allBlog", {blogs: inBlogs});
                 }
             })

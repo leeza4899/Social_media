@@ -1,11 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+body{
+background-image: linear-gradient(to bottom, #ff001d, #ff5788, #ff9ad4, #f6d2fb, #ffffff);
+}
+/* .dot{
+    background-color: red;
+    width: 50rem;
+    height: 50rem;
+    border-radius: 30rem;
+    position: absolute;
+    left: 30%;
+    z-index: -2;
+
+}
+.antidot {
+    background-color: rgb(255, 102, 0);
+    width: 40rem;
+    height: 40rem;
+    border-radius: 30rem;
+    position: absolute;
+    z-index: -2;
+
+} */
+
 .each-blog{
     display: flex;
     flex-direction: column;
@@ -23,6 +46,7 @@
 
 body ,.blog-image {
     color: red;
+    background-color: rgba(255, 255, 255, 0.22);
 }
 
 .reply{
@@ -31,8 +55,9 @@ body ,.blog-image {
 .blog-title h1{
     margin-top: 25px;
     text-align: center;
-    font-family: 'Satisfy', cursive;
-    color: #343a34;
+font-family: 'Source Sans Pro',
+sans-serif;
+color: #343a34;
     font-size: 4.0rem;
 }
 

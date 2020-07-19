@@ -2,6 +2,8 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/blog/blogpage.css">
 
 <div class="svg_icon">
+    <div class="dot"></div>
+    <div class="antidot"></div>
     <a href="/blog">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
             x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
@@ -46,6 +48,7 @@
 </div>
     <!-- Heading -->
 <div class="each-blog"> 
+    <div class="dot"></div>
 
 
 <div class="blog-title ">
@@ -66,6 +69,8 @@
                 <p><%=blog.likes.length%><button class="btn" type="submit" name="unlikeId" value="<%= blog._id%>"href="#"><svg class="heart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512.131 512.131" style="enable-background:new 0 0 512.131 512.131;" xml:space="preserve"><g><g><path d="M511.489,167.372c-7.573-84.992-68.16-146.667-144.107-146.667c-44.395,0-85.483,20.928-112.427,55.488    c-26.475-34.923-66.155-55.488-110.037-55.488c-75.691,0-136.171,61.312-144.043,145.856c-0.811,5.483-2.795,25.045,4.395,55.68    C15.98,267.532,40.62,308.663,76.759,341.41l164.608,144.704c4.011,3.541,9.067,5.312,14.08,5.312    c4.992,0,10.005-1.749,14.016-5.248L436.865,340.13c24.704-25.771,58.859-66.048,70.251-118.251    C514.391,188.514,511.66,168.268,511.489,167.372z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></button></p>
             </form>
         <%}%>
+            <div class="antidot"></div>
+
         <p><%=blog.comments.length%><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 368 368" style="enable-background:new 0 0 368 368;" xml:space="preserve">
 <path style="fill:#CCE4FF;" d="M264,40v96h-48V56H56v80h80c-17.68,0-32,14.32-32,32v16H72L8,232V40C8,22.32,22.32,8,40,8h192
@@ -132,6 +137,8 @@
            
     </div>
     </div>
+        <div class="dot"></div>
+
 
 
     <!-- likes, author, desc ,time, comments, category -->
@@ -203,9 +210,13 @@
 
 
 <div class="container">
+        <div class="antidot"></div>
+
     <div class="comments-section">
         <div class="comment-banner">
             <h1>Comments:</h1>
+                <div class="antidot"></div>
+
         </div>  
         <%if(loggedUser){%>
         <div class="comment-form">
@@ -215,6 +226,8 @@
             </form>
         </div> 
         <%}%>
+            <div class="dot"></div>
+
         
         <%blog.comments.forEach(function(comment){%>
             
@@ -222,6 +235,8 @@
                 <strong><a href="/user/<%=comment.author.id%>"><%= comment.author.admin%></a></strong>
                         <span class="pull-right"><%=new Date().toLocaleString('en-US' ,{day: 'numeric',month: 'long',year:'numeric' })%></span>
                         <div class="comment-body">
+                                <div class="antidot"></div>
+
                             <p><%=comment.text%></p>
                                 <div class="comment-util">
                                     <%if(loggedUser && comment.author.id.equals(loggedUser._id)){%>
