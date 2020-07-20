@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 240, 255);
+    overflow: hidden;
+    max-width: 100vw;
+}
+div{
+    max-width: 50%;
+}
+ div svg{
+     max-width: 80%;
+ }

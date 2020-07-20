@@ -15,7 +15,6 @@ h1{
     font-family: 'Fondamento', cursive;
     text-align: center;
     color: black;
-    margin-top: 100px;
     padding:15px;
     font-size: 58px;
     text-shadow: 4px 2px #ccc;
@@ -68,7 +67,15 @@ h1{
     color:black
   }
 
-
+.col-lg-6{
+  padding: 0;
+  width: 80%;
+}
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .card_front::before {
   content: '';
