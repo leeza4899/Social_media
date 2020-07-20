@@ -90,11 +90,11 @@ router.post("/signup", function (req, res) {
 			rejectUnauthorized: false
 		},
 		});
-		var str =  "<h4>Welcome to friendsBlog! To verify your email, use the token below.<h4>Token:  " + newUser.secretToken + "<p>Thank you for joining us!<p>"
+		var str =  "<h4>Welcome to BlogINK! To verify your email, use the token below.<h4>Token:  " + newUser.secretToken + "<p>Thank you for joining us!<p>"
 		//console.log(str); --- for debugging purposes!
 ///////////////////////////////////// send mail with defined transport object
 		const info ={
-			from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
+			from: '"BlogINK 👻" <newfriendsblog@gmail.com>', // sender address
 			to: req.body.emailid, /*'jainnaman335@gmail.com', 'leezaaggarwal1@gmail.com'*/ // list of receivers
 			subject: "Email ID validation token", // Subject line
 			html: str,  // html body
@@ -212,8 +212,8 @@ router.post('/forgot', function(req, res, next) {
 		});
 		var mailOptions = {
 		  to: req.body.email ,
-		  from: '"friendsBlog 👻" <newfriendsblog@gmail.com>',
-		  subject: 'friendsBlog Password Reset',
+		  from: '"BlogINK 👻" <newfriendsblog@gmail.com>',
+		  subject: 'BlogINK Password Reset',
 		  text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
 			'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
 			'http://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -283,7 +283,7 @@ router.post('/reset/:token', function(req, res) {
 		});
 		var mailOptions = {
 		  to: user.email,
-		  from: '"friendsBlog 👻" <newfriendsblog@gmail.com>',
+		  from: '"BlogINK 👻" <newfriendsblog@gmail.com>',
 		  subject: 'Your password has been changed',
 		  text: 'Hello,\n\n' +
 			'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
@@ -312,7 +312,7 @@ router.post("/query", function(req,res){
 			},
 			});
 			const info ={
-				from: '"friendsBlog 👻" <newfriendsblog@gmail.com>', // sender address
+				from: '"BlogINK 👻" <newfriendsblog@gmail.com>', // sender address
 				to: 'newfriendsblog@gmail.com', /*'jainnaman335@gmail.com', 'leezaaggarwal1@gmail.com'*/ // list of receivers
 				subject: "Query Message through website", // Subject line
 				text: 'This is a query message sent over through the website query form\n\n' +
