@@ -482,7 +482,6 @@ body::-webkit-scrollbar-thumb {
 }
 @media only screen and (max-width:600px) {
     .navbar svg{
-        height: 1.2rem;
         margin: 0.5rem;
     }
     .navbar{
