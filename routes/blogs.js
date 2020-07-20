@@ -168,13 +168,13 @@ router.get("/blog", function(req,res){
 //get blogs of a specific category
 router.get("/blogs/:category", function(req,res){
     var cat = req.params.category;
-    console.log(cat);
+    // console.log(cat);
     Category.find({title:cat}, function(err,catFound){
         if(err){
             console.log(err);
         }else{
             if(!catFound){
-            console.log("hehe")
+            // console.log("hehe")
             req.flash("error_msg", "No items in this category.");
             return res.redirect("back");
         } else {
@@ -182,7 +182,12 @@ router.get("/blogs/:category", function(req,res){
                 if(err){
                     console.log(err);
                 } else {
-                    console.log(inBlogs);
+                    // console.log(inBlogs.length)
+                    if(inBlogs.length == 0){
+                        req.flash("error_msg", "No items in this category.");
+                        return res.redirect("back");
+                    }
+                    // console.log(inBlogs);
                     res.render("blog/allBlog", {blogs: inBlogs});
                 }
             })

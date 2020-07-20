@@ -88,6 +88,11 @@ color: #343a34;
 .profile p{
     display: flex;
     flex-direction: row;
+    color: black;
+}
+
+.profile span{
+    color: black;
 }
 .edit {
     display: flex;
@@ -334,6 +339,11 @@ button{
     .well a{
       text-decoration: none;
       color: black;
+  }
+
+  .reply-delete{
+      width: 20px;
+      height: 15px;
   }
   /* Media queries */
   @media (max-width: 830px){
