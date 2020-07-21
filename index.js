@@ -129,7 +129,7 @@ app.use(ChatRoutes);
 
 
 /////listening ports
-const PORT = 3000 || process.env.PORT
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, process.env.IP, function() {
     console.log("Server has begun!!");
