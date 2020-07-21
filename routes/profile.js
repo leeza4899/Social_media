@@ -74,20 +74,27 @@ router.get("/users", function(req,res)
         console.log(err);
         req.flash("error_msg", "Something went wrong.");
         return res.redirect("back");
-      } else {
-        res.render("user/show_users", {users: foundUser});
       }
+        blog.find().where('author.id').equals(foundUser._id).exec(function(err, inblogs) {
+          if(err) {
+            return res.redirect("/");
+          }
+        res.render("user/show_users", {users: foundUser, blogs: inblogs});
+      })
   })
   }  else {
     User.find({} ,function(err, foundUser) {
-
       if(err) {
         console.log(err);
         req.flash("error_msg", "Something went wrong.");
         return res.redirect("back");
-      } else {
-        res.render("user/show_users", {users: foundUser});
-      }
+      } 
+        blog.find().where('author.id').equals(foundUser._id).exec(function(err, inblogs) { 
+          if(err) {
+            return res.redirect("/");
+          }
+        res.render("user/show_users", {users: foundUser, blogs: inblogs});
+      })
   }) 
   }
 });
