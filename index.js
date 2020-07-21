@@ -16,7 +16,7 @@ var profileRouters=require("./routes/profile");
 var blogRoutes = require("./routes/blogs");
 var commentRoutes = require("./routes/commentRoutes");
 var replyRoutes = require("./routes/replyRoutes");
-var ChatRoutes = require("./routes/chat");
+var ChatRoutes = require("./routes/chat.js");
 
 // var adminRoutes = require("./routes/adminRoutes");
 // app.use('/admin', adminRoutes);
