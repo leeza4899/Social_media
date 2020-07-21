@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    limits:{fileSize: 10000000}, //set to 10MB
+    limits:{fileSize: 2000000}, //set to 10MB
     //to enable only image files to be uploaded
     fileFilter: function(req,file,next){
         checkFileType(file,next);
@@ -68,7 +68,10 @@ router.get("/users", function(req,res)
   {
     console.log(req.query.search);
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    User.find({username: regex} ,function(err, foundUser) {
+    User.find({
+          name: regex,
+          active:true
+        }, function (err, foundUser) {
 
       if(err) {
         console.log(err);
