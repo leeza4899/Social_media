@@ -32,7 +32,7 @@ const { memory } = require("console");
 const { concatSeries } = require("async");
 
 //////moongoose
-const db = 'mongodb://localhost:27017/friendsBlog'
+const db = 'mongodb+srv://BlogOwner:friends123blog@blogink.esfpd.mongodb.net/blogINK?retryWrites=true&w=majority'
     //db config
 
 
