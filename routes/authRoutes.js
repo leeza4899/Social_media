@@ -113,7 +113,7 @@ router.post("/signup", function (req, res) {
 		newUser.save() 
 			.then(user => {
 				req.flash('success_msg',"Successfully signed up. Please Check your email for the validation token.");
-				res.render('/verify');
+				res.redirect('/verify');
 			})
 		.catch(err => console.log(err));				
 						});	
@@ -137,7 +137,7 @@ router.post('/login', (req, res, next) => {
 
 //verify routes
 router.get("/verify", function (req, res) {
-	res.render("auth/verify");
+	res.render("Auth/verify");
 });
 
 //verify post function

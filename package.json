@@ -7,7 +7,7 @@
     "start": "node index",
     "dev": "nodemon index"
   },
-  "author": "Leeza",
+  "author": "Leeza & Naman Jain",
   "license": "ISC",
   "dependencies": {
     "Router": "^2.1.0",
