@@ -113,7 +113,7 @@ router.post("/signup", function (req, res) {
 		newUser.save() 
 			.then(user => {
 				req.flash('success_msg',"Successfully signed up. Please Check your email for the validation token.");
-				res.redirect('/verify');
+				res.render('/verify');
 			})
 		.catch(err => console.log(err));				
 						});	
