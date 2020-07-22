@@ -143,13 +143,16 @@ height: 50px;
     div.pic {
         height: 100vh;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        
     }
 
     div.pic img {
           background-size: cover;
           max-height:100vh;
-          min-height: 100vh;
-          max-width: 506px;
+          
+          
           
     }
     
